@@ -1,0 +1,9 @@
+{
+  "name": "nami-ui",
+  "version": "0.0.0",
+  "description": "Nami UI 是一套基于 React 的工具集及组件库",
+  "repository": "ssh://git@gitlab.biossun.xyz:10022/nami-ui/nami.git",
+  "author": "Bios Sun <biossun@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
