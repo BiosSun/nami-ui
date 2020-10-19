@@ -5,5 +5,8 @@
   "repository": "ssh://git@gitlab.biossun.xyz:10022/nami-ui/nami.git",
   "author": "Bios Sun <biossun@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
