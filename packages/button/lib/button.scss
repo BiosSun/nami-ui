@@ -1,0 +1,55 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+.nami-button {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: let(box-base-min-height);
+    margin: 0;
+    padding: let(box-base-padding-vertical) let(box-base-padding-horizontal);
+
+    border: let(box-base-border-width) solid transparent;
+    border-radius: let(box-base-border-radius);
+
+    background: let(primary);
+    font-size: let(font-size-base);
+    line-height: let(line-height-base);
+    color: let(primary-foreground);
+    font-weight: 500;
+
+    position: relative;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:focus-visible:not(:disabled),
+    &--focus:not(:disabled) {
+        &:before {
+            content: '';
+
+            @include nojiko.position(absolute, 2px);
+
+            border: 1px dashed var(--container-background, #fff);
+            border-radius: inherit;
+        }
+    }
+
+    &:hover:not(:disabled),
+    &--hover:not(:disabled) {
+        background: let(primary-quiet);
+    }
+
+    &:active:not(:disabled),
+    &--active:not(:disabled) {
+        background: let(primary-loud);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}
