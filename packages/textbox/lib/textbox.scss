@@ -1,0 +1,87 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+$cls: '.nami-textbox';
+
+#{$cls} {
+    box-sizing: border-box;
+
+    height: let(box-base-min-height);
+    padding: let(box-base-padding-vertical) let(box-base-padding-horizontal);
+
+    border: let(box-base-border-width) solid let(primary);
+    border-radius: let(box-base-border-radius);
+
+    background: transparent;
+    font-size: let(font-size-base);
+    line-height: let(line-height-base);
+    color: let(text-color);
+
+    position: relative;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    // layout
+    // ---------------------------
+
+    display: flex;
+    align-items: center;
+
+    &__container {
+        flex: 1 1 0;
+        min-width: 0;
+        align-self: stretch;
+        position: relative;
+    }
+
+    // input
+    // ---------------------------
+
+    &__input {
+        box-sizing: border-box;
+        display: block;
+
+        width: 100%;
+        border: 0;
+        padding: 0;
+        margin: 0;
+
+        background: transparent;
+        border-radius: 0;
+
+        font-size: inherit;
+        line-height: inherit;
+        font-family: inherit;
+        font-weight: 400;
+        color: inherit;
+
+        resize: none;
+
+        &[type='search']::-webkit-search-decoration,
+        &[type='search']::-webkit-search-cancel-button,
+        &[type='search']::-webkit-search-results-button,
+        &[type='search']::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: let(placeholder-color);
+        }
+    }
+
+    // disabled
+    // ---------------------------
+    &--disabled {
+        opacity: 0.5;
+    }
+}
