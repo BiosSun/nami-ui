@@ -1,0 +1,30 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+// variables
+// ===========================
+
+.nami-divider {
+    --nami-divider--length: 100%;
+    --nami-divider--background: #{let(primary)};
+}
+
+.nami-divider--vertical,
+.nami-stack--horizontal .nami-divider {
+    --nami-divider--length: calc(1em + 2px);
+}
+
+// styles
+// ===========================
+
+.nami-divider {
+    min-height: 1px;
+    min-width: var(--nami-divider--length);
+    background: var(--nami-divider--background);
+}
+
+.nami-divider--vertical,
+.nami-stack--horizontal .nami-divider {
+    min-width: 1px;
+    min-height: var(--nami-divider--length);
+}

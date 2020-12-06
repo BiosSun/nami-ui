@@ -1,0 +1,156 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+.nami-stack {
+    display: flex;
+
+    // direction
+    // ---------------------------
+    @each $name, $val in (horizontal: row, vertical: column) {
+        &--#{$name} {
+            flex-direction: $val;
+        }
+    }
+
+    // justify
+    // ---------------------------
+
+    @each $name,
+        $val
+            in (
+                start: flex-start,
+                end: flex-end,
+                center: center,
+                between: space-between,
+                around: space-around
+            )
+    {
+        &--justify-#{$name} {
+            justify-content: $val;
+        }
+    }
+
+    // align
+    // ---------------------------
+
+    @each $name, $val in (start: flex-start, end: flex-end, center: center, stretch: stretch) {
+        &--align-#{$name} {
+            align-items: $val;
+        }
+    }
+
+    // padding
+    // ---------------------------
+
+    @each $name in $distance-names {
+        &--padding-#{$name} {
+            padding: let(distance-horizontal-#{$name});
+        }
+
+        &--padding-top-#{$name},
+        &--padding-vertical-#{$name} {
+            padding-top: let(distance-vertical-#{$name});
+        }
+
+        &--padding-bottom-#{$name},
+        &--padding-vertical-#{$name} {
+            padding-bottom: let(distance-vertical-#{$name});
+        }
+
+        &--padding-left-#{$name},
+        &--padding-horizontal-#{$name} {
+            padding-left: let(distance-horizontal-#{$name});
+        }
+
+        &--padding-right-#{$name},
+        &--padding-horizontal-#{$name} {
+            padding-right: let(distance-horizontal-#{$name});
+        }
+    }
+
+    // spacing
+    // ---------------------------
+
+    --nami-stack--spacing-horizontal: 0px;
+    --nami-stack--spacing-vertical: 0px;
+
+    gap: var(--nami-stack--spacing-vertical) var(--nami-stack--spacing-horizontal);
+
+    @each $name in $distance-names {
+        &--spacing-#{$name},
+        &--spacing-horizontal-#{$name} {
+            --nami-stack--spacing-horizontal: #{let(distance-horizontal-#{$name})};
+        }
+
+        &--spacing-#{$name},
+        &--spacing-vertical-#{$name} {
+            --nami-stack--spacing-vertical: #{let(distance-vertical-#{$name})};
+        }
+    }
+
+    // wrap
+    // ---------------------------
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+}
+
+.nami-stack__item {
+    margin: 0 !important;
+
+    @at-root %item {
+        min-width: var(--nami-stack__item--min-width);
+        min-height: var(--nami-stack__item--min-height);
+
+        .nami-stack--horizontal > & {
+            --nami-stack__item--min-width: 0px;
+            --nami-stack__item--col-spacing: var(--nami-stack--spacing-horizontal, 0px);
+        }
+
+        .nami-stack--vertical > & {
+            --nami-stack__item--min-height: 0px;
+            --nami-stack__item--col-spacing: var(--nami-stack--spacing-vertical, 0px);
+        }
+    }
+
+    // flex & col
+    // ---------------------------
+
+    &--flex {
+        @extend %item;
+        flex: 1 1 0;
+    }
+
+    // col
+    // ---------------------------
+
+    &--col {
+        @extend %item;
+        flex: 0 0 0;
+    }
+
+    &--col#{&}--flex {
+        flex-shrink: 1;
+    }
+
+    &--col#{&}--col-0 {
+        display: none;
+    }
+
+    @for $i from 1 through 24 {
+        &--col-#{$i} {
+            flex-basis: calc(
+                (100% - var(--nami-stack__item--col-spacing) * #{(24 - $i) / $i}) / #{24 / $i}
+            );
+        }
+    }
+
+    // align
+    // ---------------------------
+    @each $name, $val in (start: flex-start, end: flex-end, center: center, stretch: stretch) {
+        &--align-#{$name} {
+            align-self: $val;
+        }
+    }
+}

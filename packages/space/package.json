@@ -1,0 +1,25 @@
+{
+    "name": "@nami-ui/space",
+    "version": "0.0.0",
+    "description": "A space component.",
+    "keywords": [
+        "space"
+    ],
+    "author": "Bios Sun <biossun@gmail.com>",
+    "license": "MIT",
+    "main": "lib/index.ts",
+    "module": "lib/index.ts",
+    "peerDependencies": {
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    },
+    "dependencies": {
+        "@nami-ui/styles": "^0.0.0",
+        "clsx": "^1.1.1",
+        "nojiko": "^1.1.1"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0"
+    }
+}

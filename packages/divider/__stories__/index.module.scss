@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    &.vertical {
+        height: 20px;
+        flex-direction: row;
+
+        .hr {
+            border: 0;
+            border-left: 1px solid #000;
+        }
+    }
+}
+
+.stack:global(.nami-stack--horizontal) {
+    height: 20px;
+
+    .hr {
+        border: 0;
+        border-left: 1px solid #000;
+    }
+}
+
+.hr {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #000;
+}
+
+.length {
+    color: #777;
+    font-size: 14px;
+    font-family: monospace;
+    margin-bottom: 10px;
+}

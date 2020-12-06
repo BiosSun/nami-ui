@@ -1,0 +1,28 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+.nami-space {
+    --nami-space--size: #{let(distance-horizontal-middle)};
+
+    @each $name in $distance-names {
+        &--size-#{$name} {
+            --nami-space--size: #{let(distance-horizontal-#{$name})};
+        }
+    }
+}
+
+.nami-space {
+    height: var(--nami-space--size);
+}
+
+.nami-space--vertical {
+    height: unset;
+    width: var(--nami-space--size);
+}
+
+.nami-stack > .nami-space {
+    height: unset;
+    width: unset;
+    flex-basis: var(--nami-space--size);
+    flex-shrink: 0;
+}
