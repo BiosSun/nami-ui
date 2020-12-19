@@ -2,11 +2,11 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { useArgs } from '@storybook/client-api'
 
-import { Textbox, TextboxProps } from '../lib'
+import { TextBox, TextBoxProps } from '../lib'
 
 export default {
-    title: 'Textbox',
-    component: Textbox,
+    title: 'TextBox',
+    component: TextBox,
     argTypes: {
         $flex: { table: { disable: true } },
         $col: { table: { disable: true } },
@@ -17,7 +17,7 @@ export default {
 } as Meta
 
 function ControlledFactory() {
-    const Template: Story<TextboxProps> = (args) => {
+    const Template: Story<TextBoxProps> = (args) => {
         const [{ value = '', onChange }, updateArgs] = useArgs()
 
         function handleChange(value: string) {
@@ -25,7 +25,7 @@ function ControlledFactory() {
             updateArgs({ value })
         }
 
-        return <Textbox {...args} value={value} onChange={handleChange} />
+        return <TextBox {...args} value={value} onChange={handleChange} />
     }
 
     Template.argTypes = {
@@ -38,7 +38,7 @@ function ControlledFactory() {
 // Uncontrolled
 // ---------------------------
 
-export const Uncontrolled: Story<TextboxProps> = (args) => <Textbox {...args} />
+export const Uncontrolled: Story<TextBoxProps> = (args) => <TextBox {...args} />
 
 Uncontrolled.args = {
     defaultValue: 'Hello, Nami UI.',

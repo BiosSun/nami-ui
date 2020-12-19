@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import './textbox.scss'
 
-export interface TextboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface TextBoxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
     /** 文本值 */
     value?: string
 
@@ -25,11 +25,11 @@ export interface TextboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
  * 最基础地文本编辑功能。
  *
  * ```jsx
- * import {Textbox} from '@nami-ui/textbox'
+ * import {TextBox} from '@nami-ui/textbox'
  *
  * function Demo() {
  *     const [value, setValue] = useState('')
- *     return <Textbox value={value} onChange={setValue} />
+ *     return <TextBox value={value} onChange={setValue} />
  * }
  *
  * render(<Demo />)
@@ -40,7 +40,7 @@ export interface TextboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
  * 设置 `placeholder` 属性，可以显示空占位符（仅支持字符串）：
  *
  * ```jsx
- * render(<Textbox placeholder="请输入一些文本" />)
+ * render(<TextBox placeholder="请输入一些文本" />)
  * ```
  *
  * ## 禁用
@@ -48,10 +48,10 @@ export interface TextboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
  * 设置 `disabled` 属性，可以禁用文本框：
  *
  * ```jsx
- * render(<Textbox disabled />)
+ * render(<TextBox disabled />)
  * ```
  */
-export function Textbox({
+export function TextBox({
     value,
     defaultValue,
     placeholder,
@@ -59,7 +59,7 @@ export function Textbox({
     onChange = noop,
     className,
     ...otherProps
-}: TextboxProps) {
+}: TextBoxProps) {
     const [val, setVal, controlled] = useValue(value, defaultValue, '')
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
