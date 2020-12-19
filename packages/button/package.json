@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/button",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A button component.",
     "keywords": [
         "button"
@@ -14,7 +14,7 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/styles": "^0.0.1",
+        "@nami-ui/styles": "^0.0.2",
         "clsx": "^1.1.1",
         "nojiko": "^1.1.1"
     },
