@@ -3,10 +3,10 @@ import { Stack, StackProps } from './stack'
 
 type StackSugarProps = Omit<StackProps, 'direction'>
 
-export function HLinear(props: StackSugarProps) {
+export function HStack(props: StackSugarProps) {
     return <Stack {...props} direction="horizontal" />
 }
 
-export function VLinear(props: StackSugarProps) {
+export function VStack(props: StackSugarProps) {
     return <Stack {...props} direction="vertical" />
 }
