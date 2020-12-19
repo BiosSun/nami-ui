@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/stack",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "A basic layout component.",
     "keywords": [
         "layout",
@@ -15,7 +15,7 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/styles": "^0.0.0",
+        "@nami-ui/styles": "^0.0.1",
         "clsx": "^1.1.1",
         "nojiko": "^1.1.1"
     },
