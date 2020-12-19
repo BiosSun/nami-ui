@@ -4,8 +4,8 @@
     "description": "a utils for nami-ui.",
     "author": "Bios Sun <biossun@gmail.com>",
     "license": "MIT",
-    "main": "lib/index.ts",
-    "module": "lib/index.ts",
+    "main": "publish/index.js",
+    "module": "publish/index.js",
     "peerDependencies": {
         "react": "^17.0.1"
     },

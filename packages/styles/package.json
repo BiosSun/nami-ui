@@ -4,8 +4,8 @@
     "description": "nami-ui styles.",
     "author": "Bios Sun <biossun@gmail.com>",
     "license": "MIT",
-    "main": "lib/index.ts",
-    "module": "lib/index.ts",
+    "main": "publish/index.js",
+    "module": "publish/index.js",
     "dependencies": {
         "nojiko": "^1.1.1"
     }

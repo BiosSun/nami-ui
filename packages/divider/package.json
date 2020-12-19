@@ -7,8 +7,8 @@
     ],
     "author": "Bios Sun <biossun@gmail.com>",
     "license": "MIT",
-    "main": "lib/index.ts",
-    "module": "lib/index.ts",
+    "main": "publish/index.js",
+    "module": "publish/index.js",
     "peerDependencies": {
         "react": "^17.0.1",
         "react-dom": "^17.0.1"
