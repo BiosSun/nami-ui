@@ -20,9 +20,6 @@ export type ButtonProps = HTMLAttributes<HTMLElement> & {
     onClick?: (event: MouseEvent) => void
 }
 
-/**
- * 提供最基础的点击交互能力。
- */
 export function Button({
     hover = false,
     active = false,

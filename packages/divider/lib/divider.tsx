@@ -8,9 +8,6 @@ export interface DividerProps extends HTMLAttributes<HTMLElement> {
     direction?: 'horizontal' | 'vertical'
 }
 
-/**
- * 提供最基础的点击交互能力。
- */
 export function Divider({ direction, className, children, ...otherProps }: DividerProps) {
     className = clsx(
         'nami-divider',

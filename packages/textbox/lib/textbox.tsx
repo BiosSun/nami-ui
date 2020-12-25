@@ -21,36 +21,6 @@ export interface TextBoxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
     onChange?: (value: string) => void
 }
 
-/**
- * 最基础地文本编辑功能。
- *
- * ```jsx
- * import {TextBox} from '@nami-ui/textbox'
- *
- * function Demo() {
- *     const [value, setValue] = useState('')
- *     return <TextBox value={value} onChange={setValue} />
- * }
- *
- * render(<Demo />)
- * ```
- *
- * ## 占位符
- *
- * 设置 `placeholder` 属性，可以显示空占位符（仅支持字符串）：
- *
- * ```jsx
- * render(<TextBox placeholder="请输入一些文本" />)
- * ```
- *
- * ## 禁用
- *
- * 设置 `disabled` 属性，可以禁用文本框：
- *
- * ```jsx
- * render(<TextBox disabled />)
- * ```
- */
 export function TextBox({
     value,
     defaultValue,

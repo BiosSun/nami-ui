@@ -80,37 +80,6 @@ function generateSpacingClassName(spacing: Spacing) {
     }
 }
 
-/**
- * 灵活的基础布局组件，基于 CSS Flex 提供线性的弹性布局及栅格布局。
- *
- * ```jsx
- * title: 弹性布局
- * -----
- * import { HStack } from '@nami-ui/stack';
- *
- * render((
- *     <HStack>
- *         <div className="box-1" $flex>Box 1</div>
- *         <div className="box-2">Box 2</div>
- *         <div className="box-3">Box 3</div>
- *     </HStack>
- * ))
- * ```
- *
- * ```jsx
- * title: 栅格布局
- * -----
- * import { HStack } from '@nami-ui/stack';
- *
- * render((
- *     <HStack>
- *         <div className="box-1" $col={12}>Box 1</div>
- *         <div className="box-2" $col={6}>Box 2</div>
- *         <div className="box-3" $col={6}>Box 3</div>
- *     </HStack>
- * ))
- * ```
- */
 export function Stack({
     component: Component = 'div',
     direction = 'horizontal',

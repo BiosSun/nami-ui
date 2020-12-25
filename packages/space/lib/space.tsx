@@ -12,9 +12,6 @@ export type SpaceProps = HTMLAttributes<HTMLElement> & {
     direction?: 'horizontal' | 'vertical'
 }
 
-/**
- * 提供最基础的点击交互能力。
- */
 export function Space({ direction, size, className, children, ...otherProps }: SpaceProps) {
     className = clsx(
         'nami-space',
