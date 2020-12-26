@@ -1,0 +1,10 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+$cls: '.nami-icon';
+
+#{$cls} {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}

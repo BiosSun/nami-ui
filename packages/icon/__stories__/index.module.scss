@@ -1,0 +1,44 @@
+.iconBoxList {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0;
+    padding: 1px 0 0 1px;
+
+    list-style: none;
+}
+
+.iconBox {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 16.66%;
+    height: 100px;
+
+    margin: -1px 0 0 -1px;
+    padding: 0;
+
+    color: #666;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    :global {
+        .nami-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 18px;
+        }
+    }
+
+    > .iconBoxName {
+        font-size: 12px;
+    }
+
+    &:hover {
+        border-color: rgba(32, 41, 51, 0.12);
+    }
+}

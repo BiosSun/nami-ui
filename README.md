@@ -7,3 +7,4 @@
 - [Stack **线性布局**](./packages/stack#readme)
 - [Space **空隔符**](./packages/space#readme)
 - [Divider **分隔线**](./packages/divider#readme)
+- [Icon **图标**](./packages/icon#readme)
