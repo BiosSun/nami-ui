@@ -1,0 +1,98 @@
+@use 'nojiko/sass/nojiko';
+@use '@nami-ui/styles/index' as *;
+
+$cls: '.nami-checkbox';
+
+#{$cls} {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    position: relative;
+
+    &__input {
+        @include nojiko.position(absolute, 0 null null 0, 0);
+        @include nojiko.size(0);
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+    }
+
+    &__cell {
+        display: block;
+        @include nojiko.size(let(checkbox-size));
+        position: relative;
+
+        &__frame {
+            box-sizing: border-box;
+            display: block;
+            @include nojiko.size(100%);
+            border: let(box-base-border-width) solid let(primary);
+            border-radius: let(box-base-border-radius);
+            background-color: transparent;
+
+            transition: all 0.2s; // TODO time to css var
+        }
+
+        &__icon {
+            box-sizing: border-box;
+            @include nojiko.position(absolute, 0, 0);
+            @include nojiko.size(100%);
+            padding: 2px;
+
+            color: #fff; // TODO foreground to css var
+
+            opacity: 0;
+            transform: scale(0);
+
+            transition: all 0.2s; // TODO time to css var
+        }
+    }
+
+    &__label {
+        margin-left: let(distance-horizontal-small);
+        font-size: let(font-size-base);
+        line-height: let(line-height-base);
+    }
+
+    // interaction
+    // ---------------------------
+
+    &:active:not(#{$cls}--disabled) {
+        #{$cls}__cell {
+            &__frame {
+                background: #f0f1f2; // background to css var
+            }
+        }
+    }
+
+    &--checked {
+        #{$cls}__cell {
+            &__frame {
+                border-color: let(primary);
+                background: let(primary);
+            }
+
+            &__icon {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+
+    // disabled
+    // ---------------------------
+
+    &--disabled {
+        opacity: 0.5;
+        color: let(text-color-quiet);
+    }
+
+    &--disabled:not(#{&}--checked) {
+        #{$cls}__cell {
+            &__frame {
+                background: #f0f1f2; // background to css var
+            }
+        }
+    }
+}

@@ -46,6 +46,7 @@ $variables: (
 
    // 文字颜色
    text-color: #313336,
+   text-color-quiet: #7d8790,
    placeholder-color: #a1a3a6,
 
    // 主色调
@@ -53,6 +54,12 @@ $variables: (
    primary-loud: hsl(200 26% 34%),
    primary-quiet: hsl(200 20% 50%),
    primary-foreground: hsl(0 50% 100%),
+
+   // Components
+   // -----------------------------------------------------------------------------
+
+   // CheckBox
+   checkbox-size: 16px,
 );
 
 @function let($name) {
