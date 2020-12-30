@@ -1,0 +1,29 @@
+{
+    "name": "@nami-ui/radio",
+    "version": "0.0.0",
+    "description": "a radio component.",
+    "keywords": [
+        "Radio",
+        "RadioGroup"
+    ],
+    "author": "Bios Sun <biossun@gmail.com>",
+    "license": "MIT",
+    "main": "lib/index.ts",
+    "module": "lib/index.ts",
+    "peerDependencies": {
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    },
+    "dependencies": {
+        "@nami-ui/icon": "^0.0.0",
+        "@nami-ui/stack": "^0.0.3",
+        "@nami-ui/styles": "^0.0.2",
+        "@nami-ui/utils": "^0.0.2",
+        "clsx": "^1.1.1",
+        "nojiko": "^1.1.1"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0"
+    }
+}

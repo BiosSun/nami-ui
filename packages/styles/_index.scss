@@ -60,6 +60,9 @@ $variables: (
 
    // CheckBox
    checkbox-size: 16px,
+
+   // Radio
+   radio-size: 16px,
 );
 
 @function let($name) {
