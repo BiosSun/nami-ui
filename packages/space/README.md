@@ -4,6 +4,8 @@ displayName: 空隔符
 group: general
 ---
 
+# @nami-ui/space
+
 用于在两个元素之间插入一段空白间隔。
 
 ```jsx

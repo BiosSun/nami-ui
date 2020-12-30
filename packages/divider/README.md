@@ -4,6 +4,8 @@ displayName: 分隔线
 group: general
 ---
 
+# @nami-ui/divider
+
 用于在两个元素之间插入一条分隔线。
 
 ```jsx

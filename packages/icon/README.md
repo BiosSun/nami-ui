@@ -4,6 +4,8 @@ displayName: 图标
 group: general
 ---
 
+# @nami-ui/icon
+
 Icon 组件提供一组 SVG 格式的图标。
 
 ```jsx

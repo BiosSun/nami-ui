@@ -4,6 +4,8 @@ displayName: 按钮
 group: general
 ---
 
+# @nami-ui/button
+
 提供最基本的点击交互功能。
 
 ```jsx

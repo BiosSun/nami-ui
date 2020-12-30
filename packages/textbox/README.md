@@ -4,6 +4,8 @@ displayName: 文本框
 group: general
 ---
 
+# @nami-ui/textbox
+
 用于输入一些简短的文本内容；
 
 ```jsx

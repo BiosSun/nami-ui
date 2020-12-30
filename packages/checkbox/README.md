@@ -4,6 +4,8 @@ displayName: 复选框
 group: general
 ---
 
+# @nami-ui/checkbox
+
 传统「CheckBox」风格的切换选择组件；
 
 ```jsx

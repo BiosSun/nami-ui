@@ -4,12 +4,12 @@ displayName: 线性布局
 group: general
 ---
 
-# `@nami-ui/stack`
+# @nami-ui/stack
 
 一个基础的线性布局组件，它是参考 SwiftUI 中 VStack/HStack 并基于 CSS Flex 布局实现的。
 
 ```jsx
-import { Stack } from 'nami'
+import { Stack } from '@nami-ui/stack'
 
 render(
     <Stack>
