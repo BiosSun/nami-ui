@@ -90,6 +90,19 @@ export function Check(props: ConcreteIconProps) {
 }
 
 /**
+ * 圆
+ * @填充
+ */
+export function CircleFilled(props: ConcreteIconProps) {
+    return (
+        <Icon
+            path="M512 896c212.08 0 384-171.92 384-384S724.08 128 512 128 128 299.92 128 512s171.92 384 384 384z"
+            {...props}
+        />
+    )
+}
+
+/**
  * Github Logo；
  */
 export function GitHub(props: ConcreteIconProps) {
