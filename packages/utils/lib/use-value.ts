@@ -35,21 +35,21 @@ import { useState, Dispatch, SetStateAction } from 'react'
 export function useValue<T>(
     value: T,
     defaultValue: T,
-    initialValue: T
-): [T, Dispatch<SetStateAction<T>>, boolean] {
+    initialValue: Exclude<T, undefined>,
+): [Exclude<T, undefined>, Dispatch<SetStateAction<Exclude<T, undefined>>>, boolean] {
     // 检测是否同时提供了 value 和 defaultValue
     if (__DEV__) {
-        if (value != null && defaultValue != null) {
+        if (value !== undefined && defaultValue !== undefined) {
             console.error('[useValue] 组件不能同处于受控状态及非受控状态')
         }
     }
 
     // 是否处于受控状态
-    const [controlled] = useState(value != null)
+    const [controlled] = useState(value !== undefined)
 
     if (controlled) {
         return [
-            value ?? initialValue,
+            value !== undefined ? value as Exclude<T, undefined> : initialValue,
             function setValue() {
                 if (__DEV__) {
                     console.error('在受控状态下，组件内不应该调用 setValue 以自行改变 value。')
@@ -62,7 +62,7 @@ export function useValue<T>(
     } else {
         // NOTE 虽说不能在分支或循环语句内调用 useState，但这里的分支条件将保持不变，
         //      因此可以放心使用。
-        const [value, setValue] = useState(defaultValue ?? initialValue)
+        const [value, setValue] = useState(defaultValue !== undefined ? defaultValue as Exclude<T, undefined> : initialValue)
         return [value, setValue, controlled]
     }
 }
