@@ -1,4 +1,5 @@
 import { useCallback, useLayoutEffect } from 'react'
+import { unstable_batchedUpdates } from 'react-dom'
 import { useValueRef } from './use-value-ref'
 
 export function useMoving(listeners: {
@@ -15,12 +16,16 @@ export function useMoving(listeners: {
     }, [])
 
     const move = useCallback((event: PointerEvent) => {
-        listenersRef.current.onMove(event)
+        unstable_batchedUpdates(() => {
+            listenersRef.current.onMove(event)
+        })
     }, [])
 
     const finish = useCallback((event: PointerEvent) => {
         unbindMoving()
-        listenersRef.current.onFinish(event)
+        unstable_batchedUpdates(() => {
+            listenersRef.current.onFinish(event)
+        })
     }, [])
 
     const bindMoving = useCallback(() => {
