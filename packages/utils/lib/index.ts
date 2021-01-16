@@ -1,5 +1,6 @@
 export * from './noop'
 export * from './clamp'
+export * from './set-style'
 export * from './use-value'
 export * from './use-toggle'
 export * from './use-value-ref'

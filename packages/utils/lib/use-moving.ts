@@ -1,6 +1,7 @@
-import { useCallback, useLayoutEffect } from 'react'
+import { useCallback, useLayoutEffect, useRef } from 'react'
 import { unstable_batchedUpdates } from 'react-dom'
 import { useValueRef } from './use-value-ref'
+import { setStyle, RestoreStyle } from './set-style'
 
 export function useMoving(listeners: {
     onStart(event: PointerEvent): boolean | void
@@ -8,9 +9,11 @@ export function useMoving(listeners: {
     onFinish(event: PointerEvent): void
 }) {
     const listenersRef = useValueRef(listeners)
+    const restoreUserSelectRef = useRef<RestoreStyle>()
 
     const start = useCallback((event: PointerEvent) => {
         if (listenersRef.current.onStart(event) !== false) {
+            restoreUserSelectRef.current = setStyle(document.body, 'user-select', 'none')
             bindMoving()
         }
     }, [])
@@ -23,6 +26,7 @@ export function useMoving(listeners: {
 
     const finish = useCallback((event: PointerEvent) => {
         unbindMoving()
+        restoreUserSelectRef.current!();
         unstable_batchedUpdates(() => {
             listenersRef.current.onFinish(event)
         })
