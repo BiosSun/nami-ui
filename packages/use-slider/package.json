@@ -1,0 +1,24 @@
+{
+    "name": "@nami-ui/use-slider",
+    "version": "0.0.0",
+    "description": "a slider hook.",
+    "keywords": [
+        "Slider",
+        "Hook"
+    ],
+    "author": "Bios Sun <biossun@gmail.com>",
+    "license": "MIT",
+    "main": "lib/index.ts",
+    "module": "lib/index.ts",
+    "peerDependencies": {
+        "react": "^17.0.1"
+    },
+    "dependencies": {
+        "@nami-ui/utils": "^0.0.2"
+    },
+    "devDependencies": {
+        "@nami-ui/stack": "^0.0.3",
+        "@types/react": "^17.0.0",
+        "clsx": "^1.1.1"
+    }
+}

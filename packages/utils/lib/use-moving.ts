@@ -26,22 +26,22 @@ export function useMoving(listeners: {
 
     const finish = useCallback((event: PointerEvent) => {
         unbindMoving()
-        restoreUserSelectRef.current!();
+        restoreUserSelectRef.current!()
         unstable_batchedUpdates(() => {
             listenersRef.current.onFinish(event)
         })
     }, [])
 
     const bindMoving = useCallback(() => {
-        document.addEventListener('pointermove', move, { passive: true })
-        document.addEventListener('pointercancel', finish, false)
-        document.addEventListener('pointerup', finish, false)
+        document.addEventListener('pointermove', move, { passive: false })
+        document.addEventListener('pointercancel', finish)
+        document.addEventListener('pointerup', finish)
     }, [])
 
     const unbindMoving = useCallback(() => {
         document.removeEventListener('pointermove', move)
-        document.removeEventListener('pointercancel', finish, false)
-        document.removeEventListener('pointerup', finish, false)
+        document.removeEventListener('pointercancel', finish)
+        document.removeEventListener('pointerup', finish)
     }, [])
 
     useLayoutEffect(() => {
