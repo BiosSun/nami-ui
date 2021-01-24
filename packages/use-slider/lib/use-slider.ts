@@ -312,6 +312,21 @@ function chooseThumb(thumbs: Element[], event: PointerEvent): [number, boolean] 
     return [targetThumbIndex, targetIsThumb]
 }
 
+function isEqual<T extends number | ValueCollection>(v1: T, v2: T): boolean {
+    if (typeof v1 === 'number') {
+        return v1 === v2
+    }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in v1) {
+        if (v1[key] !== v2[key]) {
+            return false
+        }
+    }
+
+    return true
+}
+
 // eslint-disable-next-line import/export
 export declare namespace useSlider {
     export { MovingEvent, WheelEvent, HotkeyEvent }
@@ -340,10 +355,17 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
             }
 
             setValue((prevValue) => {
-                const value = [...prevValue]
-                const updater = patchValue(patch, axis)
+                const prevItem = prevValue[index]
 
-                value[index] = updater(value[index])
+                const updater = patchValue(patch, axis)
+                const item = updater(prevItem)
+
+                if (isEqual(prevItem, item)) {
+                    return prevValue
+                }
+
+                const value = [...prevValue]
+                value[index] = item
 
                 return value
             })

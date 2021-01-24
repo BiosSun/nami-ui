@@ -93,7 +93,10 @@ export function Slider({
 
     function handleChange(changer: InnerValueChanger) {
         if (controlled) {
-            onChange(getChangedValue(changer, val))
+            const updatedVal = getChangedValue(changer, val)
+            if (updatedVal !== val) {
+                onChange(updatedVal)
+            }
         } else {
             setVal((prevValue) => getChangedValue(changer, prevValue))
         }
