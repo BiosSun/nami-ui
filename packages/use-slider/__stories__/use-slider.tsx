@@ -56,6 +56,8 @@ export function DebugSingle() {
             points,
         },
 
+        sort: true,
+
         moving(info: useSlider.MovingEvent) {
             setMoveEventData(info)
             return info.px
@@ -80,7 +82,7 @@ export function DebugSingle() {
             {
                 keys: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9',
                 shift: true,
-                handle: ({ key }) => parseInt(key, 0) / 10,
+                handle: ({ key }) => parseInt(key, 10) / 10,
             },
             {
                 keys: 'ANY',
@@ -117,7 +119,7 @@ export function DebugSingle() {
                                         slide.sliding && slide.thumb === index
                                             ? 'rgba(0, 0, 0, .4)'
                                             : '',
-                                    left: value * 100 + '%',
+                                    left: `${value * 100}%`,
                                 }}
                             >
                                 {index + 1}
@@ -126,9 +128,15 @@ export function DebugSingle() {
                     </div>
                 </div>
                 <div>
-                    <button onClick={addItem}>Add Item</button>
-                    <button onClick={removeItem}>Remove Item</button>
-                    <button onClick={toggleDisabled}>Toggle Disabled</button>
+                    <button type="button" onClick={addItem}>
+                        Add Item
+                    </button>
+                    <button type="button" onClick={removeItem}>
+                        Remove Item
+                    </button>
+                    <button type="button" onClick={toggleDisabled}>
+                        Toggle Disabled
+                    </button>
                 </div>
             </VStack>
             <div $flex className={styles.note}>
@@ -252,7 +260,7 @@ export function DebugSpace() {
                 keys: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9',
                 shift: true,
                 handle: ({ key, shift }) => {
-                    const offset = parseInt(key, 0) / 10
+                    const offset = parseInt(key, 10) / 10
                     return shift ? { x: offset } : { y: offset }
                 },
             },
@@ -291,8 +299,8 @@ export function DebugSpace() {
                                         slide.sliding && slide.thumb === index
                                             ? 'rgba(0, 0, 0, .4)'
                                             : '',
-                                    left: position.x * 100 + '%',
-                                    top: position.y * 100 + '%',
+                                    left: `${position.x * 100}%`,
+                                    top: `${position.y * 100}%`,
                                 }}
                             >
                                 {index + 1}
@@ -301,9 +309,15 @@ export function DebugSpace() {
                     </div>
                 </div>
                 <div>
-                    <button onClick={addItem}>Add Item</button>
-                    <button onClick={removeItem}>Remove Item</button>
-                    <button onClick={toggleDisabled}>Toggle Disabled</button>
+                    <button type="button" onClick={addItem}>
+                        Add Item
+                    </button>
+                    <button type="button" onClick={removeItem}>
+                        Remove Item
+                    </button>
+                    <button type="button" onClick={toggleDisabled}>
+                        Toggle Disabled
+                    </button>
                 </div>
             </VStack>
             <div $flex className={styles.note}>
@@ -362,7 +376,7 @@ export function Horizontal() {
             {
                 keys: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9',
                 shift: true,
-                handle: ({ key }) => parseInt(key, 0) / 10,
+                handle: ({ key }) => parseInt(key, 10) / 10,
             },
             {
                 keys: 'ANY',
@@ -395,7 +409,7 @@ export function Horizontal() {
                                     slide.sliding && slide.thumb === index
                                         ? 'rgba(0, 0, 0, .4)'
                                         : '',
-                                left: value * 100 + '%',
+                                left: `${value * 100}%`,
                             }}
                         >
                             {index + 1}
@@ -444,7 +458,7 @@ export function Vertical() {
             {
                 keys: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9',
                 shift: true,
-                handle: ({ key }) => parseInt(key, 0) / 10,
+                handle: ({ key }) => parseInt(key, 10) / 10,
             },
             {
                 keys: 'ANY',
@@ -477,7 +491,7 @@ export function Vertical() {
                                     slide.sliding && slide.thumb === index
                                         ? 'rgba(0, 0, 0, .4)'
                                         : '',
-                                top: (1 - value) * 100 + '%',
+                                top: `${(1 - value) * 100}%`,
                             }}
                         >
                             {index + 1}
@@ -515,7 +529,7 @@ export function Circle() {
             const y = 0.5 - py
             const DPI = Math.PI * 2
             const atan2 = Math.atan2(x, y)
-            let r = (DPI + atan2) % DPI
+            const r = (DPI + atan2) % DPI
 
             setInfo({
                 x,
@@ -573,8 +587,8 @@ export function Circle() {
                                     slide.sliding && slide.thumb === index
                                         ? 'rgba(0, 0, 0, .4)'
                                         : '',
-                                top: (0.5 - Math.cos(value) / 2) * 100 + '%',
-                                left: (0.5 + Math.sin(value) / 2) * 100 + '%',
+                                top: `${(0.5 - Math.cos(value) / 2) * 100}%`,
+                                left: `${(0.5 + Math.sin(value) / 2) * 100}%`,
                             }}
                         >
                             {index + 1}

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign, import/export */
 import { useRef, useMemo, Dispatch, useState, useCallback } from 'react'
 import {
     useToggle,
@@ -7,6 +8,8 @@ import {
     useHotkeys,
     HotkeyEvent,
     clamp,
+    useStateRef,
+    swap,
 } from '@nami-ui/utils'
 import {
     patchValue,
@@ -184,6 +187,9 @@ interface BasicProps<T, K extends Patch> {
     /** 是否禁用选择器 */
     disabled?: boolean
 
+    /** 是否对值进行排序，并定制比较函数 */
+    sort?: boolean | ((v1: T, v2: T) => number)
+
     /** 处理指针移动事件 */
     moving: (eventData: MovingEvent) => K
 
@@ -219,6 +225,7 @@ interface NormalProps {
     setValue: SetValue<(Value | ValueCollection)[]>
     disabled: boolean
     axis: Axis | { [prop: string]: Axis }
+    sort?: (v1: Value | ValueCollection, v2: Value | ValueCollection) => number
     moving: (eventData: MovingEvent) => Patch
     wheel?: (eventData: WheelEvent) => Patch
     hotkeys: NormalHotkey[]
@@ -273,6 +280,10 @@ interface MoveInfo {
     }[]
 }
 
+function compare(v1: number, v2: number) {
+    return v1 - v2
+}
+
 function useNormalizeProps<T extends ValueCollection>(props: Props<T>): NormalProps {
     return {
         ...props,
@@ -281,6 +292,8 @@ function useNormalizeProps<T extends ValueCollection>(props: Props<T>): NormalPr
             min: 0,
             max: 1,
         },
+
+        sort: props.sort === true ? compare : props.sort,
     } as NormalProps
 }
 
@@ -327,7 +340,6 @@ function isEqual<T extends number | ValueCollection>(v1: T, v2: T): boolean {
     return true
 }
 
-// eslint-disable-next-line import/export
 export declare namespace useSlider {
     export { MovingEvent, WheelEvent, HotkeyEvent }
 }
@@ -338,23 +350,53 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
         disabled,
         setValue,
         axis,
+        sort,
         moving: onMoving,
         wheel: onWheel,
         hotkeys: hotkeyConfigs,
     } = useNormalizeProps(props)
 
     const [sliding, startSlide, endSlide] = useToggle(false)
-    const [currentThumbIndex, setCurrentThumbIndex] = useState<number | undefined>(undefined)
+    const [currentThumbIndexRef, setCurrentThumbIndex] = useStateRef<number>(0)
     const railRef = useRef<HTMLElement>(null)
     const moveInfoRef = useRef<MoveInfo>()
 
+    const updateIndex = useCallback(
+        (value) => {
+            if (!sort) {
+                return
+            }
+
+            const index = currentThumbIndexRef.current
+
+            let i = index
+
+            while (i > 0 && sort(value[i], value[i - 1]) < 0) {
+                swap(value, i, (i -= 1))
+            }
+
+            if (i === index) {
+                while (i < value.length - 1 && sort(value[i], value[i + 1]) > 0) {
+                    swap(value, i, (i += 1))
+                }
+            }
+
+            if (i !== index) {
+                setCurrentThumbIndex(i)
+            }
+        },
+        [sort, currentThumbIndexRef, setCurrentThumbIndex], // NOTE currentThumbIndexRef and setCurrentThumbIndex is immobile
+    )
+
     const updateValue = useCallback(
-        (index: number, patch: Patch) => {
+        (patch: Patch) => {
             if (disabled) {
                 return
             }
 
             setValue((prevValue) => {
+                const index = currentThumbIndexRef.current
+
                 const prevItem = prevValue[index]
 
                 const updater = patchValue(patch, axis)
@@ -367,14 +409,20 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
                 const value = [...prevValue]
                 value[index] = item
 
+                updateIndex(value)
+
                 return value
             })
         },
-        [axis, disabled, setValue],
+        [axis, disabled, setValue, updateIndex, currentThumbIndexRef], // NOTE currentThumbIndexRef is immobile
     )
 
     function move(event: PointerEvent) {
-        const info = moveInfoRef.current!
+        const info = moveInfoRef.current
+
+        if (info === undefined) {
+            return
+        }
 
         const x = event.clientX - info.start.x - info.rail.rect.left
         const y = event.clientY - info.start.y - info.rail.rect.top
@@ -404,7 +452,7 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
                     (event.timeStamp - info.points[0].timeStamp) || 0,
         })
 
-        updateValue(info.thumb.index, patch)
+        updateValue(patch)
     }
 
     const focus = useFocus()
@@ -415,11 +463,13 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
             const rail = railRef.current
 
             if (!root) {
+                // eslint-disable-next-line no-console
                 console.warn('No slider root element was obtained.')
                 return false
             }
 
             if (!rail) {
+                // eslint-disable-next-line no-console
                 console.warn('No rail element was obtained, pleace put `slide.railProps` to rail element.') // prettier-ignore
                 return false
             }
@@ -431,6 +481,7 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
             const thumbs = Array.from(root.querySelectorAll('[role=slider]'))
 
             if (thumbs.length === 0) {
+                // eslint-disable-next-line no-console
                 console.warn('No thumb element found.')
                 return false
             }
@@ -496,14 +547,6 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
                       return
                   }
 
-                  if (currentThumbIndex === undefined) {
-                      return
-                  }
-
-                  if (disabled) {
-                      return
-                  }
-
                   const { deltaX, deltaY, deltaZ, altKey, ctrlKey, metaKey, shiftKey } = event
 
                   const patch = onWheel({
@@ -516,7 +559,7 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
                       shiftKey,
                   })
 
-                  updateValue(currentThumbIndex, patch)
+                  updateValue(patch)
               }
             : undefined,
     )
@@ -535,26 +578,18 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
                             return
                         }
 
-                        if (currentThumbIndex === undefined) {
-                            return
-                        }
-
-                        if (disabled) {
-                            return
-                        }
-
                         const patch = hotkey.handle(event)
 
-                        updateValue(currentThumbIndex, patch)
+                        updateValue(patch)
                     },
                 })),
-            [currentThumbIndex, disabled, focus.focused, hotkeyConfigs, sliding, updateValue],
+            [focus.focused, hotkeyConfigs, sliding, updateValue],
         ),
     )
 
     return {
         sliding,
-        thumb: currentThumbIndex,
+        thumb: currentThumbIndexRef.current,
         rootProps: {
             style: { touchAction: 'none' },
             ...moving.props,
