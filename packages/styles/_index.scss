@@ -50,9 +50,13 @@ $variables: (
    placeholder-color: #a1a3a6,
 
    // 主色调
-   primary: hsl(200 22% 44%),
-   primary-loud: hsl(200 26% 34%),
-   primary-quiet: hsl(200 20% 50%),
+//    primary: hsl(200 22% 44%),
+//    primary-loud: hsl(200 26% 34%),
+//    primary-quiet: hsl(200 20% 50%),
+//    primary-foreground: hsl(0 50% 100%),
+   primary: hsl(200 72% 44%),
+   primary-loud: hsl(200 86% 34%),
+   primary-quiet: hsl(200 70% 50%),
    primary-foreground: hsl(0 50% 100%),
 
    // Components
