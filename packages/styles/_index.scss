@@ -12,6 +12,13 @@ $variables: (
    box-base-padding-vertical: 4px,
    box-base-padding-horizontal: 10px,
 
+   // 盒元素 - 大尺寸
+   box-large-min-height: 48px,
+   box-large-border-width: 1px,
+   box-large-border-radius: 4px,
+   box-large-padding-vertical: 8px,
+   box-large-padding-horizontal: 20px,
+
    // 元素间距 - 水平方向
    distance-horizontal-micor: 1px,
    distance-horizontal-mini: 2px,
