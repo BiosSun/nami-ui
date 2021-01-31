@@ -9,5 +9,10 @@ import { toFixed } from './to-fixed'
  */
 export function shiftPoint(value: number, offsetDescriptor: string): number {
     const offset = parseFloat(offsetDescriptor)
+
+    if (Number.isNaN(offset)) {
+        throw new Error(`invalid point offset descriptor: ${offsetDescriptor}`)
+    }
+
     return toFixed(value + offset, getPrecision(offset))
 }

@@ -341,7 +341,7 @@ function isEqual<T extends number | ValueCollection>(v1: T, v2: T): boolean {
 }
 
 export declare namespace useSlider {
-    export { MovingEvent, WheelEvent, HotkeyEvent }
+    export { MovingEvent, WheelEvent, HotkeyEvent, Hotkey }
 }
 
 // eslint-disable-next-line import/export
@@ -591,7 +591,6 @@ export function useSlider<T extends ValueCollection>(props: Props<T>): Slider {
         sliding,
         thumb: currentThumbIndexRef.current,
         rootProps: {
-            style: { touchAction: 'none' },
             ...moving.props,
             ...focus.props,
             ...wheel.props,

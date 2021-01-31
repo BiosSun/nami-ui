@@ -10,6 +10,13 @@ type UnboxIntersection<T> = T extends { 0: infer U } ? U : never
 
 const R_EVENT_PROP_PREFIX = /^on[A-Z]/
 
+function chainCallback<T>(c1: T, c2: T): T {
+    return ((...args: any[]) => {
+        ;(c1 as any)(...args)
+        ;(c2 as any)(...args)
+    }) as any
+}
+
 export function mergeProps<T, S extends any[]>(
     firstProps: T,
     ...otherPropsSet: S
@@ -32,7 +39,7 @@ export function mergeProps<T, S extends any[]>(
                 typeof result.style === 'object' &&
                 typeof props.style === 'object'
             ) {
-                Object.assign({}, result.style, props.style)
+                result.style = { ...result.style, ...props.style }
             }
             // event callback
             else if (
@@ -50,11 +57,4 @@ export function mergeProps<T, S extends any[]>(
     }
 
     return result
-}
-
-function chainCallback<T>(c1: T, c2: T): T {
-    return ((...args: any[]) => {
-        ;(c1 as any)(...args)
-        ;(c2 as any)(...args)
-    }) as any
 }

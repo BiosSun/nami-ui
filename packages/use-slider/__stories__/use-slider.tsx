@@ -16,7 +16,7 @@ export function DebugSingle() {
 
     const min = 0
     const max = 1
-    const step = 0.05
+    const step = 0.03
     const points = [0.22, 0.48]
 
     const [disabled, setDisabled] = useState(false)
@@ -65,7 +65,7 @@ export function DebugSingle() {
 
         wheel(info: useSlider.WheelEvent) {
             setWheelEventData(info)
-            return info.deltaY > 0 ? '+0.02' : info.deltaY < 0 ? '-0.02' : undefined
+            return info.deltaY > 0 ? 'next' : info.deltaY < 0 ? 'prev' : undefined
         },
 
         hotkeys: [

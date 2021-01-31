@@ -1,4 +1,4 @@
-import { getPrecision, toFixed, shiftPoint, Axis, getClosestPoint } from '@nami-ui/utils'
+import { shiftPoint, Axis, getClosestPoint, getNextPoint, getPrevPoint } from '@nami-ui/utils'
 
 export { Axis }
 export type AxisCollection = { [prop: string]: Axis }
@@ -7,7 +7,7 @@ export type Value = number
 export type ValueCollection = { [prop: string]: Value }
 
 export type AbsoluteValuePatch = number
-export type RelativeValuePatch = string
+export type RelativeValuePatch = 'next' | 'prev' | string
 export type ValueCollectionPatch = { [prop: string]: AbsoluteValuePatch | RelativeValuePatch | undefined } // prettier-ignore
 export type ValueUpdater = (value: Value) => Value
 export type ValueCollectionUpdater = (value: ValueCollection) => ValueCollection
@@ -21,29 +21,48 @@ export type Patch =
     | ValueCollectionUpdater
     | undefined
 
-export function patchValue(patch: Patch, axis: Axis | AxisCollection): ValueSetter {
-    if (patch === undefined) {
-        return (value: any) => value
-    }
+function isAbsoluteValuePath(patch: any): patch is AbsoluteValuePatch {
+    return typeof patch === 'number'
+}
 
-    return (patchBasicValue(patch, axis as Axis) ??
-        patchMultipleValue(patch, axis) ??
-        patchUpdater(patch, axis)) as ValueSetter
+function isRelativeValuePath(patch: any): patch is RelativeValuePatch {
+    return typeof patch === 'string'
+}
+
+function isValueCollectionPatch(patch: any): patch is ValueCollectionPatch {
+    return typeof patch === 'object'
+}
+
+function isUpdater(patch: any): patch is ValueUpdater | ValueCollectionUpdater {
+    return typeof patch === 'function'
+}
+
+function isAxis(axis: any): axis is Axis {
+    return typeof axis.min === 'number' && typeof axis.max === 'number'
 }
 
 function patchBasicValue(patch: Patch, axis: Axis) {
     if (isAbsoluteValuePath(patch)) {
         return () => getClosestPoint(patch, axis)
-    } else if (isRelativeValuePath(patch)) {
-        return (value: Value) => getClosestPoint(shiftPoint(value, patch), axis)
-    } else {
-        return undefined
     }
+
+    if (isRelativeValuePath(patch)) {
+        switch (patch) {
+            case 'next':
+                return (value: Value) => getNextPoint(value, axis)
+            case 'prev':
+                return (value: Value) => getPrevPoint(value, axis)
+            default:
+                return (value: Value) => getClosestPoint(shiftPoint(value, patch), axis)
+        }
+    }
+
+    return undefined
 }
 
 function patchMultipleValue(patch: Patch, axis: Axis | AxisCollection) {
     if (!isValueCollectionPatch(patch)) {
-        return
+        return undefined
     }
 
     const entries = Object.entries(patch)
@@ -52,14 +71,27 @@ function patchMultipleValue(patch: Patch, axis: Axis | AxisCollection) {
         const newValue = { ...value }
 
         for (const [key, p] of entries) {
-            if (p === undefined) {
-                continue
+            if (p !== undefined) {
+                const a = isAxis(axis) ? axis : axis[key]
+                let v: number = value[key]
+
+                if (isAbsoluteValuePath(p)) {
+                    v = getClosestPoint(p, a)
+                } else {
+                    switch (p) {
+                        case 'next':
+                            v = getNextPoint(v, a)
+                            break
+                        case 'prev':
+                            v = getPrevPoint(v, a)
+                            break
+                        default:
+                            v = getClosestPoint(shiftPoint(v, p), a)
+                    }
+                }
+
+                newValue[key] = v
             }
-
-            let v = isAbsoluteValuePath(p) ? p : shiftPoint(value[key], p)
-            v = getClosestPoint(v, isAxis(axis) ? axis : axis[key])
-
-            newValue[key] = v
         }
 
         return newValue
@@ -84,22 +116,12 @@ function patchUpdater(patch: Patch, axis: Axis | AxisCollection) {
     }
 }
 
-function isAbsoluteValuePath(patch: any): patch is AbsoluteValuePatch {
-    return typeof patch === 'number'
-}
+export function patchValue(patch: Patch, axis: Axis | AxisCollection): ValueSetter {
+    if (patch === undefined) {
+        return (value: any) => value
+    }
 
-function isRelativeValuePath(patch: any): patch is RelativeValuePatch {
-    return typeof patch === 'string'
-}
-
-function isValueCollectionPatch(patch: any): patch is ValueCollectionPatch {
-    return typeof patch === 'object'
-}
-
-function isUpdater(patch: any): patch is ValueUpdater | ValueCollectionUpdater {
-    return typeof patch === 'function'
-}
-
-function isAxis(axis: any): axis is Axis {
-    return typeof axis.min === 'number' && typeof axis.max === 'number'
+    return (patchBasicValue(patch, axis as Axis) ??
+        patchMultipleValue(patch, axis) ??
+        patchUpdater(patch, axis)) as ValueSetter
 }

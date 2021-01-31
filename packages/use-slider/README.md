@@ -117,12 +117,13 @@ interface Axis {
 
 // 用于更新滑块值，需要在事件处理器中返回，如：
 // - 更新到指定数值：`0.2`，或 `{ x: 0.2 }`；
+// - 更新到下一个或上一个值：`'next'` 或 `{ x: 'prev' }`；
 // - 在当前值的基础上加减指定值：`'+0.2'`，或 `{ x: '-0.2' }`；
 // - 自定义更新，如：`prevValue => prevValue / 2` 或 `prevValue => ( { x: prevValue.x / 2 } )`
 type ValuePatch =
     | number
-    | string
-    | { [prop: string]: number | string }
+    | 'prev' | 'next' | string
+    | { [prop: string]: number | 'prev' | 'next' | string }
     | (value: Value) => Value
 
 // 指针拖拽事件
