@@ -98,7 +98,7 @@ render(
 
         <label>marks: points</label>
         <Slider min={0} max={100} step={10} points={[0, 27, 38, 56, 72, 94]} marks="points" />
-    </div>
+    </div>,
 )
 ```
 
@@ -119,34 +119,44 @@ function PointLabel({ value, active, className, ...otherProps }) {
 
 ## 多滑块
 
-当传入的初值为数值或仅包含一个元素的数组时，表示为单滑块滑动条；若传入包含两个元素的数组，则为双滑块滑动条；若是包含两个以上元素的数组，则为多滑块滑动条，滑块数量依照数组元素的数量，比如：
+根据滑块数量的不同，通常滑动条可以分为三种类型：
+
+-   单滑块滑动条，仅有一个滑块；
+-   双滑块滑动条，仅有两个滑块；
+-   多滑块滑动条，有三个或三个以上滑块。
+
+这根据所传入值的数量来决定，比如：
 
 ```jsx
 import { Slider } from '@nami-ui/slider'
 
 render(
     <div>
-        <Slider defalutValue={0} />
-        <Slider defalutValue={[0]} />
+        <Slider defalutValue={[0]} /> // or: single 0
         <Slider defalutValue={[0, 1]} />
         <Slider defalutValue={[0, 0.5, 1]} />
     </div>,
 )
 ```
 
-通常情况下，在单滑块滑动条及双滑块滑动条中，用户所选的都是一个区间值，比如在单滑块滑动条中，所选区间为 `[起始值，选中值]`，而在双滑块滑动条中，则为 `[左侧选中值，右侧选中值]`。因此，Slider 组件默认会在这两种模式中高亮所选区间。
-
-若这不是你想要的，那么设置 `separate` 即可（在多滑块滑动条模式时，该属性固定为 `true`）：
+通常情况下，在单滑块滑动条及双滑块滑动条中，用户所选的都是一个区间值，比如在单滑块滑动条中，所选区间为 `[起始值，选中值]`，而在双滑块滑动条中，则为 `[左侧选中值，右侧选中值]`，而且有时我们会希望在 UI 上高亮所选区间，而这可以通过设置 `range` 属性来实现：
 
 ```jsx
 import { Slider } from '@nami-ui/slider'
 
 render(
     <div>
-        <Slider defalutValue={0} separate />
-        <Slider defalutValue={[0]} separate />
-        <Slider defalutValue={[0, 1]} separate />
-        <Slider defalutValue={[0, 0.5, 1]} separate />
+        <Slider defalutValue={0} range />
+        <Slider defalutValue={[0, 1]} range />
     </div>,
 )
 ```
+
+range 属性仅在单滑块或双滑块时有效，而在多滑块滑动条中，该属性固定为 false。
+
+另外还请注意，在双滑块中开启 `range` 属性后，所传入的值应当是有序的，当然 `onChange` 事件中返回的值也会是有序的。
+
+## 交互
+
+该滑动条组件除支持指针（鼠标、手指）拖拽之外，还支持滚轮及快捷键（仅当组件获取到焦点时支持）。
+

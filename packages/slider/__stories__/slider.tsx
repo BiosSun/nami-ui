@@ -76,15 +76,46 @@ Disabled.args = {
 // Asix
 // ---------------------------
 
-export const Axis = ControlledFactory()
+export const Axis1 = ControlledFactory()
 
-Axis.args = {
+Axis1.args = {
+    value: 10,
+    min: 0,
+    max: 100,
+    step: 10,
+    points: [3, 18, 27, 56, 89],
+    marks: true,
+}
+
+export const Axis2 = ControlledFactory()
+
+Axis2.args = {
     value: [10, 30],
     min: 0,
     max: 100,
     step: 10,
     points: [3, 18, 27, 56, 89],
     marks: true,
-    vertical: true,
-    range: true,
+}
+
+export const Axis3 = ControlledFactory()
+
+Axis3.args = {
+    value: [10, 30, 40],
+    min: 0,
+    max: 100,
+    step: 10,
+    points: [3, 18, 27, 56, 89],
+    marks: true,
+}
+
+export const Axis4 = ControlledFactory()
+
+Axis4.args = {
+    value: [10, 30, 40, 80],
+    min: 0,
+    max: 100,
+    step: 10,
+    points: [3, 18, 27, 56, 89],
+    marks: true,
 }

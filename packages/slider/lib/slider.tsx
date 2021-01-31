@@ -102,50 +102,76 @@ export function Slider({
         }
     }
 
-    const [onMoving, getPosition, getEndPosition] = useMemo<
+    const [getPosition, getEndPosition, onMoving, hotkeys] = useMemo<
         [
+            (value: number) => CSSProperties,
+            (value: number) => CSSProperties,
             (info: useSlider.MovingEvent) => number,
-            (value: number) => CSSProperties,
-            (value: number) => CSSProperties,
+            useSlider.Hotkey<string>[],
         ]
     >(() => {
         if (vertical) {
             if (reverse) {
                 return [
-                    (i) => len * i.py + min,
                     (v) => ({ top: `${((v - min) / len) * 100}%` }),
                     (v) => ({ bottom: `${(1 - (v - min) / len) * 100}%` }),
+                    (i) => len * i.py + min,
+                    [
+                        { keys: 'top, w', handle: () => 'prev' },
+                        { keys: 'bottom, s', handle: () => 'next' },
+                    ],
                 ]
             }
 
             return [
-                (info) => len * (1 - info.py) + min,
                 (v) => ({ bottom: `${((v - min) / len) * 100}%` }),
                 (v) => ({ top: `${(1 - (v - min) / len) * 100}%` }),
+                (i) => len * (1 - i.py) + min,
+                [
+                    { keys: 'top, w', handle: () => 'next' },
+                    { keys: 'bottom, s', handle: () => 'prev' },
+                ],
             ]
         }
 
         if (reverse) {
             return [
-                (info) => len * (1 - info.px) + min,
                 (v) => ({ right: `${((v - min) / len) * 100}%` }),
                 (v) => ({ left: `${(1 - (v - min) / len) * 100}%` }),
+                (i) => len * (1 - i.px) + min,
+                [
+                    { keys: 'right, d', handle: () => 'prev' },
+                    { keys: 'left, a', handle: () => 'next' },
+                ],
             ]
         }
 
         return [
-            (info) => len * info.px + min,
             (v) => ({ left: `${((v - min) / len) * 100}%` }),
             (v) => ({ right: `${(1 - (v - min) / len) * 100}%` }),
+            (i) => len * i.px + min,
+            [
+                { keys: 'right, d', handle: () => 'next' },
+                { keys: 'left, a', handle: () => 'prev' },
+            ],
         ]
-    }, [min, len, vertical, reverse])
+    }, [vertical, reverse, min, len])
 
     const slider = useSlider({
         value: values,
         setValue: handleChange,
         disabled,
+        sort: values.length === 2,
         axis: { min, max, step, points },
         moving: onMoving,
+        wheel(i) {
+            return i.deltaY > 0 || i.deltaX > 0
+                ? `next`
+                : i.deltaY < 0 || i.deltaX < 0
+                ? `prev`
+                : undefined
+        },
+        hotkeys,
     })
 
     const stepMarks = useMemo(() => {
@@ -196,6 +222,7 @@ export function Slider({
         'nami-slider--disabled': disabled,
         'nami-slider--vertical': vertical,
         'nami-slider--reverse': reverse,
+        'nami-slider--has-marks': pointMarks && pointMarks.length,
     })
 
     return (

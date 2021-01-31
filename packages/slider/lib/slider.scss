@@ -4,18 +4,22 @@
 $cls: '.nami-slider';
 
 #{$cls} {
-    --nami-slider__thumb__size: 16px;
-    --nami-slider__thumb__border-width: 2px;
-    --nami-slider__thumb__border-color: #999;
-    --nami-slider__thumb__background: #fff;
+    --nami-slider--width: #{let(box-base-min-height)};
 
-    --nami-slider__point__size: 8px;
-    --nami-slider__point__border-width: 2px;
-    --nami-slider__point__border-color: #999;
-    --nami-slider__point__background: #fff;
+    --nami-slider__thumb--size: 16px;
+    --nami-slider__thumb--border-width: 2px;
+    --nami-slider__thumb--border-color: #999;
+    --nami-slider__thumb--background: #fff;
+
+    --nami-slider__point--size: 8px;
+    --nami-slider__point--border-width: 2px;
+    --nami-slider__point--border-color: #999;
+    --nami-slider__point--background: #fff;
 
     position: relative;
-    height: let(box-base-min-height);
+    height: var(--nami-slider--width);
+
+    touch-action: pan-y;
 
     &::after,
     &::before {
@@ -38,7 +42,7 @@ $cls: '.nami-slider';
     &__rail {
         position: relative;
         height: 100%;
-        margin: 0 calc(var(--nami-slider__thumb__size) * 0.5);
+        margin: 0 calc(var(--nami-slider__thumb--size) * 0.5);
     }
 
     &__range {
@@ -85,17 +89,17 @@ $cls: '.nami-slider';
             content: '';
 
             box-sizing: border-box;
-            width: var(--nami-slider__point__size);
-            height: var(--nami-slider__point__size);
+            width: var(--nami-slider__point--size);
+            height: var(--nami-slider__point--size);
 
             position: absolute;
-            top: calc(var(--nami-slider__point__size) * -0.5);
-            left: calc(var(--nami-slider__point__size) * -0.5);
+            top: calc(var(--nami-slider__point--size) * -0.5);
+            left: calc(var(--nami-slider__point--size) * -0.5);
 
-            border-radius: var(--nami-slider__point__size);
-            background: var(--nami-slider__point__background);
-            border: var(--nami-slider__point__border-width) solid
-                var(--nami-slider__point__border-color);
+            border-radius: var(--nami-slider__point--size);
+            background: var(--nami-slider__point--background);
+            border: var(--nami-slider__point--border-width) solid
+                var(--nami-slider__point--border-color);
         }
 
         > * {
@@ -112,17 +116,17 @@ $cls: '.nami-slider';
             content: '';
 
             box-sizing: border-box;
-            width: var(--nami-slider__thumb__size);
-            height: var(--nami-slider__thumb__size);
+            width: var(--nami-slider__thumb--size);
+            height: var(--nami-slider__thumb--size);
 
             position: absolute;
-            top: calc(var(--nami-slider__thumb__size) * -0.5);
-            left: calc(var(--nami-slider__thumb__size) * -0.5);
+            top: calc(var(--nami-slider__thumb--size) * -0.5);
+            left: calc(var(--nami-slider__thumb--size) * -0.5);
 
-            border-radius: var(--nami-slider__thumb__size);
-            background: var(--nami-slider__thumb__background);
-            border: var(--nami-slider__thumb__border-width) solid
-                var(--nami-slider__thumb__border-color);
+            border-radius: var(--nami-slider__thumb--size);
+            background: var(--nami-slider__thumb--background);
+            border: var(--nami-slider__thumb--border-width) solid
+                var(--nami-slider__thumb--border-color);
             transition: border-width 0.2s, border-color 0.2s;
         }
     }
@@ -186,12 +190,19 @@ $cls: '.nami-slider';
         }
     }
 
-    // focus, active
+    // with mark
     // ---------------------------
+
+    &--has-marks {
+        --nami-slider--width: #{let(box-large-min-height)};
+    }
+
+    // focus, active
+    // -----------------------
     &:focus:not(#{$cls}--disabled) {
         #{$cls}__thumb--active {
-            --nami-slider__thumb__border-width: 5px;
-            --nami-slider__thumb__border-color: #{let(primary)};
+            --nami-slider__thumb--border-width: 5px;
+            --nami-slider__thumb--border-color: #{let(primary)};
             z-index: 1;
         }
     }
