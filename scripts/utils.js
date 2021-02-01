@@ -20,6 +20,11 @@ function eachPackages(options) {
         }
 
         for (package of packages) {
+            // 目前为止，私有包仅有 website 一个，其构建单独处理，因此这里过滤掉即可
+            if (package.info.private) {
+                continue
+            }
+
             console.log(chalk.blue(package.path))
             await options.each(package)
         }
