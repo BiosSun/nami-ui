@@ -12,7 +12,7 @@ async function run() {
     }
     console.log('delete root...')
     await del(['./node_modules', 'yarn.lock'])
-    console.log('please run: yarn && lerna bootstrap');
+    console.log('please run: yarn && lerna bootstrap')
 }
 
 run()

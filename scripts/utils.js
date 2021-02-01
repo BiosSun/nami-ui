@@ -24,7 +24,7 @@ function eachPackages(options) {
             await options.each(package)
         }
 
-        options.before && (await options.after(packages))
+        options.after && (await options.after(packages))
     }
 
     Object.assign(each, options)
@@ -32,6 +32,9 @@ function eachPackages(options) {
     return each
 }
 
+/**
+ * 在每个包中执行一下 gulp 构建
+ */
 const buildPackages = eachPackages({
     each(package) {
         const gulpfilePath = path.join(__dirname, 'gulpfile.js')
@@ -41,11 +44,13 @@ const buildPackages = eachPackages({
     },
 })
 
+/**
+ * 将所有包发布到本地的 yalc 中
+ */
 const yalcPackages = eachPackages({
     before() {
         if (!shell.which('yalc')) {
             console.log(chalk.red('请安装 yalc'))
-            return
         }
     },
     async each(package) {

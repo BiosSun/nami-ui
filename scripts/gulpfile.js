@@ -35,7 +35,7 @@ function build() {
                 '*.js',
                 replace(
                     /^(\s*import\s*['"][^'"]+?\.)scss(['"])/gm,
-                    (match, p1, p2) => p1 + 'css' + p2,
+                    (match, p1, p2) => `${p1}css${p2}`,
                 ),
             ),
         )
