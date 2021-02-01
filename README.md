@@ -1,6 +1,6 @@
 # Nami UI
 
-一个写着玩的 React 组件库。
+一套写着玩的 React 组件库。
 
 - [Button **按钮**](./packages/button#readme)
 - [TextBox **文本框**](./packages/textbox#readme)
