@@ -18,7 +18,7 @@
         "@nami-ui/utils": "^0.0.2",
         "@nami-ui/use-slider": "^0.0.0",
         "clsx": "^1.1.1",
-        "nojiko": "^1.1.1"
+        "nojiko": "^2.0.0"
     },
     "devDependencies": {
         "@types/react": "^17.0.0",

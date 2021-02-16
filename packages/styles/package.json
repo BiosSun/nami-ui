@@ -7,6 +7,6 @@
     "main": "lib/index.ts",
     "module": "lib/index.ts",
     "dependencies": {
-        "nojiko": "^1.1.1"
+        "nojiko": "^2.0.0"
     }
 }
