@@ -6,6 +6,9 @@
     "author": "Bios Sun <biossun@gmail.com>",
     "license": "MIT",
     "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
         "storybook": "start-storybook -p 6006",
         "test": "jest",
