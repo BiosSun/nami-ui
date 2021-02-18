@@ -1,0 +1,20 @@
+{
+    "name": "nami-ui",
+    "version": "0.0.0",
+    "author": "Bios Sun <biossun@gmail.com>",
+    "license": "MIT",
+    "main": "lib/index.ts",
+    "module": "lib/index.ts",
+    "dependencies": {
+        "@nami-ui/button": "^0.0.2",
+        "@nami-ui/checkbox": "^0.0.0",
+        "@nami-ui/divider": "^0.0.2",
+        "@nami-ui/icon": "^0.0.0",
+        "@nami-ui/radio": "^0.0.0",
+        "@nami-ui/slider": "^0.0.0",
+        "@nami-ui/space": "^0.0.2",
+        "@nami-ui/stack": "^0.0.3",
+        "@nami-ui/textbox": "^0.0.3",
+        "@nami-ui/use-slider": "^0.0.0"
+    }
+}
