@@ -128,3 +128,5 @@ Temporary Items
 yarn.lock
 package-lock.json
 packages/*/publish
+
+.docusaurus

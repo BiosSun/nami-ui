@@ -1,0 +1,36 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.main {
+    max-width: 782px;
+    margin: auto;
+    padding: 50px;
+}
+
+.logo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.tagline {
+    margin: 20px 0;
+    font-size: 47px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: 300;
+}
+
+@media screen and (max-width: 782px) {
+    .main {
+        padding: 6.3938619vw;
+    }
+
+    .tagline {
+        font-size: 6vw;
+    }
+}

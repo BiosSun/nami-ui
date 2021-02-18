@@ -1,0 +1,67 @@
+$border-color: var(--ifm-color-emphasis-300);
+$border-raidus: 6px;
+$color: var(--ifm-color-emphasis-700);
+$editor-background: var(--ifm-color-emphasis-100);
+
+.playground {
+    border: 1px solid $border-color;
+    border-radius: $border-raidus;
+
+    > :first-child {
+        border-radius: ( $border-raidus - 1 ) ($border-raidus - 1) 0 0;
+    }
+
+    > :last-child {
+        border-radius: 0 0 ($border-raidus - 1) ($border-raidus - 1);
+    }
+}
+
+.compiler {
+    padding: 20px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 30px;
+    padding: 0;
+
+    border: 0;
+    border-top: 1px solid $border-color;
+    background: transparent;
+
+    font-size: 12px;
+    line-height: 30px;
+    color: $color;
+
+    &Icon {
+        margin-right: 4px;
+    }
+
+    &Active {
+        border-radius: 0;
+    }
+}
+
+.editor {
+    // background: $editor-background;
+    border-top: 1px solid $border-color;
+    font-size: 14px;
+    font-family: var(--ifm-font-family-monospace);
+    line-height: var(--ifm-pre-line-height);
+    overflow: hidden;
+}
+
+.error {
+    background-color: rgb(137, 44, 33);
+    white-space: pre;
+    font-size: 13px;
+    font-family: var(--ifm-font-family-monospace);
+    line-height: var(--ifm-pre-line-height);
+    color: rgb(255, 255, 255);
+    padding: 16px;
+    overflow-x: auto;
+}

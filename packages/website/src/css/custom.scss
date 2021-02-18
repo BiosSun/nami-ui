@@ -1,0 +1,182 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    --ifm-color-primary: #25c2a0;
+    --ifm-color-primary-dark: rgb(33, 175, 144);
+    --ifm-color-primary-darker: rgb(31, 165, 136);
+    --ifm-color-primary-darkest: rgb(26, 136, 112);
+    --ifm-color-primary-light: rgb(70, 203, 174);
+    --ifm-color-primary-lighter: rgb(102, 212, 189);
+    --ifm-color-primary-lightest: rgb(146, 224, 208);
+
+    --ifm-link-color: var(--ifm-color-emphasis-700);
+    --ifm-link-hover-color: var(--ifm-color-emphasis-1000);
+
+    --ifm-font-size-base: 15px;
+    --ifm-line-height-base: 1.75;
+    --ifm-font-family-base: sans-serif;
+    --ifm-code-font-size: 95%;
+
+    // toc
+    --ifm-toc-border-color: transparent;
+
+    // navbar
+    --ifm-navbar-height: 100px;
+    --ifm-navbar-padding-vertical: 0;
+    --ifm-navbar-padding-horizontal: 50px;
+    --ifm-navbar-item-padding-vertical: 9px;
+    --ifm-navbar-item-padding-horizontal: 12px;
+    --ifm-navbar-border-color: #dadde1;
+    --ifm-navbar-link-color: var(--ifm-color-emphasis-700);
+    --ifm-navbar-link-hover-color: var(--ifm-color-emphasis-1000);
+
+    @media (max-width: 996px) {
+        --ifm-navbar-height: 3.75rem;
+        --ifm-navbar-padding-horizontal: 1rem;
+    }
+}
+
+html[data-theme='dark'] {
+    --ifm-navbar-border-color: #252627;
+}
+
+html[data-index='true'] {
+    --ifm-navbar-border-color: transparent;
+}
+
+.navbar {
+    border-bottom: 1px solid var(--ifm-navbar-border-color);
+    box-shadow: none;
+
+    &__brand {
+        height: 44px;
+        margin-right: 0;
+    }
+
+    &__logo {
+        margin-right: 25px;
+    }
+
+    &__title {
+        font-weight: normal;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 4px;
+    }
+
+    &__link {
+        font-weight: normal;
+    }
+
+    @media (max-width: 996px) {
+        --ifm-navbar-height: 3.75rem;
+        --ifm-navbar-padding-horizontal: 1rem;
+
+        &__brand {
+            height: 2rem;
+        }
+
+        &__toggle {
+            margin-right: 0.7rem;
+        }
+
+        html[data-index='true'] & {
+            &__brand {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 997px) {
+    .sidebarLogo_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar- img {
+        height: 44px;
+    }
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 1440px;
+    align-self: center;
+
+    html[data-index='true'] & {
+        flex: 0 0 auto;
+        margin: auto 0;
+    }
+}
+
+.table-of-contents {
+    font-size: 14px;
+    line-height: 24px;
+
+    &__left-border {
+        border-left: none;
+    }
+
+    &__link {
+        &:hover,
+        &:hover code,
+        &--active,
+        &--active code {
+            color: var(--ifm-link-hover-color);
+        }
+    }
+}
+
+.menu {
+    --ifm-menu-color-active: var(--ifm-link-hover-color);
+    --ifm-menu-color-background-hover: transparent;
+    --ifm-menu-color-background-active: transparent;
+    --ifm-menu-link-padding-vertical: 7px;
+    --ifm-menu-link-padding-horizontal: 11px;
+
+    font-weight: normal;
+
+    @media (min-width: 997px) {
+        padding: 40px 20px;
+    }
+
+    &__list-item {
+        margin: 0;
+    }
+
+    &__link {
+        font-size: 14px;
+        line-height: 24px;
+
+        &[href]:hover {
+            color: var(--ifm-menu-color-active);
+        }
+    }
+
+    &__list > &__list-item > &__list > &__list-item > &__link:not([href]) {
+        margin-top: 10px;
+        opacity: 0.6;
+    }
+
+    &__list > &__list-item > &__list > &__list-item:first-child > &__link:not([href]) {
+        margin-top: 0;
+    }
+}
+
+.container {
+    padding: 40px 20px;
+
+    h1 {
+        font-size: 2.2em;
+    }
+}
+
+.docusaurus-highlight-code-line {
+    background-color: rgb(72, 77, 91);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+}

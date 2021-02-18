@@ -1,0 +1,28 @@
+.box {
+    padding: 4px 8px;
+    background: var(--ifm-color-emphasis-200);
+    font-family: var(--ifm-font-family-monospace);
+    color: var(--ifm-color-emphasis-700);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.small {
+    padding: 3px 4px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.large {
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 32px;
+}
