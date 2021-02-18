@@ -1,20 +1,20 @@
 ---
-name: Space
-displayName: 空隔符
-group: general
+id: space
+title: Space
+subtitle: 空隔符
 ---
-
-# @nami-ui/space
 
 用于在两个元素之间插入一段空白间隔。
 
-```jsx
+```jsx reactView
 import { Space } from '@nami-ui/space'
 
-render(
-    <>
-        Hello <Space /> World
-    </>,
+export default () => (
+  <>
+    <Box>Hello</Box>
+    <Space />
+    <Box>World</Box>
+  </>
 )
 ```
 
@@ -22,43 +22,45 @@ render(
 
 通常，我们建议在 Stack 这种布局组件中使用这个 Space 组件，因为当其被放置在布局组件中时，它会自动根据布局方向调整自己的样式（水平/垂直）：
 
-```jsx
+```jsx reactView
 import { HStack } from '@nami-ui/stack'
 import { Space } from '@nami-ui/space'
 
-render(
-    <HStack>
-        <div>Item</div>
-        <div>Item</div>
-        <Space />
-        <div>Item</div>
-    </HStack>,
+export default () => (
+  <HStack>
+    <Box>Item</Box>
+    <Box>Item</Box>
+    <Space />
+    <Box>Item</Box>
+  </HStack>
 )
 ```
 
-```jsx
+```jsx reactView
 import { VStack } from '@nami-ui/stack'
 import { Space } from '@nami-ui/space'
 
-render(
-    <VStack>
-        <div>Item</div>
-        <div>Item</div>
-        <Space />
-        <div>Item</div>
-    </VStack>,
+export default () => (
+  <VStack>
+    <Box>Item</Box>
+    <Box>Item</Box>
+    <Space />
+    <Box>Item</Box>
+  </VStack>
 )
 ```
 
 当然，你也可以不将其放在布局组件中，此时你可以通过设置 `direction` 属性来控制它的方向：
 
-```jsx
+```jsx reactView
 import { Space } from '@nami-ui/space'
 
-render(
-    <>
-        Hello <Space direction="vertical" /> World
-    </>,
+export default () => (
+  <div style={{ display: 'flex' }}>
+    <Box>Hello</Box>
+    <Space direction="vertical" />
+    <Box>World</Box>
+  </div>
 )
 ```
 
@@ -68,38 +70,83 @@ render(
 
 该组件丧心病狂地提供了 9 个空隔符的尺寸：
 
-```jsx
+```jsx reactView
 import { Space } from '@nami-ui/space'
 
-render(
-    <>
-        <label>micor 1px</label>
-        <Space size="micor" />
+export default () => (
+  <>
+    <Box small transparent>
+      micor 1px
+    </Box>
+    <Space
+      size="micor"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>mini 2px</label>
-        <Space size="mini" />
+    <Box small transparent>
+      mini 2px
+    </Box>
+    <Space
+      size="mini"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>tiny 4px</label>
-        <Space size="tiny" />
+    <Box small transparent>
+      tiny 4px
+    </Box>
+    <Space
+      size="tiny"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>small 8px</label>
-        <Space size="small" />
+    <Box small transparent>
+      small 8px
+    </Box>
+    <Space
+      size="small"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>middle 12px (default)</label>
-        <Space size="middle" />
+    <Box small transparent>
+      middle 12px (default)
+    </Box>
+    <Space
+      size="middle"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>large 16px</label>
-        <Space size="large" />
+    <Box small transparent>
+      large 16px
+    </Box>
+    <Space
+      size="large"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>big 24px</label>
-        <Space size="big" />
+    <Box small transparent>
+      big 24px
+    </Box>
+    <Space
+      size="big"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>huge 36px</label>
-        <Space size="huge" />
+    <Box small transparent>
+      huge 36px
+    </Box>
+    <Space
+      size="huge"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
 
-        <label>massive 60px</label>
-        <Space size="massive" />
-    </>,
+    <Box small transparent>
+      massive 60px
+    </Box>
+    <Space
+      size="massive"
+      style={{ background: 'var(--ifm-color-emphasis-600)' }}
+    />
+  </>
 )
 ```
 
@@ -107,6 +154,6 @@ render(
 
 ```scss
 .my-divider {
-    --nami-space--size: 20px;
+  --nami-space--size: 20px;
 }
 ```

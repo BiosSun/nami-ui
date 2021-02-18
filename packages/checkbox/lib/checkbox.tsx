@@ -3,8 +3,9 @@ import { useValue, noop } from '@nami-ui/utils'
 import { Check as CheckIcon } from '@nami-ui/icon'
 import clsx from 'clsx'
 
-import './checkbox.scss'
 import { CheckBoxGroupContext, CheckBoxValue } from './checkbox-group-context'
+
+import './checkbox.scss'
 
 export interface CheckBoxProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'onChange'> {
     /** 选项值 */

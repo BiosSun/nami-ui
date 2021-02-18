@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import { useCallback, useMemo, useRef } from 'react'
 
 const CODE_MAPS: { [code: string]: string } = {
@@ -77,16 +78,16 @@ class Keys {
     private any: boolean
 
     /** 当设置为 true 时，用户同时按下 ctrl 键及所监听快捷键时也会触发事件 */
-    ctrl: boolean = false
+    public ctrl = false
 
     /** 当设置为 true 时，用户同时按下 shift 键及所监听快捷键时也会触发事件 */
-    shift: boolean = false
+    public shift = false
 
     /** 当设置为 true 时，用户同时按下 meta 键及所监听快捷键时也会触发事件 */
-    meta: boolean = false
+    public meta = false
 
     /** 当设置为 true 时，用户同时按下 alt 键及所监听快捷键时也会触发事件 */
-    alt: boolean = false
+    public alt = false
 
     constructor(keys: string) {
         this.keys = new Set(keys.trim().split(/\s*,\s*/g))
@@ -240,6 +241,7 @@ class Hotkeys {
             const matchedKey = hotkey.keys.match(k, ctrl, shift, meta, alt)
 
             if (!matchedKey) {
+                // eslint-disable-next-line no-continue
                 continue
             }
 
@@ -251,6 +253,7 @@ class Hotkeys {
                 meta,
                 alt,
 
+                // eslint-disable-next-line @typescript-eslint/no-loop-func
                 get dispatched(): boolean {
                     return dispatched
                 },
@@ -328,7 +331,7 @@ export function useHotkeys(hotkeyConfigs: HotkeyConfig[] | undefined) {
 
             hotkeysRef.current.set(hotkeyConfigs!)
         }
-    }, [hotkeyConfigs])
+    }, [hotkeyConfigs, isEmpty])
 
     const onKeyDown = useCallback((event: KeyboardEvent) => {
         hotkeysRef.current!.dispatch(event)

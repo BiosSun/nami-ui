@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign, import/export */
-import { useRef, useMemo, Dispatch, useState, useCallback } from 'react'
+import { useRef, useMemo, Dispatch, useCallback } from 'react'
 import {
     useToggle,
     useFocus,
@@ -237,7 +237,7 @@ interface NormalProps {
 /**
  * useSlider 返回的数据
  */
-export interface Slider {
+interface Slider {
     /** 需要注入到 slider 根元素上的属性 */
     rootProps: Record<string, unknown>
 
@@ -341,7 +341,7 @@ function isEqual<T extends number | ValueCollection>(v1: T, v2: T): boolean {
 }
 
 export declare namespace useSlider {
-    export { MovingEvent, WheelEvent, HotkeyEvent, Hotkey }
+    export { MovingEvent, WheelEvent, HotkeyEvent, Hotkey, Slider }
 }
 
 // eslint-disable-next-line import/export

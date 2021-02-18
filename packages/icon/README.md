@@ -1,46 +1,45 @@
 ---
-name: Icon
-displayName: 图标
-group: general
+id: icon
+title: Icon
+subtitle: 图标
 ---
-
-# @nami-ui/icon
 
 Icon 组件提供一组 SVG 格式的图标。
 
-```jsx
+```jsx reactView
 import { Check } from '@nami-ui/icon'
 
-render(<Check />)
+export default () => <Check />
 ```
 
 所有图标如下所示：
 
-```jsx
-import { Up, Down, Left, Right, Check, GitHub } from '@nami-ui/icon'
+```jsx reactView
+import {
+  Up,
+  Down,
+  Left,
+  Right,
+  Check,
+  CircleFilled,
+  GitHub,
+} from '@nami-ui/icon'
 
-function IconBoxList({ children }) {
-    return <ul className="icon-box-list">{children}</ul>
+export default () => {
+  return (
+    <IconBoxList
+      icons={[
+        Up,
+        Down,
+        Left,
+        Right,
+        Check,
+        CircleFilled,
+        GitHub,
+      ]}
+    />
+  )
 }
-
-function IconBox({ Icon }) {
-    return (
-        <li className="icon-box">
-            <Icon />
-            <span className="icon-box__name">{Icon.displayName || Icon.name}</span>
-        </li>
-    )
-}
-
-const Icons = [Up, Down, Left, Right, Check, GitHub]
-
-render(
-    <IconBoxList>
-        {Icons.map((Icon) => (
-            <IconBox Icon={Icon} />
-        ))}
-    </IconBoxList>,
-)
 ```
 
 ## "SVG Icon" vs "Icon Font"

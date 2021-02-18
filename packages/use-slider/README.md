@@ -1,54 +1,70 @@
 ---
-name: useSlider
-displayName: 滑动交互
-group: hooks
+id: use-slider
+title: useSlider
+subtitle: 滑动交互
 ---
-
-# @nami-ui/use-slider
 
 提供一套滑动交互逻辑，可以用于实现大多数的滑动组件，类似 滑块 或 旋纽 等。
 
 一个完整的 slider 应至少包含如下三个元素：
 
--   容器（root）：包含其它所有元素，响应指针、滚轮及键盘事件，可以获取焦点；
--   滑轨（rail）：用于限定滑块的滑动区域；
--   滑块（thumb）：指示当前滑动位置及滑动状态。
+- 容器（root）：包含其它所有元素，响应指针、滚轮及键盘事件，可以获取焦点；
+- 滑轨（rail）：用于限定滑块的滑动区域；
+- 滑块（thumb）：指示当前滑动位置及滑动状态。
 
-如下列所示：
+如下所示：
 
-```javascript
+```jsx
 import clsx from 'clsx'
 import styles from './demo.scss'
 
 import { useSlider } from '@nami-ui/use-slider'
 
-function Slider() {
-    const [values, setValues] = useState(() => [0, 1])
+export default () => {
+  const [values, setValues] = useState(() => [0, 1])
 
-    const slider = useSlider({
-        value: values,
-        setValue: setValues,
-        moving: (info) => info.px,
-    })
+  const slider = useSlider({
+    value: values,
+    setValue: setValues,
+    moving: (info) => info.px,
+  })
 
-    return (
-        <div className={styles.container} {...slider.rootProps}>
-            <div className={styles.rail} {...slider.railProps}>
-                {values.map((value, index) => (
-                    <div
-                        key={index}
-                        className={clsx(styles.thumb, {
-                            [styles.activeThumb]: slider.thumb === index,
-                        })}
-                        style={{
-                            left: value * 100 + '%',
-                        }}
-                        {...slider.thumbProps}
-                    />
-                ))}
-            </div>
-        </div>
-    )
+  return (
+    <div
+      {...slider.rootProps}
+      style={{
+        width: '100%',
+        height: 40,
+        background: '#ddd',
+      }}
+    >
+      <div
+        {...slider.railProps}
+        style={{
+          height: 40,
+          margin: '0 20px',
+          position: 'relative',
+        }}
+      >
+        {values.map((value, index) => (
+          <div
+            key={index}
+            {...slider.thumbProps}
+            style={{
+              width: 40,
+              height: 40,
+              transform: 'translate(-20px, -19px)',
+              position: 'absolute',
+              top: 0,
+              left: value * 100 + '%',
+              background:
+                slider.thumb === index ? '#000' : '#777',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -205,25 +221,25 @@ interface HotkeyEvent {
 
 ```scss
 .container {
-    width: 400px;
-    height: 40px;
-    background: #ddd;
+  width: 400px;
+  height: 40px;
+  background: #ddd;
 }
 
 .rail {
-    height: 40px;
-    margin: 0 20px;
-    position: relative;
+  height: 40px;
+  margin: 0 20px;
+  position: relative;
 }
 
 .thumb {
-    width: 40px;
-    height: 40px;
-    background: #000;
+  width: 40px;
+  height: 40px;
+  background: #000;
 
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-20px, -19px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-20px, -19px);
 }
 ```
