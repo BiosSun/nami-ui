@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useMemo } from 'react'
+import { HTMLAttributes, ReactNode, useMemo } from 'react'
 import clsx from 'clsx'
 import { noop, useValue } from '@nami-ui/utils'
 import { Stack } from '@nami-ui/stack'

@@ -34,6 +34,8 @@ module.exports = {
         'react/prop-types': ['error', { skipUndeclared: true }],
         'react/jsx-props-no-spreading': 'off',
         'react/no-array-index-key': 'off',
+        'react/jsx-uses-react': 'off', // use React 17
+        'react/react-in-jsx-scope': 'off', // use React 17
 
         '@typescript-eslint/no-shadow': ['error', { allow: ['value'] }],
         '@typescript-eslint/no-namespace': 'off',

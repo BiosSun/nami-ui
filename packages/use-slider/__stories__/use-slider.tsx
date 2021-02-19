@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 import { HStack, VStack } from '@nami-ui/stack'
 

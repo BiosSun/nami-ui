@@ -1,4 +1,3 @@
-import React from 'react'
 import { Stack, StackProps } from './stack'
 
 type StackSugarProps = Omit<StackProps, 'direction'>

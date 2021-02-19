@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { useThemeConfig } from '@docusaurus/theme-common'
 import Markdown from 'react-markdown'
 import styles from './styles.module.scss'
@@ -16,7 +16,7 @@ function Footer() {
                 escapeHtml={false}
                 source={footer.copyright}
                 renderers={{
-                    root: React.Fragment,
+                    root: Fragment,
                 }}
             />
         </footer>

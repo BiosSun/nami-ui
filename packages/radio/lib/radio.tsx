@@ -1,4 +1,4 @@
-import React, { ChangeEvent, HTMLAttributes, useContext } from 'react'
+import { ChangeEvent, HTMLAttributes, useContext } from 'react'
 import { useValue, noop } from '@nami-ui/utils'
 import { CircleFilled as CircleFilledIcon } from '@nami-ui/icon'
 import clsx from 'clsx'

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, HTMLAttributes } from 'react'
+import { ChangeEvent, HTMLAttributes } from 'react'
 import { useValue, noop } from '@nami-ui/utils'
 import clsx from 'clsx'
 

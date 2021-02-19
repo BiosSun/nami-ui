@@ -1,4 +1,4 @@
-import React, { ChangeEvent, HTMLAttributes, useContext, FC } from 'react'
+import { ChangeEvent, HTMLAttributes, useContext, FC } from 'react'
 import { useValue, noop } from '@nami-ui/utils'
 import { Check as CheckIcon } from '@nami-ui/icon'
 import clsx from 'clsx'

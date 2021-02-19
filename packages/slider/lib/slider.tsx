@@ -1,4 +1,4 @@
-import React, { ComponentType, CSSProperties, HTMLAttributes, ReactElement, useMemo } from 'react'
+import { ComponentType, CSSProperties, HTMLAttributes, ReactElement, useMemo } from 'react'
 import clsx from 'clsx'
 import { useValue, noop, toFixed, getPrecision, mergeProps } from '@nami-ui/utils'
 import { useSlider } from '@nami-ui/use-slider'

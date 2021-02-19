@@ -1,4 +1,3 @@
-import React from 'react'
 import CodeBlock from '@theme-init/CodeBlock'
 import Playground from '@theme/Playground'
 

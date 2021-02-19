@@ -1,4 +1,4 @@
-import React, { ComponentType, HTMLAttributes, useMemo, Children, ReactNode, isValidElement } from 'react' // prettier-ignore
+import { ComponentType, HTMLAttributes, useMemo, Children, ReactNode, isValidElement } from 'react' // prettier-ignore
 import clsx from 'clsx'
 import { Distances, normalizeDistance } from '@nami-ui/styles'
 import { StackContext, StackContextType } from './context'

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react'
+import { HTMLAttributes } from 'react'
 import { Distances, normalizeDistance } from '@nami-ui/styles'
 import clsx from 'clsx'
 

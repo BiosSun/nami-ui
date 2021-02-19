@@ -4,15 +4,17 @@
         "module": "ES6",
         "lib": ["dom", "esnext"],
         "declaration": true,
-        "jsx": "react",
+        "jsx": "react-jsx",
         "strict": true,
         "pretty": true,
         "sourceMap": true,
+
         /* Additional Checks */
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
+
         /* Module Resolution Options */
         "moduleResolution": "node",
         "esModuleInterop": true,

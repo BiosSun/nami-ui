@@ -1,4 +1,4 @@
-import React, { SVGAttributes } from 'react'
+import { SVGAttributes } from 'react'
 import clsx from 'clsx'
 
 import './icon.scss'
