@@ -30,6 +30,10 @@ module.exports = {
         'no-restricted-syntax': 'off',
 
         'import/prefer-default-export': 'off',
+        'import/no-extraneous-dependencies': [
+            'error',
+            { devDependencies: ['scripts/**/*', '__stories__/**/*'] },
+        ],
 
         'react/prop-types': ['error', { skipUndeclared: true }],
         'react/jsx-props-no-spreading': 'off',
