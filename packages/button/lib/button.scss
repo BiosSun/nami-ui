@@ -27,8 +27,8 @@
         outline: 0;
     }
 
-    &:focus-visible:not(:disabled),
-    &--focus:not(:disabled) {
+    &:focus-visible:enabled,
+    &--focus:enabled {
         &:before {
             content: '';
 
@@ -39,13 +39,13 @@
         }
     }
 
-    &:hover:not(:disabled),
-    &--hover:not(:disabled) {
+    &:hover:enabled,
+    &--hover:enabled {
         background: let(primary-quiet);
     }
 
-    &:active:not(:disabled),
-    &--active:not(:disabled) {
+    &:active:enabled,
+    &--active:enabled {
         background: let(primary-loud);
     }
 
