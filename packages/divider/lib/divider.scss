@@ -10,7 +10,7 @@
 }
 
 .nami-divider--vertical,
-.nami-stack--horizontal .nami-divider {
+.nami-stack--horizontal > .nami-divider {
     --nami-divider--length: calc(1em + 2px);
 }
 
@@ -24,7 +24,12 @@
 }
 
 .nami-divider--vertical,
-.nami-stack--horizontal .nami-divider {
+.nami-stack--horizontal > .nami-divider {
     min-width: 1px;
     min-height: var(--nami-divider--length);
 }
+
+.nami-divider--vertical {
+    width: 1px;
+}
+
