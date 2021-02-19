@@ -18,7 +18,7 @@ export default () => (
 
 ## 方向
 
-通常，我们建议在 Stack 这种布局组件中使用这个 Divider 组件，因为当其被放置在布局组件中时，它会自动根据布局方向调整自己的样式（水平/垂直）：
+通常建议在 Stack 布局组件中使用 Divider，当其被放置在布局组件中时，它将会自动根据布局方向调整自己的样式（水平/垂直）：
 
 ```jsx reactView
 import { HStack } from '@nami-ui/stack'
