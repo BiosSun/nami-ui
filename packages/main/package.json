@@ -14,6 +14,7 @@
         "@nami-ui/slider": "^0.0.0",
         "@nami-ui/space": "^0.0.2",
         "@nami-ui/stack": "^0.0.3",
+        "@nami-ui/styles": "^0.0.2",
         "@nami-ui/textbox": "^0.0.3",
         "@nami-ui/use-slider": "^0.0.0"
     }

@@ -9,7 +9,7 @@ $cls: '.nami-textbox';
     height: let(box-base-min-height);
     padding: let(box-base-padding-vertical) let(box-base-padding-horizontal);
 
-    border: let(box-base-border-width) solid let(primary);
+    border: let(box-base-border-width) solid let(textbox-border-color);
     border-radius: let(box-base-border-radius);
 
     background: transparent;

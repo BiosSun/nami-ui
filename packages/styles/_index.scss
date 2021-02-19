@@ -1,70 +1,110 @@
 @use "sass:map";
+@use "./colors" as *;
 
 // 间距名称
 $distance-names: (micor, mini, tiny, small, middle, large, big, huge, massive);
 
-// prettier-ignore
-$variables: (
-   // 盒元素 - 普通尺寸
-   box-base-min-height: 34px,
-   box-base-border-width: 1px,
-   box-base-border-radius: 2px,
-   box-base-padding-vertical: 4px,
-   box-base-padding-horizontal: 10px,
+$general-variables: (
+    // 盒元素 - 普通尺寸
+    box-base-min-height: 34px,
+    box-base-border-width: 1px,
+    box-base-border-radius: 2px,
+    box-base-padding-vertical: 4px,
+    box-base-padding-horizontal: 10px,
 
-   // 盒元素 - 大尺寸
-   box-large-min-height: 48px,
-   box-large-border-width: 1px,
-   box-large-border-radius: 4px,
-   box-large-padding-vertical: 8px,
-   box-large-padding-horizontal: 20px,
+    // 盒元素 - 大尺寸
+    box-large-min-height: 48px,
+    box-large-border-width: 1px,
+    box-large-border-radius: 4px,
+    box-large-padding-vertical: 8px,
+    box-large-padding-horizontal: 20px,
 
-   // 元素间距
-   distance-micor: 1px,
-   distance-mini: 2px,
-   distance-tiny: 4px,
-   distance-small: 8px,
-   distance-middle: 12px,
-   distance-large: 16px,
-   distance-big: 24px,
-   distance-huge: 36px,
-   distance-massive: 60px,
+    // 元素间距
+    distance-micor: 1px,
+    distance-mini: 2px,
+    distance-tiny: 4px,
+    distance-small: 8px,
+    distance-middle: 12px,
+    distance-large: 16px,
+    distance-big: 24px,
+    distance-huge: 36px,
+    distance-massive: 60px,
 
-   // 文字大小
-   font-size-base: 14px,
-   font-size-large: 16px,
-   font-size-small: 12px,
+    // 文字大小
+    font-size-base: 14px,
+    font-size-large: 16px,
+    font-size-small: 12px,
 
-   // 文字行高
-   line-height-base: 24px,
-   line-height-large: 28px,
-   line-height-small: 20px,
+    // 文字行高
+    line-height-base: 24px,
+    line-height-large: 28px,
+    line-height-small: 20px,
 
-   // 文字颜色
-   text-color: #313336,
-   text-color-quiet: #7d8790,
-   placeholder-color: #a1a3a6,
+    // 文字颜色
+    text-color: $paper-900,
+    text-color-quiet: $paper-700,
+    text-color-loud: $paper-1000,
+    placeholder-color: $paper-600,
 
-   // 主色调
-//    primary: hsl(200 22% 44%),
-//    primary-loud: hsl(200 26% 34%),
-//    primary-quiet: hsl(200 20% 50%),
-//    primary-foreground: hsl(0 50% 100%),
-   primary: hsl(200 72% 44%),
-   primary-loud: hsl(200 86% 34%),
-   primary-quiet: hsl(200 70% 50%),
-   primary-foreground: hsl(0 50% 100%),
+    // Components
+    // ---------------------------
 
-   // Components
-   // -----------------------------------------------------------------------------
+    // button
+    button-background: $primary-700,
+    button-hover-background: $primary-600,
+    button-active-background: $primary-800,
 
-   // CheckBox
-   checkbox-size: 16px,
+    // CheckBox
+    checkbox-size: 16px,
+    checkbox-color: $primary-700,
 
-   // Radio
-   radio-size: 16px,
+    // Radio
+    radio-size: 16px,
+    radio-color: $primary-700,
+
+    // slider
+    slider-active-color: $primary-700,
+
+    // textbox
+    textbox-border-color: $primary-700,
+
+    // divider
+    divider-color: $paper-400,
+    divider-length-horizontal: 100%,
+    divider-length-vertical: calc(1em + 2px),
 );
+
+// prettier-ignore
+$variables: map.merge($pub-colors, $general-variables);
 
 @function let($name) {
     @return var(--nami-#{$name}, #{map.get($variables, $name)});
+}
+
+// 打印变量
+@mixin variables() {
+    @each $name, $value in $variables {
+        --nami-#{$name}: #{$value};
+    }
+}
+
+// 打印普通变量
+@mixin general-variables() {
+    @each $name, $value in $general-variables {
+        --nami-#{$name}: #{$value};
+    }
+}
+
+// 打印 Light 模式相关的颜色变量
+@mixin light-variables() {
+    @each $name, $value in $pub-colors {
+        --nami-#{$name}: #{$value};
+    }
+}
+
+// 打印 Dark 模式相关的颜色变量
+@mixin dark-variables() {
+    @each $name, $value in $dark-pub-colors {
+        --nami-#{$name}: #{$value};
+    }
 }

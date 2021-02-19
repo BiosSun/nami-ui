@@ -1,4 +1,6 @@
 /* stylelint-disable docusaurus/copyright-header */
+@use "@nami-ui/styles/index" as nami;
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -36,6 +38,8 @@
     --ifm-navbar-link-color: var(--ifm-color-emphasis-700);
     --ifm-navbar-link-hover-color: var(--ifm-color-emphasis-1000);
 
+    @include nami.variables();
+
     @media (max-width: 996px) {
         --ifm-navbar-height: 3.75rem;
         --ifm-navbar-padding-horizontal: 1rem;
@@ -44,6 +48,7 @@
 
 html[data-theme='dark'] {
     --ifm-navbar-border-color: #252627;
+    @include nami.dark-variables();
 }
 
 html[data-index='true'] {

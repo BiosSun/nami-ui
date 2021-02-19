@@ -1,7 +1,5 @@
 @use './index' as *;
 
 :root {
-    @each $name, $value in $variables {
-        --nami-#{$name}: #{$value};
-    }
+    @include variables();
 }

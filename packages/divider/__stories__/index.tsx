@@ -1,7 +1,5 @@
-import { useLayoutEffect, useRef, useState } from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
 import clsx from 'clsx'
-import { DISTANCE_OPTIONS } from '@nami-ui/styles'
 import { Stack } from '../../stack'
 
 import { Divider, DividerProps } from '../lib'

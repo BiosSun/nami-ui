@@ -15,10 +15,11 @@
     border: let(box-base-border-width) solid transparent;
     border-radius: let(box-base-border-radius);
 
-    background: let(primary);
+    background: let(button-background);
+    color: let(paper-0);
+
     font-size: let(font-size-base);
     line-height: let(line-height-base);
-    color: let(primary-foreground);
     font-weight: 500;
 
     position: relative;
@@ -41,12 +42,12 @@
 
     &:hover:enabled,
     &--hover:enabled {
-        background: let(primary-quiet);
+        background: let(button-hover-background);
     }
 
     &:active:enabled,
     &--active:enabled {
-        background: let(primary-loud);
+        background: let(button-active-background);
     }
 
     &:disabled {

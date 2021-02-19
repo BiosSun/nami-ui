@@ -5,13 +5,12 @@
 // ===========================
 
 .nami-divider {
-    --nami-divider--length: 100%;
-    --nami-divider--background: #{let(primary)};
+    --nami-divider--length: #{let(divider-length-horizontal)};
 }
 
 .nami-divider--vertical,
 .nami-stack--horizontal > .nami-divider {
-    --nami-divider--length: calc(1em + 2px);
+    --nami-divider--length: #{let(divider-length-vertical)};
 }
 
 // styles
@@ -20,7 +19,7 @@
 .nami-divider {
     min-height: 1px;
     min-width: var(--nami-divider--length);
-    background: var(--nami-divider--background);
+    background: let(divider-color);
 }
 
 .nami-divider--vertical,

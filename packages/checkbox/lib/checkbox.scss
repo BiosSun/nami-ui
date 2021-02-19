@@ -27,7 +27,7 @@ $cls: '.nami-checkbox';
             box-sizing: border-box;
             display: block;
             @include nojiko.size(100%);
-            border: let(box-base-border-width) solid let(primary);
+            border: let(box-base-border-width) solid let(checkbox-color);
             border-radius: let(box-base-border-radius);
             background-color: transparent;
 
@@ -69,8 +69,8 @@ $cls: '.nami-checkbox';
     &--checked {
         #{$cls}__cell {
             &__frame {
-                border-color: let(primary);
-                background: let(primary);
+                border-color: let(checkbox-color);
+                background: let(checkbox-color);
             }
 
             &__icon {

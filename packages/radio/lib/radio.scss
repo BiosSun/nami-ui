@@ -27,7 +27,7 @@ $cls: '.nami-radio';
             box-sizing: border-box;
             display: block;
             @include nojiko.size(100%);
-            border: let(box-base-border-width) solid let(primary);
+            border: let(box-base-border-width) solid let(radio-color);
             border-radius: 100%;
             background-color: transparent;
 
@@ -40,7 +40,7 @@ $cls: '.nami-radio';
             @include nojiko.size(100%);
             padding: 2px;
 
-            color: let(primary);
+            color: let(radio-color);
 
             transform: scale(0);
             transition: all 0.2s; // TODO time to css var
@@ -67,7 +67,7 @@ $cls: '.nami-radio';
     &--checked {
         #{$cls}__cell {
             &__frame {
-                border-color: let(primary);
+                border-color: let(radio-color);
             }
 
             &__icon {

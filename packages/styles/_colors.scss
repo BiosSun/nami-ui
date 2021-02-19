@@ -1,0 +1,807 @@
+// Light Colors
+// ---------------------------
+
+// blue
+$blue-0: #e6f4ff;
+$blue-100: #c3e6fe;
+$blue-200: #a2d7fd;
+$blue-300: #84c9fb;
+$blue-400: #6bbcf7;
+$blue-500: #57b0f2;
+$blue-600: #47a2e9;
+$blue-700: #388fd7;
+$blue-800: #286dad;
+$blue-900: #173e6b;
+$blue-1000: #0a1833;
+
+// green
+$green-0: #e3ffe0;
+$green-100: #c2fabd;
+$green-200: #a0f399;
+$green-300: #81e979;
+$green-400: #66da5d;
+$green-500: #4fc646;
+$green-600: #3aac34;
+$green-700: #288c24;
+$green-800: #186818;
+$green-900: #0e4313;
+$green-1000: #07210d;
+
+// red
+$red-0: #ffedf0;
+$red-100: #fec7d1;
+$red-200: #fda1b2;
+$red-300: #fb8096;
+$red-400: #f7647e;
+$red-500: #f24e6a;
+$red-600: #e93c58;
+$red-700: #d72d47;
+$red-800: #ad1e30;
+$red-900: #6b1017;
+$red-1000: #330907;
+
+// orange
+$orange-0: #fff5e6;
+$orange-100: #fee3ba;
+$orange-200: #fdd18f;
+$orange-300: #fbc06a;
+$orange-400: #f7b14b;
+$orange-500: #f2a232;
+$orange-600: #e9941f;
+$orange-700: #d78011;
+$orange-800: #ad5f07;
+$orange-900: #6b3302;
+$orange-1000: #331100;
+
+// cyan
+$cyan-0: #e6fffb;
+$cyan-100: #c1fbf2;
+$cyan-200: #9df4e8;
+$cyan-300: #7ceadd;
+$cyan-400: #60dcd0;
+$cyan-500: #49c9c1;
+$cyan-600: #36b1ae;
+$cyan-700: #269193;
+$cyan-800: #1a6b71;
+$cyan-900: #11474e;
+$cyan-1000: #09282e;
+
+// purple
+$purple-0: #f5e8ff;
+$purple-100: #e7c8fe;
+$purple-200: #d9a8fd;
+$purple-300: #cc8cfb;
+$purple-400: #bf74f8;
+$purple-500: #b360f3;
+$purple-600: #a650ea;
+$purple-700: #9341d8;
+$purple-800: #7030af;
+$purple-900: #401c6f;
+$purple-1000: #1a0e38;
+
+// gray
+$gray-0: #ffffff;
+$gray-100: #fafafa;
+$gray-200: #f2f2f2;
+$gray-300: #e6e7e7;
+$gray-400: #d5d6d8;
+$gray-500: #bfc1c2;
+$gray-600: #a2a4a6;
+$gray-700: #7f8284;
+$gray-800: #595b5e;
+$gray-900: #333536;
+$gray-1000: #111112;
+
+// ref: paper
+$paper-0: $gray-0;
+$paper-100: $gray-100;
+$paper-200: $gray-200;
+$paper-300: $gray-300;
+$paper-400: $gray-400;
+$paper-500: $gray-500;
+$paper-600: $gray-600;
+$paper-700: $gray-700;
+$paper-800: $gray-800;
+$paper-900: $gray-900;
+$paper-1000: $gray-1000;
+
+// ref: primary
+$primary-0: $blue-0;
+$primary-100: $blue-100;
+$primary-200: $blue-200;
+$primary-300: $blue-300;
+$primary-400: $blue-400;
+$primary-500: $blue-500;
+$primary-600: $blue-600;
+$primary-700: $blue-700;
+$primary-800: $blue-800;
+$primary-900: $blue-900;
+$primary-1000: $blue-1000;
+
+// ref: info
+$info-0: $cyan-0;
+$info-100: $cyan-100;
+$info-200: $cyan-200;
+$info-300: $cyan-300;
+$info-400: $cyan-400;
+$info-500: $cyan-500;
+$info-600: $cyan-600;
+$info-700: $cyan-700;
+$info-800: $cyan-800;
+$info-900: $cyan-900;
+$info-1000: $cyan-1000;
+
+// ref: success
+$success-0: $green-0;
+$success-100: $green-100;
+$success-200: $green-200;
+$success-300: $green-300;
+$success-400: $green-400;
+$success-500: $green-500;
+$success-600: $green-600;
+$success-700: $green-700;
+$success-800: $green-800;
+$success-900: $green-900;
+$success-1000: $green-1000;
+
+// ref: warning
+$warning-0: $orange-0;
+$warning-100: $orange-100;
+$warning-200: $orange-200;
+$warning-300: $orange-300;
+$warning-400: $orange-400;
+$warning-500: $orange-500;
+$warning-600: $orange-600;
+$warning-700: $orange-700;
+$warning-800: $orange-800;
+$warning-900: $orange-900;
+$warning-1000: $orange-1000;
+
+// ref: danger
+$danger-0: $red-0;
+$danger-100: $red-100;
+$danger-200: $red-200;
+$danger-300: $red-300;
+$danger-400: $red-400;
+$danger-500: $red-500;
+$danger-600: $red-600;
+$danger-700: $red-700;
+$danger-800: $red-800;
+$danger-900: $red-900;
+$danger-1000: $red-1000;
+
+$colors: (
+    blue-0: $blue-0,
+    blue-100: $blue-100,
+    blue-200: $blue-200,
+    blue-300: $blue-300,
+    blue-400: $blue-400,
+    blue-500: $blue-500,
+    blue-600: $blue-600,
+    blue-700: $blue-700,
+    blue-800: $blue-800,
+    blue-900: $blue-900,
+    blue-1000: $blue-1000,
+
+    green-0: $green-0,
+    green-100: $green-100,
+    green-200: $green-200,
+    green-300: $green-300,
+    green-400: $green-400,
+    green-500: $green-500,
+    green-600: $green-600,
+    green-700: $green-700,
+    green-800: $green-800,
+    green-900: $green-900,
+    green-1000: $green-1000,
+
+    red-0: $red-0,
+    red-100: $red-100,
+    red-200: $red-200,
+    red-300: $red-300,
+    red-400: $red-400,
+    red-500: $red-500,
+    red-600: $red-600,
+    red-700: $red-700,
+    red-800: $red-800,
+    red-900: $red-900,
+    red-1000: $red-1000,
+
+    orange-0: $orange-0,
+    orange-100: $orange-100,
+    orange-200: $orange-200,
+    orange-300: $orange-300,
+    orange-400: $orange-400,
+    orange-500: $orange-500,
+    orange-600: $orange-600,
+    orange-700: $orange-700,
+    orange-800: $orange-800,
+    orange-900: $orange-900,
+    orange-1000: $orange-1000,
+
+    cyan-0: $cyan-0,
+    cyan-100: $cyan-100,
+    cyan-200: $cyan-200,
+    cyan-300: $cyan-300,
+    cyan-400: $cyan-400,
+    cyan-500: $cyan-500,
+    cyan-600: $cyan-600,
+    cyan-700: $cyan-700,
+    cyan-800: $cyan-800,
+    cyan-900: $cyan-900,
+    cyan-1000: $cyan-1000,
+
+    purple-0: $purple-0,
+    purple-100: $purple-100,
+    purple-200: $purple-200,
+    purple-300: $purple-300,
+    purple-400: $purple-400,
+    purple-500: $purple-500,
+    purple-600: $purple-600,
+    purple-700: $purple-700,
+    purple-800: $purple-800,
+    purple-900: $purple-900,
+    purple-1000: $purple-1000,
+
+    gray-0: $gray-0,
+    gray-100: $gray-100,
+    gray-200: $gray-200,
+    gray-300: $gray-300,
+    gray-400: $gray-400,
+    gray-500: $gray-500,
+    gray-600: $gray-600,
+    gray-700: $gray-700,
+    gray-800: $gray-800,
+    gray-900: $gray-900,
+    gray-1000: $gray-1000,
+
+    paper-0: $paper-0,
+    paper-100: $paper-100,
+    paper-200: $paper-200,
+    paper-300: $paper-300,
+    paper-400: $paper-400,
+    paper-500: $paper-500,
+    paper-600: $paper-600,
+    paper-700: $paper-700,
+    paper-800: $paper-800,
+    paper-900: $paper-900,
+    paper-1000: $paper-1000,
+
+    primary-0: $primary-0,
+    primary-100: $primary-100,
+    primary-200: $primary-200,
+    primary-300: $primary-300,
+    primary-400: $primary-400,
+    primary-500: $primary-500,
+    primary-600: $primary-600,
+    primary-700: $primary-700,
+    primary-800: $primary-800,
+    primary-900: $primary-900,
+    primary-1000: $primary-1000,
+
+    info-0: $info-0,
+    info-100: $info-100,
+    info-200: $info-200,
+    info-300: $info-300,
+    info-400: $info-400,
+    info-500: $info-500,
+    info-600: $info-600,
+    info-700: $info-700,
+    info-800: $info-800,
+    info-900: $info-900,
+    info-1000: $info-1000,
+
+    success-0: $success-0,
+    success-100: $success-100,
+    success-200: $success-200,
+    success-300: $success-300,
+    success-400: $success-400,
+    success-500: $success-500,
+    success-600: $success-600,
+    success-700: $success-700,
+    success-800: $success-800,
+    success-900: $success-900,
+    success-1000: $success-1000,
+
+    warning-0: $warning-0,
+    warning-100: $warning-100,
+    warning-200: $warning-200,
+    warning-300: $warning-300,
+    warning-400: $warning-400,
+    warning-500: $warning-500,
+    warning-600: $warning-600,
+    warning-700: $warning-700,
+    warning-800: $warning-800,
+    warning-900: $warning-900,
+    warning-1000: $warning-1000,
+
+    danger-0: $danger-0,
+    danger-100: $danger-100,
+    danger-200: $danger-200,
+    danger-300: $danger-300,
+    danger-400: $danger-400,
+    danger-500: $danger-500,
+    danger-600: $danger-600,
+    danger-700: $danger-700,
+    danger-800: $danger-800,
+    danger-900: $danger-900,
+    danger-1000: $danger-1000,
+);
+
+$pub-colors: (
+    paper-0: $paper-0,
+    paper-100: $paper-100,
+    paper-200: $paper-200,
+    paper-300: $paper-300,
+    paper-400: $paper-400,
+    paper-500: $paper-500,
+    paper-600: $paper-600,
+    paper-700: $paper-700,
+    paper-800: $paper-800,
+    paper-900: $paper-900,
+    paper-1000: $paper-1000,
+
+    primary-0: $primary-0,
+    primary-100: $primary-100,
+    primary-200: $primary-200,
+    primary-300: $primary-300,
+    primary-400: $primary-400,
+    primary-500: $primary-500,
+    primary-600: $primary-600,
+    primary-700: $primary-700,
+    primary-800: $primary-800,
+    primary-900: $primary-900,
+    primary-1000: $primary-1000,
+
+    info-0: $info-0,
+    info-100: $info-100,
+    info-200: $info-200,
+    info-300: $info-300,
+    info-400: $info-400,
+    info-500: $info-500,
+    info-600: $info-600,
+    info-700: $info-700,
+    info-800: $info-800,
+    info-900: $info-900,
+    info-1000: $info-1000,
+
+    success-0: $success-0,
+    success-100: $success-100,
+    success-200: $success-200,
+    success-300: $success-300,
+    success-400: $success-400,
+    success-500: $success-500,
+    success-600: $success-600,
+    success-700: $success-700,
+    success-800: $success-800,
+    success-900: $success-900,
+    success-1000: $success-1000,
+
+    warning-0: $warning-0,
+    warning-100: $warning-100,
+    warning-200: $warning-200,
+    warning-300: $warning-300,
+    warning-400: $warning-400,
+    warning-500: $warning-500,
+    warning-600: $warning-600,
+    warning-700: $warning-700,
+    warning-800: $warning-800,
+    warning-900: $warning-900,
+    warning-1000: $warning-1000,
+
+    danger-0: $danger-0,
+    danger-100: $danger-100,
+    danger-200: $danger-200,
+    danger-300: $danger-300,
+    danger-400: $danger-400,
+    danger-500: $danger-500,
+    danger-600: $danger-600,
+    danger-700: $danger-700,
+    danger-800: $danger-800,
+    danger-900: $danger-900,
+    danger-1000: $danger-1000,
+);
+
+// Dark Colors
+// ---------------------------
+
+// blue
+$dark-blue-0: #0a1833;
+$dark-blue-100: #1e4e80;
+$dark-blue-200: #337cbf;
+$dark-blue-300: #4192d7;
+$dark-blue-400: #4d9fe4;
+$dark-blue-500: #59aaec;
+$dark-blue-600: #68b5f2;
+$dark-blue-700: #85c5f6;
+$dark-blue-800: #abd8fa;
+$dark-blue-900: #cae7fd;
+$dark-blue-1000: #e6f4ff;
+
+// green
+$dark-green-0: #07210d;
+$dark-green-100: #0f3f10;
+$dark-green-200: #1a611a;
+$dark-green-300: #2c8c2a;
+$dark-green-400: #3fb03b;
+$dark-green-500: #4ec349;
+$dark-green-600: #5ed158;
+$dark-green-700: #7bdd75;
+$dark-green-800: #a1e99c;
+$dark-green-900: #c3f4bf;
+$dark-green-1000: #e3ffe0;
+
+// red
+$dark-red-0: #330907;
+$dark-red-100: #801721;
+$dark-red-200: #bf293c;
+$dark-red-300: #d7374d;
+$dark-red-400: #e4445b;
+$dark-red-500: #ec5169;
+$dark-red-600: #f26178;
+$dark-red-700: #f68194;
+$dark-red-800: #faabb9;
+$dark-red-900: #fdced6;
+$dark-red-1000: #ffedf0;
+
+// orange
+$dark-orange-0: #331100;
+$dark-orange-100: #804306;
+$dark-orange-200: #bf6e11;
+$dark-orange-300: #d7831c;
+$dark-orange-400: #e49129;
+$dark-orange-500: #ec9d36;
+$dark-orange-600: #f2a947;
+$dark-orange-700: #f6bc6c;
+$dark-orange-800: #fad39b;
+$dark-orange-900: #fde5c2;
+$dark-orange-1000: #fff5e6;
+
+// cyan
+$dark-cyan-0: #09282e;
+$dark-cyan-100: #11434a;
+$dark-cyan-200: #1c646a;
+$dark-cyan-300: #2c8e92;
+$dark-cyan-400: #3db5b1;
+$dark-cyan-500: #4bc6be;
+$dark-cyan-600: #5bd3c9;
+$dark-cyan-700: #78dfd5;
+$dark-cyan-800: #a0eae1;
+$dark-cyan-900: #c3f5ee;
+$dark-cyan-1000: #e6fffb;
+
+// purple
+$dark-purple-0: #1a0e38;
+$dark-purple-100: #512483;
+$dark-purple-200: #7f3bc1;
+$dark-purple-300: #954ad8;
+$dark-purple-400: #a356e5;
+$dark-purple-500: #ae62ed;
+$dark-purple-600: #b870f2;
+$dark-purple-700: #c88cf7;
+$dark-purple-800: #dab0fa;
+$dark-purple-900: #e9cdfd;
+$dark-purple-1000: #f5e8ff;
+
+// gray
+$dark-gray-0: #111112;
+$dark-gray-100: #2f3032;
+$dark-gray-200: #525456;
+$dark-gray-300: #7f8184;
+$dark-gray-400: #a6a8ab;
+$dark-gray-500: #bbbdbe;
+$dark-gray-600: #cacccd;
+$dark-gray-700: #d8dadb;
+$dark-gray-800: #e6e6e7;
+$dark-gray-900: #f2f3f3;
+$dark-gray-1000: #ffffff;
+
+// ref: paper
+$dark-paper-0: $dark-gray-0;
+$dark-paper-100: $dark-gray-100;
+$dark-paper-200: $dark-gray-200;
+$dark-paper-300: $dark-gray-300;
+$dark-paper-400: $dark-gray-400;
+$dark-paper-500: $dark-gray-500;
+$dark-paper-600: $dark-gray-600;
+$dark-paper-700: $dark-gray-700;
+$dark-paper-800: $dark-gray-800;
+$dark-paper-900: $dark-gray-900;
+$dark-paper-1000: $dark-gray-1000;
+
+// ref: primary
+$dark-primary-0: $dark-blue-0;
+$dark-primary-100: $dark-blue-100;
+$dark-primary-200: $dark-blue-200;
+$dark-primary-300: $dark-blue-300;
+$dark-primary-400: $dark-blue-400;
+$dark-primary-500: $dark-blue-500;
+$dark-primary-600: $dark-blue-600;
+$dark-primary-700: $dark-blue-700;
+$dark-primary-800: $dark-blue-800;
+$dark-primary-900: $dark-blue-900;
+$dark-primary-1000: $dark-blue-1000;
+
+// ref: info
+$dark-info-0: $dark-cyan-0;
+$dark-info-100: $dark-cyan-100;
+$dark-info-200: $dark-cyan-200;
+$dark-info-300: $dark-cyan-300;
+$dark-info-400: $dark-cyan-400;
+$dark-info-500: $dark-cyan-500;
+$dark-info-600: $dark-cyan-600;
+$dark-info-700: $dark-cyan-700;
+$dark-info-800: $dark-cyan-800;
+$dark-info-900: $dark-cyan-900;
+$dark-info-1000: $dark-cyan-1000;
+
+// ref: success
+$dark-success-0: $dark-green-0;
+$dark-success-100: $dark-green-100;
+$dark-success-200: $dark-green-200;
+$dark-success-300: $dark-green-300;
+$dark-success-400: $dark-green-400;
+$dark-success-500: $dark-green-500;
+$dark-success-600: $dark-green-600;
+$dark-success-700: $dark-green-700;
+$dark-success-800: $dark-green-800;
+$dark-success-900: $dark-green-900;
+$dark-success-1000: $dark-green-1000;
+
+// ref: warning
+$dark-warning-0: $dark-orange-0;
+$dark-warning-100: $dark-orange-100;
+$dark-warning-200: $dark-orange-200;
+$dark-warning-300: $dark-orange-300;
+$dark-warning-400: $dark-orange-400;
+$dark-warning-500: $dark-orange-500;
+$dark-warning-600: $dark-orange-600;
+$dark-warning-700: $dark-orange-700;
+$dark-warning-800: $dark-orange-800;
+$dark-warning-900: $dark-orange-900;
+$dark-warning-1000: $dark-orange-1000;
+
+// ref: danger
+$dark-danger-0: $dark-red-0;
+$dark-danger-100: $dark-red-100;
+$dark-danger-200: $dark-red-200;
+$dark-danger-300: $dark-red-300;
+$dark-danger-400: $dark-red-400;
+$dark-danger-500: $dark-red-500;
+$dark-danger-600: $dark-red-600;
+$dark-danger-700: $dark-red-700;
+$dark-danger-800: $dark-red-800;
+$dark-danger-900: $dark-red-900;
+$dark-danger-1000: $dark-red-1000;
+
+$dark-colors: (
+    dark-blue-0: $dark-blue-0,
+    dark-blue-100: $dark-blue-100,
+    dark-blue-200: $dark-blue-200,
+    dark-blue-300: $dark-blue-300,
+    dark-blue-400: $dark-blue-400,
+    dark-blue-500: $dark-blue-500,
+    dark-blue-600: $dark-blue-600,
+    dark-blue-700: $dark-blue-700,
+    dark-blue-800: $dark-blue-800,
+    dark-blue-900: $dark-blue-900,
+    dark-blue-1000: $dark-blue-1000,
+
+    dark-green-0: $dark-green-0,
+    dark-green-100: $dark-green-100,
+    dark-green-200: $dark-green-200,
+    dark-green-300: $dark-green-300,
+    dark-green-400: $dark-green-400,
+    dark-green-500: $dark-green-500,
+    dark-green-600: $dark-green-600,
+    dark-green-700: $dark-green-700,
+    dark-green-800: $dark-green-800,
+    dark-green-900: $dark-green-900,
+    dark-green-1000: $dark-green-1000,
+
+    dark-red-0: $dark-red-0,
+    dark-red-100: $dark-red-100,
+    dark-red-200: $dark-red-200,
+    dark-red-300: $dark-red-300,
+    dark-red-400: $dark-red-400,
+    dark-red-500: $dark-red-500,
+    dark-red-600: $dark-red-600,
+    dark-red-700: $dark-red-700,
+    dark-red-800: $dark-red-800,
+    dark-red-900: $dark-red-900,
+    dark-red-1000: $dark-red-1000,
+
+    dark-orange-0: $dark-orange-0,
+    dark-orange-100: $dark-orange-100,
+    dark-orange-200: $dark-orange-200,
+    dark-orange-300: $dark-orange-300,
+    dark-orange-400: $dark-orange-400,
+    dark-orange-500: $dark-orange-500,
+    dark-orange-600: $dark-orange-600,
+    dark-orange-700: $dark-orange-700,
+    dark-orange-800: $dark-orange-800,
+    dark-orange-900: $dark-orange-900,
+    dark-orange-1000: $dark-orange-1000,
+
+    dark-cyan-0: $dark-cyan-0,
+    dark-cyan-100: $dark-cyan-100,
+    dark-cyan-200: $dark-cyan-200,
+    dark-cyan-300: $dark-cyan-300,
+    dark-cyan-400: $dark-cyan-400,
+    dark-cyan-500: $dark-cyan-500,
+    dark-cyan-600: $dark-cyan-600,
+    dark-cyan-700: $dark-cyan-700,
+    dark-cyan-800: $dark-cyan-800,
+    dark-cyan-900: $dark-cyan-900,
+    dark-cyan-1000: $dark-cyan-1000,
+
+    dark-purple-0: $dark-purple-0,
+    dark-purple-100: $dark-purple-100,
+    dark-purple-200: $dark-purple-200,
+    dark-purple-300: $dark-purple-300,
+    dark-purple-400: $dark-purple-400,
+    dark-purple-500: $dark-purple-500,
+    dark-purple-600: $dark-purple-600,
+    dark-purple-700: $dark-purple-700,
+    dark-purple-800: $dark-purple-800,
+    dark-purple-900: $dark-purple-900,
+    dark-purple-1000: $dark-purple-1000,
+
+    dark-gray-0: $dark-gray-0,
+    dark-gray-100: $dark-gray-100,
+    dark-gray-200: $dark-gray-200,
+    dark-gray-300: $dark-gray-300,
+    dark-gray-400: $dark-gray-400,
+    dark-gray-500: $dark-gray-500,
+    dark-gray-600: $dark-gray-600,
+    dark-gray-700: $dark-gray-700,
+    dark-gray-800: $dark-gray-800,
+    dark-gray-900: $dark-gray-900,
+    dark-gray-1000: $dark-gray-1000,
+
+    dark-paper-0: $dark-paper-0,
+    dark-paper-100: $dark-paper-100,
+    dark-paper-200: $dark-paper-200,
+    dark-paper-300: $dark-paper-300,
+    dark-paper-400: $dark-paper-400,
+    dark-paper-500: $dark-paper-500,
+    dark-paper-600: $dark-paper-600,
+    dark-paper-700: $dark-paper-700,
+    dark-paper-800: $dark-paper-800,
+    dark-paper-900: $dark-paper-900,
+    dark-paper-1000: $dark-paper-1000,
+
+    dark-primary-0: $dark-primary-0,
+    dark-primary-100: $dark-primary-100,
+    dark-primary-200: $dark-primary-200,
+    dark-primary-300: $dark-primary-300,
+    dark-primary-400: $dark-primary-400,
+    dark-primary-500: $dark-primary-500,
+    dark-primary-600: $dark-primary-600,
+    dark-primary-700: $dark-primary-700,
+    dark-primary-800: $dark-primary-800,
+    dark-primary-900: $dark-primary-900,
+    dark-primary-1000: $dark-primary-1000,
+
+    dark-info-0: $dark-info-0,
+    dark-info-100: $dark-info-100,
+    dark-info-200: $dark-info-200,
+    dark-info-300: $dark-info-300,
+    dark-info-400: $dark-info-400,
+    dark-info-500: $dark-info-500,
+    dark-info-600: $dark-info-600,
+    dark-info-700: $dark-info-700,
+    dark-info-800: $dark-info-800,
+    dark-info-900: $dark-info-900,
+    dark-info-1000: $dark-info-1000,
+
+    dark-success-0: $dark-success-0,
+    dark-success-100: $dark-success-100,
+    dark-success-200: $dark-success-200,
+    dark-success-300: $dark-success-300,
+    dark-success-400: $dark-success-400,
+    dark-success-500: $dark-success-500,
+    dark-success-600: $dark-success-600,
+    dark-success-700: $dark-success-700,
+    dark-success-800: $dark-success-800,
+    dark-success-900: $dark-success-900,
+    dark-success-1000: $dark-success-1000,
+
+    dark-warning-0: $dark-warning-0,
+    dark-warning-100: $dark-warning-100,
+    dark-warning-200: $dark-warning-200,
+    dark-warning-300: $dark-warning-300,
+    dark-warning-400: $dark-warning-400,
+    dark-warning-500: $dark-warning-500,
+    dark-warning-600: $dark-warning-600,
+    dark-warning-700: $dark-warning-700,
+    dark-warning-800: $dark-warning-800,
+    dark-warning-900: $dark-warning-900,
+    dark-warning-1000: $dark-warning-1000,
+
+    dark-danger-0: $dark-danger-0,
+    dark-danger-100: $dark-danger-100,
+    dark-danger-200: $dark-danger-200,
+    dark-danger-300: $dark-danger-300,
+    dark-danger-400: $dark-danger-400,
+    dark-danger-500: $dark-danger-500,
+    dark-danger-600: $dark-danger-600,
+    dark-danger-700: $dark-danger-700,
+    dark-danger-800: $dark-danger-800,
+    dark-danger-900: $dark-danger-900,
+    dark-danger-1000: $dark-danger-1000,
+);
+
+$dark-pub-colors: (
+    dark-paper-0: $dark-paper-0,
+    dark-paper-100: $dark-paper-100,
+    dark-paper-200: $dark-paper-200,
+    dark-paper-300: $dark-paper-300,
+    dark-paper-400: $dark-paper-400,
+    dark-paper-500: $dark-paper-500,
+    dark-paper-600: $dark-paper-600,
+    dark-paper-700: $dark-paper-700,
+    dark-paper-800: $dark-paper-800,
+    dark-paper-900: $dark-paper-900,
+    dark-paper-1000: $dark-paper-1000,
+
+    dark-primary-0: $dark-primary-0,
+    dark-primary-100: $dark-primary-100,
+    dark-primary-200: $dark-primary-200,
+    dark-primary-300: $dark-primary-300,
+    dark-primary-400: $dark-primary-400,
+    dark-primary-500: $dark-primary-500,
+    dark-primary-600: $dark-primary-600,
+    dark-primary-700: $dark-primary-700,
+    dark-primary-800: $dark-primary-800,
+    dark-primary-900: $dark-primary-900,
+    dark-primary-1000: $dark-primary-1000,
+
+    dark-info-0: $dark-info-0,
+    dark-info-100: $dark-info-100,
+    dark-info-200: $dark-info-200,
+    dark-info-300: $dark-info-300,
+    dark-info-400: $dark-info-400,
+    dark-info-500: $dark-info-500,
+    dark-info-600: $dark-info-600,
+    dark-info-700: $dark-info-700,
+    dark-info-800: $dark-info-800,
+    dark-info-900: $dark-info-900,
+    dark-info-1000: $dark-info-1000,
+
+    dark-success-0: $dark-success-0,
+    dark-success-100: $dark-success-100,
+    dark-success-200: $dark-success-200,
+    dark-success-300: $dark-success-300,
+    dark-success-400: $dark-success-400,
+    dark-success-500: $dark-success-500,
+    dark-success-600: $dark-success-600,
+    dark-success-700: $dark-success-700,
+    dark-success-800: $dark-success-800,
+    dark-success-900: $dark-success-900,
+    dark-success-1000: $dark-success-1000,
+
+    dark-warning-0: $dark-warning-0,
+    dark-warning-100: $dark-warning-100,
+    dark-warning-200: $dark-warning-200,
+    dark-warning-300: $dark-warning-300,
+    dark-warning-400: $dark-warning-400,
+    dark-warning-500: $dark-warning-500,
+    dark-warning-600: $dark-warning-600,
+    dark-warning-700: $dark-warning-700,
+    dark-warning-800: $dark-warning-800,
+    dark-warning-900: $dark-warning-900,
+    dark-warning-1000: $dark-warning-1000,
+
+    dark-danger-0: $dark-danger-0,
+    dark-danger-100: $dark-danger-100,
+    dark-danger-200: $dark-danger-200,
+    dark-danger-300: $dark-danger-300,
+    dark-danger-400: $dark-danger-400,
+    dark-danger-500: $dark-danger-500,
+    dark-danger-600: $dark-danger-600,
+    dark-danger-700: $dark-danger-700,
+    dark-danger-800: $dark-danger-800,
+    dark-danger-900: $dark-danger-900,
+    dark-danger-1000: $dark-danger-1000,
+);
