@@ -1,4 +1,4 @@
-import React, { ChangeEvent, HTMLAttributes, useContext } from 'react'
+import React, { ChangeEvent, HTMLAttributes, useContext, FC } from 'react'
 import { useValue, noop } from '@nami-ui/utils'
 import { Check as CheckIcon } from '@nami-ui/icon'
 import clsx from 'clsx'
@@ -23,20 +23,24 @@ export interface CheckBoxProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'o
     /** 禁用 */
     disabled?: boolean
 
+    /** 设置 HTML name 属性 */
+    name?: string
+
     /** 选中状态改变事件 */
     onChange?: (checked: boolean) => void
 }
 
-export function CheckBox({
+export const CheckBox: FC<CheckBoxProps> = ({
     value,
     checked,
     defaultChecked,
     label,
+    name,
     disabled = false,
     onChange = noop,
     className,
     ...otherProps
-}: CheckBoxProps) {
+}) => {
     // 内部选中状态值
     let check: boolean
 
@@ -50,15 +54,17 @@ export function CheckBox({
 
     if (groupContext) {
         check = groupContext.isChecked(value!)
-        setCheck = (check: boolean) => groupContext.change(value!, check)
+        setCheck = (check: boolean) => groupContext.change(value!, check) // eslint-disable-line @typescript-eslint/no-shadow
         controlled = false
         disabled = groupContext.disabled || disabled
+        name = name ?? groupContext.name
     } else {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         ;[check, setCheck, controlled] = useValue(checked, defaultChecked, false)
     }
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        const check = event.target.checked
+        const check = event.target.checked // eslint-disable-line @typescript-eslint/no-shadow
 
         if (!controlled) {
             setCheck(check)
@@ -81,6 +87,7 @@ export function CheckBox({
             <input
                 className="nami-checkbox__input"
                 type="checkbox"
+                name={name}
                 checked={check}
                 disabled={disabled}
                 onChange={handleChange}

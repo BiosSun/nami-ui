@@ -1,8 +1,8 @@
-import React, { HTMLAttributes, ReactNode, useMemo } from 'react'
+import React, { HTMLAttributes, ReactNode, useMemo, FC } from 'react'
 import clsx from 'clsx'
 import { noop, useValue } from '@nami-ui/utils'
 import { Stack } from '@nami-ui/stack'
-import { CheckBoxValue, CheckBoxGroupContext } from './checkbox-group-context'
+import { CheckBoxValue, CheckBoxGroupContext, CheckBoxGroupContextType } from './checkbox-group-context'
 
 import './checkbox-group.scss'
 
@@ -23,11 +23,15 @@ export interface CheckBoxGroupProps
     /** 布局方向 */
     direction: 'horizontal' | 'vertical'
 
+    /** 设置 HTML name 属性 */
+    name?: string
+
     /** 选项 */
     children: ReactNode
 }
 
-export function CheckBoxGroup({
+export const CheckBoxGroup: FC<CheckBoxGroupProps> = ({
+    name,
     value,
     defaultValue,
     onChange = noop,
@@ -36,10 +40,10 @@ export function CheckBoxGroup({
     className,
     children,
     ...otherProps
-}: CheckBoxGroupProps) {
+}) => {
     const [val, setVal, controlled] = useValue(value, defaultValue, [])
 
-    const context = useMemo(() => {
+    const context = useMemo<CheckBoxGroupContextType>(() => {
         function isChecked(value: CheckBoxValue) {
             return val.includes(value)
         }
@@ -58,13 +62,14 @@ export function CheckBoxGroup({
             }
         }
 
-        return { disabled, isChecked, change }
-    }, [val, disabled])
+        return { disabled, isChecked, change, name }
+    }, [disabled, name, val, controlled, onChange, setVal])
 
     className = clsx('nami-checkbox-group', className)
 
     return (
         <Stack
+            className={className}
             direction={direction}
             spacing={direction === 'horizontal' ? 'big' : true}
             wrap

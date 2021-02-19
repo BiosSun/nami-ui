@@ -11,6 +11,9 @@ export interface CheckBoxGroupContextType {
 
     /** 改变选中项 */
     change: (value: CheckBoxValue, check: boolean) => void
+
+    /** 设置 HTML name 属性 */
+    name?: string
 }
 
 export const CheckBoxGroupContext = createContext<CheckBoxGroupContextType | null>(null)
