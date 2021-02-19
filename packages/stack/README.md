@@ -108,16 +108,16 @@ export default () => {
           value={padding}
           onChange={(event) => setPadding(event.target.value)}
         >
-          {size.map((value) => (
-            <option value={value}>{value ?? 'unset'}</option>
+          {size.map((value, index) => (
+            <option value={value} key={index}>{value ?? 'unset'}</option>
           ))}
         </select>
         <select
           value={spacing}
           onChange={(event) => setSpacing(event.target.value)}
         >
-          {size.map((value) => (
-            <option value={value}>{value ?? 'unset'}</option>
+          {size.map((value, index) => (
+            <option value={value} key={index}>{value ?? 'unset'}</option>
           ))}
         </select>
       </DemoActions>
@@ -166,16 +166,16 @@ export default () => {
           value={justify}
           onChange={(event) => setJustify(event.target.value)}
         >
-          {justifies.map((value) => (
-            <option value={value}>{value ?? 'unset'}</option>
+          {justifies.map((value, index) => (
+            <option value={value} key={index}>{value ?? 'unset'}</option>
           ))}
         </select>
         <select
           value={align}
           onChange={(event) => setAlign(event.target.value)}
         >
-          {aligns.map((value) => (
-            <option value={value}>{value ?? 'unset'}</option>
+          {aligns.map((value, index) => (
+            <option value={value} key={index}>{value ?? 'unset'}</option>
           ))}
         </select>
       </DemoActions>
