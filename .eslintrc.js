@@ -25,12 +25,20 @@ module.exports = {
     },
     rules: {
         'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+        'no-param-reassign': 'off',
+        'no-nested-ternary': 'off',
+        'no-restricted-syntax': 'off',
+
+        'import/prefer-default-export': 'off',
+
+        'react/prop-types': ['error', { skipUndeclared: true }],
         'react/jsx-props-no-spreading': 'off',
         'react/no-array-index-key': 'off',
+
+        '@typescript-eslint/no-shadow': ['error', { allow: ['value'] }],
         '@typescript-eslint/no-namespace': 'off',
-        'no-nested-ternary': 'off',
-        'import/prefer-default-export': 'off',
-        'no-restricted-syntax': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+
+        'jsx-a11y/label-has-associated-control': 'off', // has bug, wrap check is invalid
     },
 }
