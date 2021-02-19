@@ -44,27 +44,27 @@
 
     @each $name in $distance-names {
         &--padding-#{$name} {
-            padding: let(distance-horizontal-#{$name});
+            padding: let(distance-#{$name});
         }
 
         &--padding-top-#{$name},
         &--padding-vertical-#{$name} {
-            padding-top: let(distance-vertical-#{$name});
+            padding-top: let(distance-#{$name});
         }
 
         &--padding-bottom-#{$name},
         &--padding-vertical-#{$name} {
-            padding-bottom: let(distance-vertical-#{$name});
+            padding-bottom: let(distance-#{$name});
         }
 
         &--padding-left-#{$name},
         &--padding-horizontal-#{$name} {
-            padding-left: let(distance-horizontal-#{$name});
+            padding-left: let(distance-#{$name});
         }
 
         &--padding-right-#{$name},
         &--padding-horizontal-#{$name} {
-            padding-right: let(distance-horizontal-#{$name});
+            padding-right: let(distance-#{$name});
         }
     }
 
@@ -79,12 +79,12 @@
     @each $name in $distance-names {
         &--spacing-#{$name},
         &--spacing-horizontal-#{$name} {
-            --nami-stack--spacing-horizontal: #{let(distance-horizontal-#{$name})};
+            --nami-stack--spacing-horizontal: #{let(distance-#{$name})};
         }
 
         &--spacing-#{$name},
         &--spacing-vertical-#{$name} {
-            --nami-stack--spacing-vertical: #{let(distance-vertical-#{$name})};
+            --nami-stack--spacing-vertical: #{let(distance-#{$name})};
         }
     }
 

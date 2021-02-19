@@ -2,11 +2,11 @@
 @use '@nami-ui/styles/index' as *;
 
 .nami-space {
-    --nami-space--size: #{let(distance-horizontal-middle)};
+    --nami-space--size: #{let(distance-middle)};
 
     @each $name in $distance-names {
         &--size-#{$name} {
-            --nami-space--size: #{let(distance-horizontal-#{$name})};
+            --nami-space--size: #{let(distance-#{$name})};
         }
     }
 }

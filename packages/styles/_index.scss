@@ -19,27 +19,16 @@ $variables: (
    box-large-padding-vertical: 8px,
    box-large-padding-horizontal: 20px,
 
-   // 元素间距 - 水平方向
-   distance-horizontal-micor: 1px,
-   distance-horizontal-mini: 2px,
-   distance-horizontal-tiny: 4px,
-   distance-horizontal-small: 8px,
-   distance-horizontal-middle: 12px,
-   distance-horizontal-large: 16px,
-   distance-horizontal-big: 24px,
-   distance-horizontal-huge: 36px,
-   distance-horizontal-massive: 60px,
-
-   // 元素间距 - 垂直方向
-   distance-vertical-micor: 1px,
-   distance-vertical-mini: 2px,
-   distance-vertical-tiny: 4px,
-   distance-vertical-small: 8px,
-   distance-vertical-middle: 12px,
-   distance-vertical-large: 16px,
-   distance-vertical-big: 24px,
-   distance-vertical-huge: 36px,
-   distance-vertical-massive: 60px,
+   // 元素间距
+   distance-micor: 1px,
+   distance-mini: 2px,
+   distance-tiny: 4px,
+   distance-small: 8px,
+   distance-middle: 12px,
+   distance-large: 16px,
+   distance-big: 24px,
+   distance-huge: 36px,
+   distance-massive: 60px,
 
    // 文字大小
    font-size-base: 14px,

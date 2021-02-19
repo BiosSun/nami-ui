@@ -50,7 +50,7 @@ $cls: '.nami-checkbox';
     }
 
     &__label {
-        margin-left: let(distance-horizontal-small);
+        margin-left: let(distance-small);
         font-size: let(font-size-base);
         line-height: let(line-height-base);
     }
