@@ -4,7 +4,7 @@ module.exports = {
         {
             组件: [
                 {
-                    通用: ['button', 'icon'],
+                    通用: ['button', 'icon', 'styles'],
                 },
                 {
                     布局: ['stack', 'divider', 'space'],
