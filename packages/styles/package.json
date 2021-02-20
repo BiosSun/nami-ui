@@ -6,6 +6,11 @@
     "license": "MIT",
     "main": "lib/index.ts",
     "module": "lib/index.ts",
+    "files": [
+        "lib",
+        "publish",
+        "*.scss"
+    ],
     "dependencies": {
         "nojiko": "^2.0.0"
     }

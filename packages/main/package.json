@@ -5,6 +5,10 @@
     "license": "MIT",
     "main": "lib/index.ts",
     "module": "lib/index.ts",
+    "files": [
+        "lib",
+        "publish"
+    ],
     "dependencies": {
         "@nami-ui/button": "^0.0.2",
         "@nami-ui/checkbox": "^0.0.0",
