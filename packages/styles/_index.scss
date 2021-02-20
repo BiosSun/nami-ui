@@ -45,41 +45,42 @@ $general-variables: (
     text-color-quiet: $paper-700,
     text-color-loud: $paper-1000,
     placeholder-color: $paper-600,
-
-    // Components
-    // ---------------------------
-
-    // button
-    button-background: $primary-700,
-    button-hover-background: $primary-600,
-    button-active-background: $primary-800,
-
-    // CheckBox
-    checkbox-size: 16px,
-    checkbox-color: $primary-700,
-
-    // Radio
-    radio-size: 16px,
-    radio-color: $primary-700,
-
-    // slider
-    slider-active-color: $primary-700,
-
-    // textbox
-    textbox-border-color: $primary-700,
-
-    // divider
-    divider-color: $paper-400,
-    divider-length-horizontal: 100%,
-    divider-length-vertical: calc(1em + 2px),
 );
 
-// prettier-ignore
-$variables: map.merge($pub-colors, $general-variables);
+$variables:  map.merge($pub-colors, $general-variables);
 
 @function let($name) {
     @return var(--nami-#{$name}, #{map.get($variables, $name)});
 }
+
+$component_variables: (
+    // button
+    button-background: let(primary-700),
+    button-hover-background: let(primary-600),
+    button-active-background: let(primary-800),
+
+    // CheckBox
+    checkbox-size: 16px,
+    checkbox-color: let(primary-700),
+
+    // Radio
+    radio-size: 16px,
+    radio-color: let(primary-700),
+
+    // slider
+    slider-active-color: let(primary-700),
+
+    // textbox
+    textbox-border-color: let(primary-700),
+
+    // divider
+    divider-color: let(paper-400),
+    divider-length-horizontal: 100%,
+    divider-length-vertical: calc(1em + 2px),
+);
+
+$general-variables: map.merge($general-variables, $component_variables);
+$variables: map.merge($variables, $component_variables);
 
 // 打印变量
 @mixin variables() {

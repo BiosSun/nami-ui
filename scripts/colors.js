@@ -224,14 +224,14 @@ const color_name = (name, prefix) => (prefix ? `${prefix}-${name}` : name)
 const varname = (name, step, tag = true) => `${tag ? '$' : ''}${name}-${step * 100}`
 const varst = (name, { step, hex }) => `${varname(name, step)}: ${hex};`
 const refvarst = (name, refName, { step }) => `${varname(name, step)}: ${varname(refName, step)};`
-const mapitem = (name, { step }) => `    ${varname(name, step, false)}: ${varname(name, step)},`
+const mapitem = (name, refName, { step }) => `    ${varname(name, step, false)}: ${varname(refName, step)},`
 
 const colorset_varst = (name, colors) => {
     return colors.map((color) => varst(name, color)).join('\n')
 }
 
-const colorset_mapitems = (name, colors) => {
-    return colors.map((color) => mapitem(name, color)).join('\n')
+const colorset_mapitems = (name, refName, colors) => {
+    return colors.map((color) => mapitem(name, refName, color)).join('\n')
 }
 
 const refs_varst = (name, refName, colors) => {
@@ -259,13 +259,13 @@ const ref_code = (theme, prefix) => {
 
 const map_code = (theme, prefix) => {
     const themeItems = Object.entries(theme)
-        .map(([name, colors]) => colorset_mapitems(color_name(name, prefix), colors))
+        .map(([name, colors]) => colorset_mapitems(name, color_name(name, prefix), colors))
         .join('\n\n')
 
     const refItems = Object.entries(PICK_MAPS)
         .map(([name, refName]) => {
             const colors = theme[refName]
-            return colorset_mapitems(color_name(name, prefix), colors)
+            return colorset_mapitems(name, color_name(name, prefix), colors)
         })
         .join('\n\n')
 
