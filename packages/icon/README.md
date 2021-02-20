@@ -28,7 +28,7 @@ import {
 export default () => {
   return (
     <IconBoxList
-      icons={[
+      icons={{
         Up,
         Down,
         Left,
@@ -36,7 +36,7 @@ export default () => {
         Check,
         CircleFilled,
         GitHub,
-      ]}
+      }}
     />
   )
 }

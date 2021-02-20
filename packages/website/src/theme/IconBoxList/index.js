@@ -3,18 +3,18 @@ import styles from './styles.module.scss'
 export default function IconBoxList({ icons }) {
     return (
         <ul className={styles.list}>
-            {icons.map((Icon, index) => (
-                <IconBox key={index} Icon={Icon} />
+            {Object.keys(icons).map((name) => (
+                <IconBox key={name} icon={icons[name]} name={name} />
             ))}
         </ul>
     )
 }
 
-function IconBox({ Icon }) {
+function IconBox({ icon: Icon, name }) {
     return (
         <li className={styles.item}>
             <Icon />
-            <span className={styles.itemName}>{Icon.displayName || Icon.name}</span>
+            <span className={styles.itemName}>{name}</span>
         </li>
     )
 }
