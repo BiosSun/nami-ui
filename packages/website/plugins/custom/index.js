@@ -29,12 +29,20 @@ module.exports = () => {
                     // alias: {
                     //     'react-view': '@biossun/react-view',
                     // },
+
+                    alias: {
+                        buffer: 'buffer',
+                    },
                 },
 
                 plugins: [
                     // 处理各组件代码中的 __DEV__ 常量
                     new webpack.DefinePlugin({
                         __DEV__: true,
+                    }),
+
+                    new webpack.ProvidePlugin({
+                        Buffer: ['buffer', 'Buffer'],
                     }),
                 ],
 

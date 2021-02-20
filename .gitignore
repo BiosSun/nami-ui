@@ -128,5 +128,6 @@ Temporary Items
 yarn.lock
 package-lock.json
 packages/*/dist
+packages/website/build
 
 .docusaurus
