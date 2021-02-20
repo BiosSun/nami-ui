@@ -17,7 +17,9 @@
         "test": "jest",
         "build-storybook": "build-storybook",
         "yalc": "node scripts/yalc.js",
-        "prepublishOnly": "node scripts/publish.js"
+        "prepublishOnly": "node scripts/publish.js",
+        "postpublish": "node scripts/postpublish.js",
+        "release": "lerna publish --registry https://registry.npmjs.org"
     },
     "devDependencies": {
         "@babel/core": "^7.12.16",
