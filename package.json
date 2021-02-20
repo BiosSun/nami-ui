@@ -17,7 +17,7 @@
         "test": "jest",
         "build-storybook": "build-storybook",
         "yalc": "node scripts/yalc.js",
-        "release": "node scripts/prepublish.js && lerna publish --contents dist && node scripts/postpublish.js"
+        "release": "lerna version --no-push --no-private --force-git-tag && node scripts/prepublish.js && lerna publish from-git --contents dist && node scripts/postpublish.js"
     },
     "devDependencies": {
         "@babel/core": "^7.12.16",
