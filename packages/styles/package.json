@@ -6,11 +6,6 @@
     "license": "MIT",
     "main": "lib/index.ts",
     "module": "lib/index.ts",
-    "files": [
-        "lib",
-        "publish",
-        "*.scss"
-    ],
     "publishConfig": {
         "access": "public"
     },

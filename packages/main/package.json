@@ -5,10 +5,6 @@
     "license": "MIT",
     "main": "lib/index.ts",
     "module": "lib/index.ts",
-    "files": [
-        "lib",
-        "publish"
-    ],
     "publishConfig": {
         "access": "public"
     },
