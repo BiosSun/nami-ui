@@ -6,14 +6,27 @@ const ts = require('gulp-typescript')
 const merge = require('merge2')
 const sass = require('gulp-sass')
 const replace = require('gulp-replace')
+const jeditor = require('gulp-json-editor')
 
 sass.compiler = require('sass')
 
 async function clean() {
-    await del(['publish'])
+    await del(['dist'])
 }
 
-function build() {
+function plain() {
+    const resetPackageMain = jeditor({
+        main: 'lib/index.js',
+        module: 'lib/index.js',
+    })
+
+    return gulp
+        .src(['README.md', 'package.json', '*.scss'], { allowEmpty: true })
+        .pipe(gulpif('package.json', resetPackageMain))
+        .pipe(gulp.dest('dist'))
+}
+
+function lib() {
     const tsProject = ts.createProject(path.join(__dirname, '..', 'tsconfig.json'))
     const tsResult = gulp
         .src('lib/**/*.{ts,tsx}')
@@ -39,7 +52,7 @@ function build() {
                 ),
             ),
         )
-        .pipe(gulp.dest('publish'))
+        .pipe(gulp.dest('dist/lib'))
 }
 
-exports.default = gulp.series(clean, build)
+exports.default = gulp.series(clean, plain, lib)

@@ -17,7 +17,7 @@
         "test": "jest",
         "build-storybook": "build-storybook",
         "yalc": "node scripts/yalc.js",
-        "release": "node scripts/publish.js && lerna publish && node scripts/postpublish.js"
+        "release": "node scripts/prepublish.js && lerna publish --contents dist && node scripts/postpublish.js"
     },
     "devDependencies": {
         "@babel/core": "^7.12.16",
@@ -47,6 +47,7 @@
         "globby": "^11.0.2",
         "gulp": "^4.0.2",
         "gulp-if": "^3.0.0",
+        "gulp-json-editor": "^2.5.4",
         "gulp-replace": "^1.0.0",
         "gulp-sass": "^4.1.0",
         "gulp-typescript": "^6.0.0-alpha.1",
