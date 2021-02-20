@@ -31,3 +31,9 @@ yarn docs
 ```bash
 yarn storybook
 ```
+
+发布版本：
+
+```bash
+yarn release
+```
