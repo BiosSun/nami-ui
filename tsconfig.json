@@ -22,5 +22,4 @@
         "resolveJsonModule": true,
         "allowJs": true
     },
-    "include": ["packages/**/*"]
 }

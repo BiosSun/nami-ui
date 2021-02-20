@@ -3,19 +3,37 @@ const path = require('path')
 const shell = require('shelljs')
 const globby = require('globby')
 const chalk = require('chalk')
+const toposort = require('toposort')
+
+function sortPackages(packages /* path: string, info: PackageJSON */) {
+    const names = packages.map((p) => p.info.name)
+    const graph = packages
+        .map((p) =>
+            Object.keys(p.info.dependencies)
+                .filter((dep) => names.includes(dep))
+                .map((dep) => [p.info.name, dep]),
+        )
+        .flat()
+
+    const sortedNames = toposort.array(names, graph).reverse()
+
+    packages.sort((p1, p2) => sortedNames.indexOf(p1.info.name) - sortedNames.indexOf(p2.info.name))
+}
 
 /**
  * 返回一个执行函数，当该函数被调用时，将遍历所有包，并为每个包执行回调函数
  */
-function eachPackages(options) {
-    async function each() {
-        const packagePaths = await globby('./packages/*', { onlyFiles: false, absolute: true })
+function createPackagesIterator(options) {
+    function each() {
+        const packagePaths = globby.sync('./packages/*', { onlyFiles: false, absolute: true })
         const packages = packagePaths.map((packagePath) => ({
             path: packagePath,
             info: fs.readJsonSync(path.join(packagePath, 'package.json')),
         }))
 
-        if (options.before && (await options.before(packages)) === false) {
+        sortPackages(packages)
+
+        if (options.before && options.before(packages) === false) {
             return
         }
 
@@ -25,11 +43,10 @@ function eachPackages(options) {
                 continue
             }
 
-            console.log(chalk.blue(package.path))
-            await options.each(package)
+            options.each(package)
         }
 
-        options.after && (await options.after(packages))
+        options.after && options.after(packages)
     }
 
     Object.assign(each, options)
@@ -38,13 +55,22 @@ function eachPackages(options) {
 }
 
 /**
+ * 遍历每个包（非私有的）
+ */
+const eachPackages = (options) =>
+    createPackagesIterator(typeof options === 'function' ? { each: options } : options)()
+
+/**
  * 在每个包中执行一下 gulp 构建
  */
-const buildPackages = eachPackages({
+const buildPackages = createPackagesIterator({
     each(package) {
         const gulpfilePath = path.join(__dirname, 'gulpfile.js')
         const command = `npx gulp --gulpfile '${gulpfilePath}' --cwd '${package.path}'`
+
+        console.log(chalk.blue(package.path))
         console.log(chalk.gray(command))
+
         shell.exec(command)
     },
 })
@@ -52,14 +78,14 @@ const buildPackages = eachPackages({
 /**
  * 将所有包发布到本地的 yalc 中
  */
-const yalcPackages = eachPackages({
+const yalcPackages = createPackagesIterator({
     before() {
         if (!shell.which('yalc')) {
             console.log(chalk.red('请安装 yalc'))
         }
     },
-    async each(package) {
-        await buildPackages.each(package)
+    each(package) {
+        buildPackages.each(package)
 
         const command = `yalc publish`
         console.log(chalk.gray(command))

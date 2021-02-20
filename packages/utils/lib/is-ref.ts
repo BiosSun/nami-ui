@@ -1,5 +1,5 @@
-import { RefObject } from "react";
+import { RefObject } from 'react'
 
-function isRef<T>(obj: unknown): obj is RefObject<T> {
+export function isRef<T>(obj: unknown): obj is RefObject<T> {
     return typeof obj === 'object' && obj !== null && 'current' in obj
 }

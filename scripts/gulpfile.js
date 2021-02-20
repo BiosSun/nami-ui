@@ -24,7 +24,7 @@ function build() {
         gulpif(
             '*.scss',
             sass({
-                includePaths: 'node_modules',
+                includePaths: ['node_modules', path.join(__dirname, '..', 'node_modules')],
             }),
         ),
     )
