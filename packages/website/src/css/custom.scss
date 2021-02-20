@@ -100,6 +100,10 @@ html[data-index='true'] {
     }
 }
 
+.navbar-sidebar {
+    box-shadow: none;
+}
+
 @media (min-width: 997px) {
     .sidebarLogo_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar- img {
         height: 44px;

@@ -23,7 +23,7 @@ yarn clean
 启动本地文档服务：
 
 ```bash
-yarn docs
+yarn website
 ```
 
 启动 storybook 服务：
@@ -36,4 +36,10 @@ yarn storybook
 
 ```bash
 yarn release
+```
+
+发布文档：
+
+```bash
+yarn release:website
 ```

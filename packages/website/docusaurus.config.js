@@ -3,7 +3,7 @@ const endent = require('endent').default
 
 module.exports = {
     title: 'Nami UI - React Components.',
-    tagline: '一套写着玩的 React 组件库',
+    tagline: '一套基于 React 实现的组件库，混乱中立。',
     url: 'https://nami.biossun.org',
     baseUrl: '/',
     onBrokenLinks: 'throw',
@@ -31,7 +31,7 @@ module.exports = {
                     position: 'left',
                 },
                 {
-                    to: 'docs/button',
+                    to: 'docs/about',
                     activeBasePath: 'docs',
                     label: '文档',
                     position: 'left',

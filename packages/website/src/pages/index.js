@@ -19,7 +19,7 @@ function Home() {
     return (
         <Layout
             className="without"
-            description="一套写着玩的 React 组件库"
+            description="一套基于 React 实现的组件库，混乱中立。"
             // image=""
             // keywords={[]}
         >

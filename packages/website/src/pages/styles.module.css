@@ -6,15 +6,15 @@
  */
 
 .main {
-    max-width: 782px;
     margin: auto;
-    padding: 50px;
 }
 
 .logo {
     display: block;
-    width: 100%;
+    max-width: 70%;
+    width: 750px;
     height: auto;
+    margin: 0 auto;
 }
 
 .tagline {
@@ -25,12 +25,11 @@
     font-weight: 300;
 }
 
-@media screen and (max-width: 782px) {
+@media screen and (max-width: 1024px) {
     .main {
-        padding: 6.3938619vw;
     }
 
     .tagline {
-        font-size: 6vw;
+        font-size: 4.8936vw;
     }
 }
