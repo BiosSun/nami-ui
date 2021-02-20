@@ -9,6 +9,9 @@
         "lib",
         "publish"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@nami-ui/button": "^0.0.2",
         "@nami-ui/checkbox": "^0.0.0",

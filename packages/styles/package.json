@@ -11,6 +11,9 @@
         "publish",
         "*.scss"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "nojiko": "^2.0.0"
     }
