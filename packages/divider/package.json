@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/divider",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "A divider component.",
     "keywords": [
         "divider"
@@ -17,7 +17,7 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/styles": "^0.0.2",
+        "@nami-ui/styles": "^0.0.4",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"
     },

@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/radio",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "a radio component.",
     "keywords": [
         "Radio",
@@ -18,10 +18,10 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/icon": "^0.0.0",
-        "@nami-ui/stack": "^0.0.3",
-        "@nami-ui/styles": "^0.0.2",
-        "@nami-ui/utils": "^0.0.2",
+        "@nami-ui/icon": "^0.0.1",
+        "@nami-ui/stack": "^0.0.5",
+        "@nami-ui/styles": "^0.0.4",
+        "@nami-ui/utils": "^0.0.4",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"
     },
