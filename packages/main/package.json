@@ -1,8 +1,21 @@
 {
     "name": "nami-ui",
     "version": "0.0.1",
-    "author": "Bios Sun <biossun@gmail.com>",
+    "homepage": "https://nami-ui.biossun.org",
+    "bugs": "https://github.com/BiosSun/nami-ui/issues",
+    "repository": "github:biossun/nami-ui",
     "license": "MIT",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BiosSun/nami-ui.git",
+        "directory": "packages/main"
+    },
+    "author": {
+        "name": "Bios Sun",
+        "email": "biossun@gmail.com",
+        "url": "https://biossun.org"
+    },
     "main": "lib/index.ts",
     "module": "lib/index.ts",
     "publishConfig": {

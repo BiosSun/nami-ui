@@ -2,8 +2,19 @@
     "name": "@nami-ui/styles",
     "version": "0.0.4",
     "description": "nami-ui styles.",
-    "author": "Bios Sun <biossun@gmail.com>",
+    "homepage": "https://nami-ui.biossun.org/docs/styles",
+    "bugs": "https://github.com/BiosSun/nami-ui/issues",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BiosSun/nami-ui.git",
+        "directory": "packages/styles"
+    },
+    "author": {
+        "name": "Bios Sun",
+        "email": "biossun@gmail.com",
+        "url": "https://biossun.org"
+    },
     "main": "lib/index.ts",
     "module": "lib/index.ts",
     "publishConfig": {

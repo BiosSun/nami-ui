@@ -2,8 +2,19 @@
     "name": "@nami-ui/utils",
     "version": "0.0.4",
     "description": "a utils for nami-ui.",
-    "author": "Bios Sun <biossun@gmail.com>",
+    "homepage": "https://nami-ui.biossun.org",
+    "bugs": "https://github.com/BiosSun/nami-ui/issues",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BiosSun/nami-ui.git",
+        "directory": "packages/utils"
+    },
+    "author": {
+        "name": "Bios Sun",
+        "email": "biossun@gmail.com",
+        "url": "https://biossun.org"
+    },
     "main": "lib/index.ts",
     "module": "lib/index.ts",
     "publishConfig": {
