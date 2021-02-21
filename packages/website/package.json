@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/website",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",
@@ -20,7 +20,7 @@
         "@docusaurus/preset-classic": "2.0.0-alpha.70",
         "@docusaurus/theme-live-codeblock": "2.0.0-alpha.70",
         "@mdx-js/react": "^1.6.22",
-        "@nami-ui/icon": "^0.0.1",
+        "@nami-ui/icon": "^0.0.2",
         "@tsconfig/docusaurus": "^1.0.2",
         "@types/react": "^17.0.2",
         "@types/react-helmet": "^6.1.0",
@@ -29,7 +29,7 @@
         "clsx": "^1.1.1",
         "docusaurus-plugin-sass": "^0.1.11",
         "endent": "^2.0.1",
-        "nami-ui": "^0.0.1",
+        "nami-ui": "^0.0.2",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-markdown": "^5.0.3",

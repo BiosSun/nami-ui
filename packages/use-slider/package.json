@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/use-slider",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "a slider hook.",
     "keywords": [
         "Slider",
@@ -28,10 +28,10 @@
         "react": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/utils": "^0.0.4"
+        "@nami-ui/utils": "^0.0.5"
     },
     "devDependencies": {
-        "@nami-ui/stack": "^0.0.5",
+        "@nami-ui/stack": "^0.0.6",
         "@types/react": "^17.0.0",
         "clsx": "^1.1.1"
     }

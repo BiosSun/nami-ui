@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/space",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "A space component.",
     "keywords": [
         "space"
@@ -28,7 +28,7 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/styles": "^0.0.4",
+        "@nami-ui/styles": "^0.0.5",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"
     },
