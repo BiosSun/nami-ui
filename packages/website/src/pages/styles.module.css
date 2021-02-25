@@ -11,16 +11,17 @@
 
 .logo {
     display: block;
-    max-width: 70%;
-    width: 750px;
-    height: auto;
+    max-width: 750px;
+    max-height: 334px;
+    width: 70vw;
+    height: 31.17333331vw;
     margin: 0 auto;
 }
 
 .tagline {
     margin: 20px 0;
     font-size: 47px;
-    line-height: 60px;
+    line-height: 1.276595745em;
     text-align: center;
     font-weight: 300;
 }
