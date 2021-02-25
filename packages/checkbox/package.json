@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/checkbox",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "a checkbox component.",
     "keywords": [
         "CheckBox",
