@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/use-slider",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "a slider hook.",
     "keywords": [
         "Slider",
