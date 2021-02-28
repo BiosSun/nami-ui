@@ -12,61 +12,320 @@ subtitle: 滑动交互
 - 滑轨（rail）：用于限定滑块的滑动区域；
 - 滑块（thumb）：指示当前滑动位置及滑动状态。
 
-如下所示：
+具体可查看下面示例的代码。
 
-```jsx
-import clsx from 'clsx'
-import styles from './demo.scss'
+## 示例
 
+### 横向滑动选择器
+
+```jsx reactView
 import { useSlider } from '@nami-ui/use-slider'
+import { createUseStyles } from 'react-jss'
+
+const useStyles = createUseStyles({
+  root: {
+    maxWidth: 300,
+    height: 40,
+    background: '#ddd',
+    borderRadius: 20,
+    position: 'relative',
+  },
+  rail: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 20,
+    right: 20,
+  },
+  thumb: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    transform: 'translate(-20px, 0)',
+    position: 'absolute',
+    top: 0,
+
+    // TODO: 不知道这样性能怎么样，有时间可以测试一下
+    left: (props) => props.value * 100 + '%',
+    background: (props) => (props.sliding ? '#000' : '#777'),
+  },
+})
 
 export default () => {
-  const [values, setValues] = useState(() => [0, 1])
+  const [value, setValue] = useState([0])
 
   const slider = useSlider({
-    value: values,
-    setValue: setValues,
-    moving: (info) => info.px,
+    value,
+    setValue,
+    moving: ({ px }) => px,
+  })
+
+  const classes = useStyles({
+    value: value[0],
+    sliding: slider.sliding,
   })
 
   return (
-    <div
-      {...slider.rootProps}
-      style={{
-        width: '100%',
-        height: 40,
-        background: '#ddd',
-      }}
-    >
-      <div
-        {...slider.railProps}
-        style={{
-          height: 40,
-          margin: '0 20px',
-          position: 'relative',
-        }}
-      >
-        {values.map((value, index) => (
-          <div
-            key={index}
-            {...slider.thumbProps}
-            style={{
-              width: 40,
-              height: 40,
-              transform: 'translate(-20px, -19px)',
-              position: 'absolute',
-              top: 0,
-              left: value * 100 + '%',
-              background:
-                slider.thumb === index ? '#000' : '#777',
-            }}
-          />
-        ))}
+    <div className={classes.root} {...slider.rootProps}>
+      <div className={classes.rail} {...slider.railProps}>
+        <div
+          className={classes.thumb}
+          {...slider.thumbProps}
+        />
       </div>
     </div>
   )
 }
 ```
+
+### 垂直滑动选择器
+
+将横向滑动选择器改为垂直方向非常简单，只需要在 `moving` 中将 `px` 改为 `py`，剩下的的就都是样式上的调整：
+
+```jsx reactView
+import { useSlider } from '@nami-ui/use-slider'
+import { createUseStyles } from 'react-jss'
+
+const useStyles = createUseStyles({
+  root: {
+    width: 40,
+    height: 300,
+    background: '#ddd',
+    borderRadius: 20,
+    position: 'relative',
+  },
+  rail: {
+    position: 'absolute',
+    top: 20,
+    bottom: 20,
+    left: 0,
+    right: 0,
+  },
+  thumb: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    transform: 'translate(0, -20px)',
+    position: 'absolute',
+    left: 0,
+
+    top: (props) => props.value * 100 + '%',
+    background: (props) => (props.sliding ? '#000' : '#777'),
+  },
+})
+
+export default () => {
+  const [value, setValue] = useState([0])
+
+  const slider = useSlider({
+    value,
+    setValue,
+    moving: ({ py }) => py,
+  })
+
+  const classes = useStyles({
+    value: value[0],
+    sliding: slider.sliding,
+  })
+
+  return (
+    <div className={classes.root} {...slider.rootProps}>
+      <div className={classes.rail} {...slider.railProps}>
+        <div
+          className={classes.thumb}
+          {...slider.thumbProps}
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### 平面滑动选择器
+
+而同时使用 `px` 和 `py`，就可以实现平面滑动选择器了：
+
+```jsx reactView
+import { useSlider } from '@nami-ui/use-slider'
+import { createUseStyles } from 'react-jss'
+
+const useStyles = createUseStyles({
+  root: {
+    maxWidth: 300,
+    height: 200,
+    background: '#ddd',
+    borderRadius: 20,
+    position: 'relative',
+  },
+  rail: {
+    position: 'absolute',
+    top: 20,
+    bottom: 20,
+    left: 20,
+    right: 20,
+  },
+  thumb: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    transform: 'translate(-20px, -20px)',
+    position: 'absolute',
+
+    top: (props) => props.value.y * 100 + '%',
+    left: (props) => props.value.x * 100 + '%',
+    background: (props) => (props.sliding ? '#000' : '#777'),
+  },
+})
+
+export default () => {
+  const [value, setValue] = useState([{ x: 0, y: 0 }])
+
+  const slider = useSlider({
+    value,
+    setValue,
+    moving: ({ px, py }) => ({ x: px, y: py }),
+  })
+
+  const classes = useStyles({
+    value: value[0],
+    sliding: slider.sliding,
+  })
+
+  return (
+    <div className={classes.root} {...slider.rootProps}>
+      <div className={classes.rail} {...slider.railProps}>
+        <div
+          className={classes.thumb}
+          {...slider.thumbProps}
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### 表格行列数选择器（常用于富文本编辑器）
+
+```jsx reactView
+import { useSlider } from '@nami-ui/use-slider'
+import { createUseStyles } from 'react-jss'
+import clsx from 'clsx'
+
+const COL_SIZE = 26
+const COL_SPACE = 1
+const MIN_LEN = 3
+const MAX_LEN = 10
+
+const useStyles = createUseStyles({
+  root: {
+    position: 'relative',
+    width: (props) =>
+      props.collen * COL_SIZE +
+      (props.collen - 1) * COL_SPACE,
+  },
+  rail: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  row: {
+    display: 'flex',
+    marginTop: COL_SPACE,
+    '&:first-child': {
+      marginTop: 0,
+      '& $col': {
+        background: '#f0f0f0',
+      },
+    },
+  },
+  col: {
+    width: COL_SIZE,
+    height: COL_SIZE,
+    border: '1px solid #ddd',
+    marginLeft: COL_SPACE,
+    '&:first-child': {
+      marginLeft: 0,
+    },
+  },
+  selectedRow: {
+    '& $selectedCol': {
+      position: 'relative',
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        background: 'rgb(11 142 208 / 15%)',
+      },
+    },
+  },
+  selectedCol: {},
+})
+
+export default () => {
+  const [value, setValue] = useState([{ row: 2, col: 2 }])
+
+  const slider = useSlider({
+    value,
+    setValue,
+    axis: { step: 1, min: 0, max: MAX_LEN },
+    moving: ({ breakX: x, breakY: y }) => ({
+      row: Math.ceil(y / (COL_SIZE + COL_SPACE)),
+      col: Math.ceil(x / (COL_SIZE + COL_SPACE)),
+    }),
+  })
+
+  const { row, col } = value[0]
+  const rowlen = Math.max(MIN_LEN, row)
+  const collen = Math.max(MIN_LEN, col)
+
+  const classes = useStyles({ row, col, rowlen, collen })
+
+  const cols = []
+  for (let i = 1; i <= collen; i++) {
+    cols.push(
+      <div
+        key={i}
+        className={clsx(classes.col, {
+          [classes.selectedCol]: i <= col,
+        })}
+      />,
+    )
+  }
+
+  const rows = []
+  for (let i = 1; i <= rowlen; i++) {
+    rows.push(
+      <div
+        key={i}
+        className={clsx(classes.row, {
+          [classes.selectedRow]: i <= row,
+        })}
+      >
+        {cols}
+      </div>,
+    )
+  }
+
+  return (
+    <div className={classes.root} {...slider.rootProps}>
+      {rows}
+      <div className={classes.rail} {...slider.railProps}>
+        <div
+          className={classes.thumb}
+          {...slider.thumbProps}
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+## 类型定义
 
 `useSlider` 所接收参数及返回值类型定义如下：
 
@@ -216,6 +475,8 @@ interface HotkeyEvent {
     readonly dispatched: boolean
 }
 ```
+
+## 基础样式
 
 这三者的基础样式可如下所示：
 
