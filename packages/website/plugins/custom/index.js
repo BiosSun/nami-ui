@@ -25,12 +25,9 @@ module.exports = () => {
                     // // 因为 docs/ 中的文档大多都是从其它子包中外链过来的，因此必须添加该配置
                     symlinks: false,
 
-                    // // 在 react-view 修复 React 元素表达式无法正常渲染的问题之前，先使用私有的修复版本（2021-02-17）
-                    // alias: {
-                    //     'react-view': '@biossun/react-view',
-                    // },
-
+                    // 在 react-view 修复 React 元素表达式无法正常渲染的问题之前，先使用私有的修复版本（2021-02-17）
                     alias: {
+                        'react-view': '@biossun/react-view',
                         buffer: 'buffer',
                     },
                 },

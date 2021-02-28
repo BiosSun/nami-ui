@@ -7,15 +7,27 @@ import usePrismTheme from '@theme/hooks/usePrismTheme'
 import IconBoxList from '@theme/IconBoxList'
 import Box from '@theme/Box'
 import DemoActions from '@theme/DemoActions'
+import { createUseStyles } from 'react-jss'
 
 import styles from './styles.module.scss'
+
+const scope = {
+    React,
+    ...React,
+    clsx,
+    createUseStyles,
+    IconBoxList,
+    Box,
+    DemoActions,
+    ...NamiUIComponents,
+}
 
 export default function Playground({ initialCode }) {
     const [isExpand, setExpand] = useState(false)
 
     const params = useView({
         initialCode: initialCode.trim(),
-        scope: { React, ...React, clsx, IconBoxList, Box, DemoActions, ...NamiUIComponents },
+        scope,
         onUpdate: console.log,
     })
 
