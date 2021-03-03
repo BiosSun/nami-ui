@@ -77,6 +77,32 @@ export function Right(props: ConcreteIconProps) {
 }
 
 /**
+ * 添加；
+ * @线性
+ */
+export function Add(props: ConcreteIconProps) {
+    return (
+        <Icon
+            path="M26 6a2 2 0 10-4 0v16H6a2 2 0 100 4h16v16a2 2 0 104 0V26h16a2 2 0 100-4H26V6z"
+            {...props}
+        />
+    )
+}
+
+/**
+ * 删除；
+ * @线性
+ */
+export function Remove(props: ConcreteIconProps) {
+    return (
+        <Icon
+            path="M39.2 11.63a2 2 0 00-2.83-2.83L24 21.17 11.63 8.8a2 2 0 10-2.83 2.83L21.17 24 8.8 36.37a2 2 0 002.83 2.83L24 26.83 36.37 39.2a2 2 0 102.83-2.83L26.83 24 39.2 11.63z"
+            {...props}
+        />
+    )
+}
+
+/**
  * 对号；
  * @线性
  */

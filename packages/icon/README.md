@@ -21,6 +21,8 @@ import {
   Left,
   Right,
   Check,
+  Add,
+  Remove,
   CircleFilled,
   GitHub,
 } from '@nami-ui/icon'
@@ -34,6 +36,8 @@ export default () => {
         Left,
         Right,
         Check,
+        Add,
+        Remove,
         CircleFilled,
         GitHub,
       }}

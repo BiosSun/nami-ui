@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react/types-6-0'
 import styles from './index.module.scss'
 
-import { Up, Left, Down, Right, Check, CircleFilled, GitHub } from '../lib'
+import { Up, Left, Down, Right, Check, Add, Remove, CircleFilled, GitHub } from '../lib'
 
 export default {
     title: 'Icon',
@@ -20,7 +20,7 @@ function IconBox({ Icon }: any) {
     )
 }
 
-const icons = [Up, Down, Left, Right, Check, CircleFilled, GitHub]
+const icons = [Up, Down, Left, Right, Check, Add, Remove, CircleFilled, GitHub]
 
 export const Icons = () => {
     return (
