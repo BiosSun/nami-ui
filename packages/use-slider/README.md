@@ -230,40 +230,6 @@ const useStyles = createUseStyles({
     right: 0,
     bottom: 0,
   },
-  row: {
-    display: 'flex',
-    marginTop: COL_SPACE,
-    '&:first-child': {
-      marginTop: 0,
-      '& $col': {
-        background: '#f0f0f0',
-      },
-    },
-  },
-  col: {
-    width: COL_SIZE,
-    height: COL_SIZE,
-    border: '1px solid #ddd',
-    marginLeft: COL_SPACE,
-    '&:first-child': {
-      marginLeft: 0,
-    },
-  },
-  selectedRow: {
-    '& $selectedCol': {
-      position: 'relative',
-      '&:after': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: 'rgb(11 142 208 / 15%)',
-      },
-    },
-  },
-  selectedCol: {},
 })
 
 export default () => {
@@ -272,7 +238,7 @@ export default () => {
   const slider = useSlider({
     value,
     setValue,
-    axis: { step: 1, min: 0, max: MAX_LEN },
+    axis: { step: 1, min: 1, max: MAX_LEN },
     moving: ({ breakX: x, breakY: y }) => ({
       row: Math.ceil(y / (COL_SIZE + COL_SPACE)),
       col: Math.ceil(x / (COL_SIZE + COL_SPACE)),
@@ -283,27 +249,85 @@ export default () => {
   const rowlen = Math.max(MIN_LEN, row)
   const collen = Math.max(MIN_LEN, col)
 
-  const classes = useStyles({ row, col, rowlen, collen })
+  const classes = useStyles({ rowlen, collen })
 
-  const cols = []
-  for (let i = 1; i <= collen; i++) {
-    cols.push(
-      <div
-        key={i}
-        className={clsx(classes.col, {
-          [classes.selectedCol]: i <= col,
-        })}
-      />,
-    )
-  }
+  return (
+    <div className={classes.root} {...slider.rootProps}>
+      <TableMock
+        row={row}
+        col={col}
+        rowlen={rowlen}
+        collen={collen}
+      />
+      <div className={classes.rail} {...slider.railProps}>
+        <div {...slider.thumbProps} />
+      </div>
+    </div>
+  )
+}
+
+const useTableMockStyles = createUseStyles({
+  row: {
+    display: 'flex',
+    marginTop: COL_SPACE,
+  },
+  col: {
+    width: COL_SIZE,
+    height: COL_SIZE,
+    border: '1px solid #ddd',
+    marginLeft: COL_SPACE,
+  },
+  firstRow: {
+    marginTop: 0,
+  },
+  firstCol: {
+    marginLeft: 0,
+  },
+  colInFirstRow: {
+    background: '#f0f0f0',
+  },
+  selectedCol: {
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      background: 'rgb(11 142 208 / 15%)',
+    },
+  },
+})
+
+function TableMock({ row, col, rowlen, collen }) {
+  const classes = useTableMockStyles()
 
   const rows = []
-  for (let i = 1; i <= rowlen; i++) {
+  for (let i = 0; i < rowlen; i++) {
+    const isFirstRow = i === 0
+
+    const cols = []
+    for (let j = 0; j < collen; j++) {
+      const isFirstCol = j === 0
+
+      cols.push(
+        <div
+          key={j}
+          className={clsx(classes.col, {
+            [classes.firstCol]: isFirstCol,
+            [classes.colInFirstRow]: isFirstRow,
+            [classes.selectedCol]: i < row && j < col,
+          })}
+        />,
+      )
+    }
+
     rows.push(
       <div
         key={i}
         className={clsx(classes.row, {
-          [classes.selectedRow]: i <= row,
+          [classes.firstRow]: isFirstRow,
         })}
       >
         {cols}
@@ -311,17 +335,7 @@ export default () => {
     )
   }
 
-  return (
-    <div className={classes.root} {...slider.rootProps}>
-      {rows}
-      <div className={classes.rail} {...slider.railProps}>
-        <div
-          className={classes.thumb}
-          {...slider.thumbProps}
-        />
-      </div>
-    </div>
-  )
+  return rows
 }
 ```
 
@@ -482,25 +496,25 @@ interface HotkeyEvent {
 
 ```scss
 .container {
-  width: 400px;
-  height: 40px;
-  background: #ddd;
+  position: relative;
 }
 
 .rail {
-  height: 40px;
-  margin: 0 20px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .thumb {
   width: 40px;
   height: 40px;
-  background: #000;
 
   position: absolute;
   left: 0;
   top: 0;
-  transform: translate(-20px, -19px);
+
+  transform: translate(-20px, 0);
 }
 ```
