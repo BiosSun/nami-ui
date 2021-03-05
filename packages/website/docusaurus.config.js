@@ -11,6 +11,10 @@ module.exports = {
     favicon: 'img/favicon.ico',
     organizationName: 'B.S. Labs', // Usually your GitHub org/user name.
     projectName: 'nami-ui', // Usually your repo name.
+    i18n: {
+        defaultLocale: 'zh-Hans',
+        locales: ['zh-Hans'],
+    },
     themeConfig: {
         sidebarCollapsible: false,
         prism: {
