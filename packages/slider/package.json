@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/slider",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "a slider component.",
     "keywords": [
         "Slider"
@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@nami-ui/styles": "^0.0.5",
-        "@nami-ui/use-slider": "^0.0.3",
+        "@nami-ui/use-slider": "^0.0.4",
         "@nami-ui/utils": "^0.0.5",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"

@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/website",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",
@@ -30,7 +30,7 @@
         "clsx": "^1.1.1",
         "docusaurus-plugin-sass": "^0.1.11",
         "endent": "^2.0.1",
-        "nami-ui": "^0.0.5",
+        "nami-ui": "^0.0.6",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-markdown": "^5.0.3",

@@ -1,6 +1,6 @@
 {
     "name": "nami-ui",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "homepage": "https://nami-ui.biossun.org",
     "bugs": "https://github.com/BiosSun/nami-ui/issues",
     "repository": {
@@ -25,11 +25,11 @@
         "@nami-ui/divider": "^0.0.5",
         "@nami-ui/icon": "^0.0.3",
         "@nami-ui/radio": "^0.0.4",
-        "@nami-ui/slider": "^0.0.3",
+        "@nami-ui/slider": "^0.0.4",
         "@nami-ui/space": "^0.0.5",
         "@nami-ui/stack": "^0.0.6",
         "@nami-ui/styles": "^0.0.5",
         "@nami-ui/textbox": "^0.0.6",
-        "@nami-ui/use-slider": "^0.0.3"
+        "@nami-ui/use-slider": "^0.0.4"
     }
 }
