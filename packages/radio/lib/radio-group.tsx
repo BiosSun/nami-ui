@@ -70,9 +70,7 @@ export function RadioGroup({
             wrap
             {...otherProps}
         >
-            <RadioGroupContext.Provider value={context}>
-                {children}
-            </RadioGroupContext.Provider>
+            <RadioGroupContext.Provider value={context}>{children}</RadioGroupContext.Provider>
         </Stack>
     )
 }
