@@ -77,6 +77,15 @@ $component_variables: (
     divider-color: let(paper-400),
     divider-length-horizontal: 100%,
     divider-length-vertical: calc(1em + 2px),
+
+    // listbox
+    listbox-item-height: 28px,
+    listbox-item-padding-vertical: 4px,
+    listbox-item-padding-horizontal: 6px,
+    listbox-item-font-size: 14px,
+    listbox-item-line-height: 20px,
+    listbox-item-active-background: $paper-400,
+    listbox-item-selected-background: $paper-300,
 );
 
 $general-variables: map.merge($general-variables, $component_variables);

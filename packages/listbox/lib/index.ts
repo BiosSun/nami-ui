@@ -1,5 +1,4 @@
-import { ListBox, ListBoxProps } from './listbox'
-import { ListBoxItem, ListBoxItemProps } from './item'
+import { ListBox, ListBoxProps, ListBoxItem, ListBoxItemProps } from './listbox'
 
 const ExportedListBox = ListBox as typeof ListBox & {
     Item: typeof ListBoxItem

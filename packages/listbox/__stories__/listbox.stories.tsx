@@ -6,6 +6,9 @@ import { ListBox, ListBoxProps, ListBoxValue } from '../lib'
 export default {
     title: 'ListBox',
     component: ListBox,
+    argTypes: {
+        disabled: { control: 'boolean' },
+    },
 } as Meta
 
 function ControlledFactory() {

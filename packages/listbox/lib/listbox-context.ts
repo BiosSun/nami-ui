@@ -4,7 +4,7 @@ export type ListBoxValue = null | boolean | symbol | number | bigint | string | 
 
 export interface ListBoxContextType {
     /** 列表框已禁用 */
-    disabled: boolean
+    disabled?: boolean
 
     /** 判断所传入的选项是否被选中 */
     isSelected: (value: ListBoxValue) => boolean
