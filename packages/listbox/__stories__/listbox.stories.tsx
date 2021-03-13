@@ -11,7 +11,7 @@ export default {
     },
 } as Meta
 
-function ControlledFactory() {
+function ControlledFactory({ manyItems }: { manyItems?: boolean } = {}) {
     const Template: Story<ListBoxProps> = () => {
         const [args, updateArgs] = useArgs()
 
@@ -27,11 +27,19 @@ function ControlledFactory() {
             updateArgs({ value })
         }
 
+        const items = []
+        for (let i = 0; i < (manyItems ? 100 : 3); i++) {
+            items.push(<ListBox.Item value={i} key={i} label={`Item ${i + 1}`} />)
+        }
+
         return (
-            <ListBox {...args} value={value} onChange={handleChange}>
-                <ListBox.Item value={0} label="Item 1" />
-                <ListBox.Item value={1} label="Item 2" />
-                <ListBox.Item value={2} label="Item 3" />
+            <ListBox
+                {...args}
+                value={value}
+                onChange={handleChange}
+                style={{ height: manyItems ? 200 : undefined }}
+            >
+                {items}
             </ListBox>
         )
     }
@@ -54,3 +62,7 @@ export const Multiple = ControlledFactory()
 Multiple.args = {
     multiple: true,
 }
+
+export const ManyItems = ControlledFactory({ manyItems: true })
+
+ManyItems.args = {}

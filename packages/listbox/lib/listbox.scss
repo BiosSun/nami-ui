@@ -4,6 +4,8 @@
 $cls: '.nami-listbox';
 
 #{$cls} {
+    overflow-y: auto;
+
     &__item {
         box-sizing: border-box;
         height: let(listbox-item-height);

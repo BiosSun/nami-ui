@@ -52,6 +52,7 @@ export const ListBox: FC<ListBoxProps> = ({
     disabled,
     className,
     children,
+    ...otherProps
 }) => {
     const [value, setValue, controlled] = useValue(_val, _defval, multiple ? [] : null)
 
@@ -106,7 +107,7 @@ export const ListBox: FC<ListBoxProps> = ({
     className = clsx('nami-listbox', className)
 
     return (
-        <Stack direction="vertical" className={className}>
+        <Stack direction="vertical" className={className} {...otherProps}>
             <ListBoxContext.Provider value={context}>{children}</ListBoxContext.Provider>
         </Stack>
     )
