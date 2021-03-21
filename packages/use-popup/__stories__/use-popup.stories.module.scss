@@ -1,0 +1,39 @@
+.container {
+    height: 400px;
+    background: #f0f0f0;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.target {
+    width: 20%;
+    height: 40px;
+    background: rgba(255, 0, 0, 0.5);
+    position: absolute;
+}
+
+.popup {
+    width: 30%;
+    height: 100px;
+    background: rgba(0, 0, 255, 0.5);
+}
+
+.label {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-size: 14px;
+    font-family: monospace;
+
+    &My {
+        color: rgba(0, 0, 255, 0.5);
+    }
+
+    &At {
+        color: rgba(255, 0, 0, 0.5);
+    }
+}
