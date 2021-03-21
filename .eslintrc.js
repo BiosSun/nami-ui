@@ -32,7 +32,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'import/no-extraneous-dependencies': [
             'error',
-            { devDependencies: ['scripts/**/*', '__stories__/**/*'] },
+            { devDependencies: ['scripts/**/*', '**/__stories__/**/*'] },
         ],
 
         'react/prop-types': ['error', { skipUndeclared: true }],
