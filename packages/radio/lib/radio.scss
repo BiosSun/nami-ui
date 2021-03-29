@@ -53,7 +53,7 @@ $cls: '.nami-radio';
     // interaction
     // ---------------------------
 
-    &:active:not(#{$cls}--disabled) {
+    &:active:not(#{$cls}--disabled):not(#{$cls}--readonly) {
         #{$cls}__cell {
             &__frame {
                 opacity: 0.7;

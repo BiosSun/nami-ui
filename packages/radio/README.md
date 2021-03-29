@@ -44,6 +44,21 @@ export default () => (
 )
 ```
 
+## 只读
+
+而通过设置 `readOnly` 属性，则可以设置其为只读状态：
+
+```jsx reactView
+import { Radio } from '@nami-ui/radio'
+
+export default () => (
+  <div>
+    <Radio label="JavaScript" readOnly />
+    <Radio label="TypeScript" readOnly defaultChecked />
+  </div>
+)
+```
+
 ## 分组
 
 单选框往往都是成组出现的，而自行实现单选框组的选择逻辑需要写大量模式代码（就像上面示例中的代码），而通过 Radio.Group 组件则可以非常方便地实现分组功能：

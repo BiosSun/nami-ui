@@ -57,6 +57,15 @@ Controlled.args = {
     label: 'Controlled Radio',
 }
 
+// ReadOnly
+// ---------------------------
+
+export const ReadOnly = ControlledFactory()
+
+ReadOnly.args = {
+    readOnly: true,
+    label: 'ReadOnly Radio',
+}
 // Disabled
 // ---------------------------
 

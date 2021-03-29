@@ -1,4 +1,4 @@
-import { ChangeEvent, HTMLAttributes, useContext } from 'react'
+import { ChangeEvent, FC, HTMLAttributes, useContext } from 'react'
 import { useValue, noop } from '@nami-ui/utils'
 import { CircleFilled as CircleFilledIcon } from '@nami-ui/icon'
 import clsx from 'clsx'
@@ -22,20 +22,24 @@ export interface RadioProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'onCh
     /** 禁用 */
     disabled?: boolean
 
+    /** 只读 */
+    readOnly?: boolean
+
     /** 选中事件 */
     onChange?: () => void
 }
 
-export function Radio({
+export const Radio: FC<RadioProps> = ({
     value,
     checked: $checked,
     defaultChecked: $defaultChecked,
     label,
     disabled = false,
+    readOnly = false,
     onChange = noop,
     className,
     ...otherProps
-}: RadioProps) {
+}) => {
     // 内部选中状态值
     let checked: boolean
 
@@ -56,20 +60,24 @@ export function Radio({
         ;[checked, setChecked, controlled] = useValue($checked, $defaultChecked, false)
     }
 
-    function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        const check = event.target.checked
+    const handleChange =
+        !readOnly && !disabled
+            ? (event: ChangeEvent<HTMLInputElement>) => {
+                  const check = event.target.checked
 
-        if (!controlled) {
-            setChecked(check)
-        }
+                  if (!controlled) {
+                      setChecked(check)
+                  }
 
-        onChange()
-    }
+                  onChange()
+              }
+            : undefined
 
     className = clsx(
         'nami-radio',
         {
             'nami-radio--checked': checked,
+            'nami-radio--readonly': readOnly,
             'nami-radio--disabled': disabled,
         },
         className,
@@ -81,6 +89,7 @@ export function Radio({
                 className="nami-radio__input"
                 type="radio"
                 checked={checked}
+                readOnly={readOnly}
                 disabled={disabled}
                 onChange={handleChange}
             />
