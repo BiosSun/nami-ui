@@ -57,6 +57,16 @@ Controlled.args = {
     label: 'Controlled CheckBox',
 }
 
+// ReadOnly
+// ---------------------------
+
+export const ReadOnly = ControlledFactory()
+
+ReadOnly.args = {
+    readOnly: true,
+    label: 'ReadOnly CheckBox',
+}
+
 // Disabled
 // ---------------------------
 

@@ -37,6 +37,21 @@ export default () => (
 )
 ```
 
+## 只读
+
+而通过设置 `readOnly` 属性，则可以设置其为只读状态：
+
+```jsx reactView
+import { CheckBox } from '@nami-ui/checkbox'
+
+export default () => (
+  <div>
+    <CheckBox label="Check Box" readOnly />
+    <CheckBox label="Check Box" readOnly defaultChecked />
+  </div>
+)
+```
+
 ## 分组
 
 通常，复选框组件都是成组出现，以供用户在多个可选项中挑选一些选项。而通过额外提供的 CheckBox.Group 组件，可以非常方便地实现分组功能：

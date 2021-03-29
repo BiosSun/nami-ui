@@ -23,6 +23,9 @@ export interface CheckBoxProps extends Omit<HTMLAttributes<HTMLLabelElement>, 'o
     /** 禁用 */
     disabled?: boolean
 
+    /** 只读 */
+    readOnly?: boolean
+
     /** 设置 HTML name 属性 */
     name?: string
 
@@ -37,6 +40,7 @@ export const CheckBox: FC<CheckBoxProps> = ({
     label,
     name,
     disabled = false,
+    readOnly = false,
     onChange = noop,
     className,
     ...otherProps
@@ -63,20 +67,24 @@ export const CheckBox: FC<CheckBoxProps> = ({
         ;[check, setCheck, controlled] = useValue(checked, defaultChecked, false)
     }
 
-    function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        const check = event.target.checked // eslint-disable-line @typescript-eslint/no-shadow
+    const handleChange =
+        !readOnly && !disabled
+            ? (event: ChangeEvent<HTMLInputElement>) => {
+                  const check = event.target.checked // eslint-disable-line @typescript-eslint/no-shadow
 
-        if (!controlled) {
-            setCheck(check)
-        }
+                  if (!controlled) {
+                      setCheck(check)
+                  }
 
-        onChange(check)
-    }
+                  onChange(check)
+              }
+            : undefined
 
     className = clsx(
         'nami-checkbox',
         {
             'nami-checkbox--checked': check,
+            'nami-checkbox--readonly': readOnly,
             'nami-checkbox--disabled': disabled,
         },
         className,
@@ -89,6 +97,7 @@ export const CheckBox: FC<CheckBoxProps> = ({
                 type="checkbox"
                 name={name}
                 checked={check}
+                readOnly={readOnly}
                 disabled={disabled}
                 onChange={handleChange}
             />
