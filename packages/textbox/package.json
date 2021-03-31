@@ -1,6 +1,6 @@
 {
     "name": "@nami-ui/textbox",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "a input component.",
     "keywords": [
         "Input"
@@ -28,8 +28,8 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
-        "@nami-ui/styles": "^0.0.5",
-        "@nami-ui/utils": "^0.0.5",
+        "@nami-ui/styles": "^0.0.6",
+        "@nami-ui/utils": "^0.0.6",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"
     },
