@@ -10,7 +10,7 @@ module.exports = {
                     布局: ['stack', 'divider', 'space'],
                 },
                 {
-                    输入: ['radio', 'checkbox', 'slider', 'textbox'],
+                    输入: ['radio', 'checkbox', 'slider', 'textbox', 'listbox'],
                 },
                 {
                     Hooks: ['use-slider'],
