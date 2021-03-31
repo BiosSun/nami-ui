@@ -26,10 +26,12 @@ function sortPackages(packages /* path: string, info: PackageJSON */) {
 function createPackagesIterator(options) {
     function each() {
         const packagePaths = globby.sync('./packages/*', { onlyFiles: false, absolute: true })
-        const packages = packagePaths.map((packagePath) => ({
-            path: packagePath,
-            info: fs.readJsonSync(path.join(packagePath, 'package.json')),
-        }))
+        const packages = packagePaths
+            .filter((packagePath) => fs.pathExistsSync(packagePath))
+            .map((packagePath) => ({
+                path: packagePath,
+                info: fs.readJsonSync(path.join(packagePath, 'package.json')),
+            }))
 
         sortPackages(packages)
 
