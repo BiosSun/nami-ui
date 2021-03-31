@@ -28,7 +28,9 @@
         "react-dom": "^17.0.1"
     },
     "dependencies": {
+        "@nami-ui/checkbox": "^0.0.4",
         "@nami-ui/icon": "^0.0.3",
+        "@nami-ui/radio": "^0.0.4",
         "@nami-ui/stack": "^0.0.6",
         "@nami-ui/styles": "^0.0.5",
         "@nami-ui/utils": "^0.0.5",

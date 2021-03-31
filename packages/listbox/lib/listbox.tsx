@@ -3,6 +3,8 @@ import clsx from 'clsx'
 import { FC, HTMLAttributes, ReactNode, useMemo, useContext } from 'react'
 import { noop, useValue } from '@nami-ui/utils'
 import { Stack, HStack } from '@nami-ui/stack'
+import { CheckBox } from '@nami-ui/checkbox'
+import { Radio } from '@nami-ui/radio'
 import { ListBoxValue, ListBoxContext } from './listbox-context'
 
 import './listbox.scss'
@@ -11,6 +13,9 @@ interface BasicListBoxProps
     extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
     /** 是否禁用 */
     disabled?: boolean
+
+    /** 是否显示 checkbox / radio */
+    check?: boolean
 
     /** 选项 */
     children: ReactNode
@@ -48,6 +53,7 @@ export const ListBox: FC<ListBoxProps> = ({
     value: _val,
     defaultValue: _defval,
     multiple,
+    check,
     onChange = noop,
     disabled,
     className,
@@ -78,7 +84,7 @@ export const ListBox: FC<ListBoxProps> = ({
                 }
             }
 
-            return { disabled, isSelected, change }
+            return { disabled, check, multiple, isSelected, change }
         }
         // eslint-disable-next-line no-else-return
         else {
@@ -100,9 +106,9 @@ export const ListBox: FC<ListBoxProps> = ({
                 }
             }
 
-            return { disabled, isSelected, change }
+            return { disabled, check, multiple, isSelected, change }
         }
-    }, [multiple, disabled, value, controlled, onChange, setValue])
+    }, [multiple, disabled, check, value, controlled, onChange, setValue])
 
     className = clsx('nami-listbox', className)
 
@@ -130,9 +136,9 @@ export interface ListBoxItemProps extends HTMLAttributes<HTMLLabelElement> {
 export const ListBoxItem: FC<ListBoxItemProps> = ({
     value,
     onSelect = noop,
-    disabled,
+    disabled: _disabled,
     label,
-    className,
+    className: _className,
     ...otherProps
 }) => {
     const context = useContext(ListBoxContext)
@@ -143,28 +149,40 @@ export const ListBoxItem: FC<ListBoxItemProps> = ({
         )
     }
 
-    disabled = disabled || context.disabled
+    const disabled = _disabled || context.disabled
+    const selected = context.isSelected(value)
 
     function handleChange() {
         if (disabled) {
             return
         }
 
-        context!.change(value, !context!.isSelected(value))
+        context!.change(value, !selected)
         onSelect()
     }
 
-    className = clsx(
+    const className = clsx(
         'nami-listbox__item',
         {
             'nami-listbox__item--disabled': disabled,
-            'nami-listbox__item--selected': context.isSelected(value),
+            'nami-listbox__item--selected': selected,
         },
-        className,
+        _className,
     )
 
+    const CheckComponent = context.check ? (context.multiple ? CheckBox : Radio) : null
+
     return (
-        <HStack className={className} {...otherProps} onClick={handleChange}>
+        <HStack
+            className={className}
+            {...otherProps}
+            onClick={handleChange}
+            spacing="small"
+            align="center"
+        >
+            {CheckComponent ? (
+                <CheckComponent className="nami-listbox__item__check" checked={selected} readOnly />
+            ) : null}
             <span $flex className="nami-listbox__item__label">
                 {label}
             </span>

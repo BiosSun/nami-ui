@@ -6,6 +6,12 @@ export interface ListBoxContextType {
     /** 列表框已禁用 */
     disabled?: boolean
 
+    /** 是否显示 checkbox / radio */
+    check?: boolean
+
+    /** 是否为多选模式 */
+    multiple?: boolean
+
     /** 判断所传入的选项是否被选中 */
     isSelected: (value: ListBoxValue) => boolean
 
