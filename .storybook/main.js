@@ -1,9 +1,8 @@
 const webpack = require('webpack')
 
 module.exports = {
-    stories: [
-        '../packages/**/__stories__/*.@(ts|tsx)',
-    ],
+    core: { builder: 'webpack5' },
+    stories: ['../packages/**/__stories__/*.@(ts|tsx)'],
     addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/preset-scss'],
     webpackFinal: async (config) => {
         // __DEV__

@@ -16,14 +16,14 @@
         "@babel/plugin-proposal-class-properties": "^7.12.13",
         "@babel/preset-typescript": "7.12.16",
         "@biossun/react-view": "^2.3.7",
-        "@docusaurus/core": "2.0.0-alpha.70",
-        "@docusaurus/module-type-aliases": "2.0.0-alpha.70",
-        "@docusaurus/preset-classic": "2.0.0-alpha.70",
-        "@docusaurus/theme-live-codeblock": "2.0.0-alpha.70",
+        "@docusaurus/core": "2.0.0-alpha.72",
+        "@docusaurus/module-type-aliases": "2.0.0-alpha.72",
+        "@docusaurus/preset-classic": "2.0.0-alpha.72",
+        "@docusaurus/theme-live-codeblock": "2.0.0-alpha.72",
         "@mdx-js/react": "^1.6.22",
         "@nami-ui/icon": "^0.0.4",
         "@tsconfig/docusaurus": "^1.0.2",
-        "@types/react": "^17.0.2",
+        "@types/react": "^17.0.3",
         "@types/react-helmet": "^6.1.0",
         "@types/react-router-dom": "^5.1.7",
         "buffer": "^6.0.3",
@@ -31,10 +31,10 @@
         "docusaurus-plugin-sass": "^0.1.11",
         "endent": "^2.0.1",
         "nami-ui": "^0.0.7",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
         "react-markdown": "^5.0.3",
-        "typescript": "^4.1.5"
+        "typescript": "^4.2.3"
     },
     "browserslist": {
         "production": [

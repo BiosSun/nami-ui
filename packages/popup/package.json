@@ -24,19 +24,19 @@
         "access": "public"
     },
     "peerDependencies": {
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1"
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "@nami-ui/icon": "^0.0.3",
-        "@nami-ui/stack": "^0.0.6",
-        "@nami-ui/styles": "^0.0.5",
-        "@nami-ui/utils": "^0.0.5",
+        "@nami-ui/icon": "^0.0.4",
+        "@nami-ui/stack": "^0.0.7",
+        "@nami-ui/styles": "^0.0.6",
+        "@nami-ui/utils": "^0.0.6",
         "clsx": "^1.1.1",
         "nojiko": "^2.0.0"
     },
     "devDependencies": {
-        "@types/react": "^17.0.0",
-        "@types/react-dom": "^17.0.0"
+        "@types/react": "^17.0.3",
+        "@types/react-dom": "^17.0.3"
     }
 }
