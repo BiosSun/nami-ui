@@ -1,7 +1,7 @@
 import { CSSProperties, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from 'react-use'
 import { useResize } from '@nami-ui/utils'
-import { position, RectAnchor, PopupElement, TargetElement } from './position'
+import { position, RectAnchor, PopupElement, TargetElement, Offset } from './position'
 
 interface UsePopupState {
     popupProps: {
@@ -32,6 +32,7 @@ export default function usePopup(
     of: TargetElement | undefined | null,
     my: RectAnchor,
     at: RectAnchor,
+    offset?: Offset,
 ): UsePopupResult {
     const [state, setState] = useState<UsePopupState>(DEFAULT_STATE)
 
@@ -41,7 +42,7 @@ export default function usePopup(
             return
         }
 
-        const { top, left } = position(el, of, my, at)
+        const { top, left } = position(el, of, my, at, offset)
 
         setState({
             popupProps: {
@@ -70,7 +71,7 @@ export default function usePopup(
         })
     }
 
-    useIsomorphicLayoutEffect(refresh, [el, of, ...my, ...at])
+    useIsomorphicLayoutEffect(refresh, [el, of, ...my, ...at, offset])
 
     useResize(el, lazyRefresh)
     useResize(of, lazyRefresh)

@@ -11,6 +11,16 @@ export type HorizontalAnchor = 'center' | 'left' | 'right'
 export type VerticalAnchor = 'center' | 'top' | 'bottom'
 export type RectAnchor = [HorizontalAnchor, VerticalAnchor]
 
+const OPPOSITE_EDGE: {
+    [key in HorizontalAnchor | VerticalAnchor]: HorizontalAnchor | VerticalAnchor | undefined
+} = {
+    left: 'right',
+    right: 'left',
+    top: 'bottom',
+    bottom: 'top',
+    center: undefined,
+}
+
 export type Position = {
     top: number
     left: number
@@ -22,6 +32,8 @@ export type Rect = {
     top: number
     left: number
 }
+
+export type Offset = number
 
 const RECT_ANCHOR_TO_LINE_ANCHOR: {
     [key in HorizontalAnchor | VerticalAnchor]: LineAnchor
@@ -120,6 +132,87 @@ toRect.touch = (el: Touch) => {
     return { width: 0, height: 0, top: pageY, left: pageX }
 }
 
+function isSameEdge(a1: HorizontalAnchor, a2: HorizontalAnchor): boolean
+function isSameEdge(a1: VerticalAnchor, a2: VerticalAnchor): boolean
+function isSameEdge(a1: any, a2: any): boolean {
+    return a1 !== 'center' && a1 === a2
+}
+
+function isOppositeEdge(a1: HorizontalAnchor, a2: HorizontalAnchor): boolean
+function isOppositeEdge(a1: VerticalAnchor, a2: VerticalAnchor): boolean
+function isOppositeEdge(a1: any, a2: any): boolean {
+    const a1_o = OPPOSITE_EDGE[a1 as HorizontalAnchor | VerticalAnchor]
+
+    if (!a1_o) {
+        return false
+    }
+
+    return isSameEdge(a1_o as any, a2)
+}
+
+function moveByOffset(
+    po: Position,
+    [my_h, my_v]: RectAnchor,
+    [at_h, at_v]: RectAnchor,
+    offset: number,
+): Position {
+    const hs = isSameEdge(my_h, at_h)
+    const ho = isOppositeEdge(my_h, at_h)
+    const vs = isSameEdge(my_v, at_v)
+    const vo = isOppositeEdge(my_v, at_v)
+
+    let { top, left } = po
+
+    // 同角 / 对角
+    if ((hs && vs) || (ho && vo)) {
+        if (my_h === 'left') {
+            left += offset
+        } else {
+            left -= offset
+        }
+
+        if (my_v === 'top') {
+            top += offset
+        } else {
+            top -= offset
+        }
+    }
+    // 对边
+    else if (ho) {
+        if (my_h === 'left') {
+            left += offset
+        } else {
+            left -= offset
+        }
+    }
+    // 对边
+    else if (vo) {
+        if (my_v === 'top') {
+            top += offset
+        } else {
+            top -= offset
+        }
+    }
+    // 同边
+    else if (hs) {
+        if (my_h === 'left') {
+            left += offset
+        } else {
+            left -= offset
+        }
+    }
+    // 同边
+    else if (vs) {
+        if (my_v === 'top') {
+            top += offset
+        } else {
+            top -= offset
+        }
+    }
+
+    return { top, left }
+}
+
 function relativeOffsetParent(el: PopupElement, po: Position): Position {
     if (!isHTMLElement(el)) {
         return po
@@ -151,11 +244,17 @@ export function position(
     of: TargetElement,
     my: RectAnchor,
     at: RectAnchor,
+    offset?: Offset,
 ): Position {
     const elRect = toRect(el)
     const ofRect = toRect(of)
 
     let po = positionRect(elRect, ofRect, my, at)
+
+    if (offset) {
+        po = moveByOffset(po, my, at, offset)
+    }
+
     po = relativeOffsetParent(el, po)
     po = roundPosition(ofRect, po)
 
